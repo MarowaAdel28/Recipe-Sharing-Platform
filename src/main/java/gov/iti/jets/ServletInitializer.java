@@ -1,4 +1,4 @@
-package gov.iti.jets.RecipeSharingPlatform;
+package gov.iti.jets;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
