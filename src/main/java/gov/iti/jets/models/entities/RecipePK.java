@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gov.iti.jets.entities;
+package gov.iti.jets.models.entities;
 
 import java.io.Serializable;
 import jakarta.persistence.Basic;
