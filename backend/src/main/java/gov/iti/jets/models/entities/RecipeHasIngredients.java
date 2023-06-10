@@ -10,16 +10,20 @@ import java.io.Serializable;
 
 @Data
 @Entity
-@Table(name = "rejected_recipe")
-public class RejectedRecipe implements Serializable {
+@Table(name = "recipe_has_ingredients")
+public class RecipeHasIngredients implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Column(name = "message", nullable = false)
-    private String message;
 
     @Id
     @Column(name = "recipe_id", nullable = false)
     private Integer recipeId;
+
+    @Id
+    @Column(name = "ingredients_id", nullable = false)
+    private Integer ingredientsId;
+
+    @Column(name = "quantity", nullable = false)
+    private String quantity;
 
 }
