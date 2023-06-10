@@ -1,0 +1,59 @@
+<h2>Post a Recipe</h2>
+
+<div class="form-group">
+  <label for="category">Category:</label>
+  <!-- <select [(ngModel)]="model">
+    <option *ngFor="let item of list" [value]="item">{{item}}</option>
+    </select> -->
+  <select id="category" class="form-control" [(ngModel)]="category">
+    <option value="breakfast">Breakfast</option>
+    <option value="lunch">Lunch</option>
+    <option value="dinner">Dinner</option>
+    <option value="dessert">Dessert</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="ingredients">Ingredients:</label>
+  <input type="text" class="form-control"  placeholder="ingredient" [(ngModel)]="ingredient">
+    <input type="text" class="form-control" placeholder="quantity" [(ngModel)]="quantity">
+    <button (click)="addIngredient()">Add</button>
+  <ul>
+    <li *ngFor="let item of ingredients;
+    let currentIndex=index">
+      <input #ingredientInput type="text" class="form-control"  value="{{item.ingredient}}" 
+        (change)="editIngredient(currentIndex,ingredientInput.value,quantityInput.value)">
+      <input #quantityInput type="text" class="form-control" value="{{item.quantity}}"
+      (change)="editIngredient(currentIndex,ingredientInput.value,quantityInput.value)">
+      <button (click)="removeIngredient(currentIndex)">Remove</button>
+
+    </li>
+  </ul>
+
+</div>
+
+<div class="form-group">
+  <label for="steps">Steps:</label>
+  <input type="text" class="form-control" placeholder="step" [(ngModel)]="step">
+    <button (click)="addStep()">Add Step</button>
+  <ol>
+    <li *ngFor="let step of steps;
+        let currentIndex=index">
+      <input #stepInput type="text" class="form-control" value="{{step}}" (change)="editStep(currentIndex,stepInput.value)">
+      <button (click)="removeStep(currentIndex)">Remove</button>
+    </li>
+  </ol>
+</div>
+
+<div class="form-group">
+  <label for="preparingTime">Preparing Time:</label>
+  <input type="text" id="preparingTime" class="form-control" [(ngModel)]="preparingTime">
+</div>
+
+<div class="form-group">
+  <label for="numberOfPersons">Number of Persons:</label>
+  <input type="number" id="numberOfPersons" class="form-control" [(ngModel)]="numberOfPersons">
+</div>
+
+<button (click)="submitForm()">Submit</button>
+
