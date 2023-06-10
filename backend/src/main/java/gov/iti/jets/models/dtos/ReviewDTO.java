@@ -1,6 +1,8 @@
 package gov.iti.jets.models.dtos;
 
 
+import gov.iti.jets.models.entities.Recipe;
+import gov.iti.jets.models.entities.User;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -17,8 +19,8 @@ public class ReviewDTO implements Serializable {
 
     private LocalDateTime date;
 
-    private Integer recipeId;
-
-    private Integer userId;
+    private RecipeDTO recipeId;
+  
+    private UserDTO userId;
 
 }

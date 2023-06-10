@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class UserDTO implements Serializable {
@@ -26,5 +27,11 @@ public class UserDTO implements Serializable {
     private Boolean admin;
 
     private Boolean deleted;
+    
+    private List<FavoriteRecipeDTO> favoriteRecipeList;
+    
+    private List<ReviewDTO> reviewList;
+    
+    private List<RecipeDTO> recipeList;
 
 }

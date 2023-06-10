@@ -28,7 +28,7 @@ public class RejectedRecipeService {
     }
 
     public void update(RejectedRecipeDTO rejectedRecipeDto) {
-        RejectedRecipe rejectedRecipe = requireOne(rejectedRecipeDto.getRecipeId());
+        RejectedRecipe rejectedRecipe = requireOne(rejectedRecipeDto.getId());
         BeanUtils.copyProperties(rejectedRecipeDto, rejectedRecipe);
         rejectedRecipeRepository.save(rejectedRecipe);
     }

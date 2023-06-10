@@ -12,6 +12,7 @@ public class ImageDTO implements Serializable {
 
     private String path;
 
-    private Integer recipeId;
+    private RecipeDTO recipeId;    
+    
 
 }

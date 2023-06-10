@@ -5,6 +5,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 public class RecipeDTO implements Serializable {
@@ -19,14 +20,24 @@ public class RecipeDTO implements Serializable {
 
     private LocalDateTime date;
 
-    private Integer userId;
-
-    private Integer categoryId;
-
     private Boolean deleted;
 
     private String preparingTime;
 
     private Integer persons;
+
+    private List<ImageDTO> imageList;
+
+    private List<FavoriteRecipeDTO> favoriteRecipeList;
+
+    private List<ReviewDTO> reviewList;
+
+    private CategoryDTO categoryId;
+
+    private UserDTO userId;
+
+    private List<RecipeHasIngredientsDTO> recipeHasIngredientsList;
+
+
 
 }
