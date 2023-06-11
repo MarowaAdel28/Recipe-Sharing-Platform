@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @Validated
 @RestController
 @RequestMapping("/review")

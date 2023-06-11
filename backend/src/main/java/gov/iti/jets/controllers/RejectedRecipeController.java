@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RestController
 @RequestMapping("/rejectedRecipe")
+@CrossOrigin(origins = "http://localhost:8080")
 public class RejectedRecipeController {
 
     @Autowired

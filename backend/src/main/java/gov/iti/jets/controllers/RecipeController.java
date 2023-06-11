@@ -9,11 +9,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:8080")
 @Validated
 @RestController
 @RequestMapping("/recipe")
 public class RecipeController {
-
     @Autowired
     private RecipeService recipeService;
 
