@@ -27,15 +27,15 @@ public class CategoryController {
         categoryService.delete(id);
     }
 
-    @PutMapping
-    public void update(@Valid @RequestBody CategoryDTO categoryDto) {
-        categoryService.update(categoryDto);
-    }
+//    @PutMapping
+//    public void update(@Valid @RequestBody CategoryDTO categoryDto) {
+//        categoryService.update(categoryDto);
+//    }
 
-    @GetMapping("/{id}")
-    public CategoryDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
-        return categoryService.getById(id);
-    }
+//    @GetMapping("/{id}")
+//    public CategoryDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
+//        return categoryService.getById(id);
+//    }
 
 //    @GetMapping
 //    public Page<CategoryDTO> query(@Valid CategoryQueryVO categoryDto) {
