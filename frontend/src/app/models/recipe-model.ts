@@ -9,5 +9,4 @@ export class RecipeModel{
     this.preparingTime = preparingTime;
     this.steps = steps;
   }
-
 }
