@@ -26,7 +26,6 @@
             ],
             "styles": [
               "src/assets/css/style.css",
-              "src/assets/style.css",
               "src/assets/css/animate.min.css",
               "src/assets/css/bootstrap.min.css",
               "src/assets/css/animate.min.css",
