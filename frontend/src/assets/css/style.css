@@ -195,17 +195,17 @@ h3 {
 
 /* line 131, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/theme-default.scss */
 .bg-img-1 {
-  background-image: url(../img/slider/slider-img-1.jpg);
+  /* background-image: url(../img/slider/slider-img-1.jpg); */
 }
 
 /* line 134, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/theme-default.scss */
 .bg-img-2 {
-  background-image: url(../img/background-img/bg-img-2.jpg);
+  /* background-image: url(../img/background-img/bg-img-2.jpg); */
 }
 
 /* line 137, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/theme-default.scss */
 .cta-bg-1 {
-  background-image: url(../img/background-img/bg-img-3.jpg);
+  /* background-image: url(../img/background-img/bg-img-3.jpg); */
 }
 
 /* line 142, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/theme-default.scss */
@@ -1433,7 +1433,7 @@ h3 {
 
 /* line 4, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_slider.scss */
 .slider_bg_2 {
-  background-image: url(../img/banner/banner2.png);
+  /* background-image: url(../img/banner/banner2.png); */
 }
 
 /* line 7, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_slider.scss */
@@ -2711,17 +2711,17 @@ h3 {
 
 /* line 4, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
 .breadcam_bg_2 {
-  background-image: url(../img/banner/bradcam_2.png);
+  /* background-image: url(../img/banner/bradcam_2.png); */
 }
 
 /* line 7, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
 .breadcam_bg_3 {
-  background-image: url(../img/banner/bradcam3.png);
+  /* background-image: url(../img/banner/bradcam3.png); */
 }
 
 /* line 10, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
 .breadcam_bg_4 {
-  background-image: url(../img/banner/bradcam_4.png);
+  /* background-image: url(../img/banner/bradcam_4.png); */
 }
 
 /* line 13, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_bradcam.scss */
