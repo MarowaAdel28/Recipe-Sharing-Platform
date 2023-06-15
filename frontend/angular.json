@@ -39,7 +39,16 @@
               "src/assets/css/themify-icons.css"
             ],
             "scripts": [
-
+              "src/assets/js/jquery.ajaxchimp.min.js",
+              "src/assets/js/jquery.counterup.min.js",
+              "src/assets/js/jquery.form.js",
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "src/assets/js/jquery.scrollUp.min.js",
+              "src/assets/js/jquery.slicknav.min.js",
+              "src/assets/js/jquery.validate.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/ajax-form.js",
+              "src/assets/js/contact.js"
             ]
           },
           "configurations": {

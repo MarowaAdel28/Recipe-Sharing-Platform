@@ -28,6 +28,12 @@ body {
   font-style: normal;
 }
 
+.sticky-header{
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
 /* line 12, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/theme-default.scss */
 .img {
   max-width: 100%;
@@ -1085,7 +1091,7 @@ h3 {
 .header-area .main-header-area .Appointment .book_btn a {
   background: transparent;
   padding: 12px 26px;
-  font-size: 15px;
+  font-size: 30px;
   font-weight: 500;
   border: 1px solid #000;
   color: #000;
@@ -1129,7 +1135,7 @@ h3 {
 /* line 147, ../../Arafath/CL/CL October/220 Tasty Recipes/HTML/scss/_header.scss */
 .header-area .main-header-area .main-menu ul li a {
   color: #000000;
-  font-size: 15px;
+  font-size: 18px;
   text-transform: capitalize;
   font-weight: 500;
   display: inline-block;
