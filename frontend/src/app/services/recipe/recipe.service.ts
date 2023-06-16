@@ -10,7 +10,7 @@ export class RecipeService {
   constructor(private _apiService:ApiService) { }
 
   getAll(){
-    return this._apiService.getAll("recipe")
+    return this._apiService.getAll("recipe/getAll")
   }
   getById(id:number){
     return this._apiService.getById("recipe",id)

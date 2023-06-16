@@ -18,7 +18,6 @@ import { DishAreaComponent } from './components/dish-area/dish-area.component';
     FooterComponent,
     ViewRecipeComponent,
     RecipesComponent,
-
     DishAreaComponent
 
   ],
