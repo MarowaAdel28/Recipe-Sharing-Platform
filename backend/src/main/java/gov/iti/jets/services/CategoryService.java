@@ -5,7 +5,8 @@ import gov.iti.jets.models.entities.Category;
 import gov.iti.jets.repositories.CategoryRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -49,6 +50,15 @@ public class CategoryService {
         return categoryDTOS;
     }
 
+    public List<CategoryDTO> getTop3() {
+        Pageable pageable = PageRequest.of(0, 3); // Limit the results to 3
+        List<Category> categories = categoryRepository.findAll(pageable).getContent();
+        List<CategoryDTO> categoryDTOS = new ArrayList<>();
+        for (Category cat : categories)
+            categoryDTOS.add(toDTO(cat));
+        return categoryDTOS;
+    }
+
     private CategoryDTO toDTO(Category category) {
         CategoryDTO categoryDto = new CategoryDTO();
         BeanUtils.copyProperties(category, categoryDto);
@@ -59,4 +69,5 @@ public class CategoryService {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
     }
+
 }

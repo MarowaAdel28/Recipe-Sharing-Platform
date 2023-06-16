@@ -25,6 +25,12 @@ public class CategoryController {
     public List<CategoryDTO> getAllCategories() {
         return categoryService.getAll();
     }
+
+    @GetMapping("top3")
+    public List<CategoryDTO> getTop3Categories() {
+        return categoryService.getTop3();
+    }
+
     @PostMapping
     public String save(@Valid @RequestBody CategoryDTO categoryDto) {
         return categoryService.save(categoryDto).toString();
