@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./recipes.component.css']
 })
 export class RecipesComponent {
+recipes: any[];
 
+  constructor(private recipeService: RecipeService) { }
+
+  ngOnInit() {
+    this.recipeService.getAll().subscribe((recipes) => {
+      this.recipes = recipes;
+    });
+  }
 }

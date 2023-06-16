@@ -9,7 +9,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:8080")
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:8060")
 @Validated
 @RestController
 @RequestMapping("/recipe")
@@ -35,6 +37,10 @@ public class RecipeController {
     @GetMapping("/{id}")
     public RecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
         return recipeService.getById(id);
+    }
+    @GetMapping("/getAll")
+    public List<RecipeDTO> getAllRecipes() {
+        return recipeService.getAllRecipes();
     }
 
 //    @GetMapping
