@@ -9,6 +9,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Validated
 @RestController
 @RequestMapping("/category")
@@ -39,8 +41,8 @@ public class CategoryController {
         return categoryService.getById(id);
     }
 
-//    @GetMapping
-//    public Page<CategoryDTO> query(@Valid CategoryQueryVO categoryDto) {
-//        return categoryService.query(categoryDto);
-//    }
+    @GetMapping
+    public List<CategoryDTO> getAll() {
+        return categoryService.getAll();
+    }
 }

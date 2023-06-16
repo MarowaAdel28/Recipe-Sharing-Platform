@@ -7,6 +7,11 @@ import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ViewRecipeComponent } from './components/view-recipe/view-recipe.component';
+import { PostRecipeComponent } from './components/post-recipe/post-recipe.component';
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -14,11 +19,17 @@ import { ViewRecipeComponent } from './components/view-recipe/view-recipe.compon
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    ViewRecipeComponent
+    ViewRecipeComponent,
+    PostRecipeComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
