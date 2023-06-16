@@ -9,16 +9,22 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Validated
 @RestController
 @RequestMapping("/category")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8060")
 
 public class CategoryController {
 
     @Autowired
     private CategoryService categoryService;
 
+    @GetMapping
+    public List<CategoryDTO> getAllCategories() {
+        return categoryService.getAll();
+    }
     @PostMapping
     public String save(@Valid @RequestBody CategoryDTO categoryDto) {
         return categoryService.save(categoryDto).toString();
