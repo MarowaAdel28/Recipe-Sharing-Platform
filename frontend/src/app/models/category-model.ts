@@ -1,12 +1,8 @@
-export class RecipeModel{
+export class CategoryModel{
   id:number;
-  steps:string;
-  preparingTime:string;
-  persons:string;
+  name:string;
 
-  constructor(steps:string,preparingTime:string,persons:string) {
-    this.persons = persons;
-    this.preparingTime = preparingTime;
-    this.steps = steps;
+  constructor(name:string) {
+    this.name = name;
   }
 }

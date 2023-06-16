@@ -12,6 +12,9 @@ export class CategoryService {
   getAll(){
     return this._apiService.getAll("category")
   }
+  getTop3(){
+    return this._apiService.getTop3("category")
+  }
   getById(id:number){
     return this._apiService.getById("category",id)
   }
