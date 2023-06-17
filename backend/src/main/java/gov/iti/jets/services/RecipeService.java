@@ -5,9 +5,11 @@ import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -50,6 +52,14 @@ public class RecipeService {
     private Recipe requireOne(Integer id) {
         return recipeRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
+    }
+    public List<RecipeDTO> getTop3() {
+        Pageable pageable = PageRequest.of(0, 3); // Limit the results to 3
+        List<Recipe> categories = recipeRepository.findAll(pageable).getContent();
+        List<RecipeDTO> recipeDTOS = new ArrayList<>();
+        for (Recipe recipe : categories)
+            recipeDTOS.add(toDTO(recipe));
+        return recipeDTOS;
     }
     public List<RecipeDTO> getAllRecipes() {
         List<Recipe> recipes = recipeRepository.findAll();
