@@ -13,7 +13,7 @@ export class RecipesComponent {
 
   constructor(private recipeService: RecipeService) { }
   ngOnInit() {
-      this.recipeService.getAll().subscribe((recipes) => {
+      this.recipeService.getTop3().subscribe((recipes) => {
         this.recipes = recipes;
         },(error) => {
           console.error('Failed to load recipes', error);

@@ -1,5 +1,6 @@
 package gov.iti.jets.controllers;
 
+import gov.iti.jets.models.dtos.CategoryDTO;
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.services.RecipeService;
 import jakarta.validation.Valid;
@@ -42,7 +43,10 @@ public class RecipeController {
     public List<RecipeDTO> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
-
+    @GetMapping("top3")
+    public List<RecipeDTO> getTop3Categories() {
+        return recipeService.getTop3();
+    }
 //    @GetMapping
 //    public Page<RecipeDTO> query(@Valid RecipeQueryVO recipeDto) {
 //        return recipeService.query(recipeDto);

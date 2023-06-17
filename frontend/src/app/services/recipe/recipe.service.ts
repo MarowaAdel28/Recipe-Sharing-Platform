@@ -24,4 +24,7 @@ export class RecipeService {
   delete(id:number){
     return this._apiService.delete("recipe",id)
   }
+    getTop3(){
+      return this._apiService.getTop3("recipe")
+    }
 }
