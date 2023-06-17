@@ -29,15 +29,30 @@ public class CategoryService {
         categoryRepository.deleteById(id);
     }
 
-    public void update(CategoryDTO categoryDto) {
-        Category category = requireOne(categoryDto.getId());
-        BeanUtils.copyProperties(categoryDto, category);
-        categoryRepository.save(category);
-    }
+//    public void update(CategoryDTO categoryDto) {
+//        Category category = requireOne(categoryDto.getId());
+//        BeanUtils.copyProperties(categoryDto, category);
+//        categoryRepository.save(category);
+//    }
 
-    public CategoryDTO getById(Integer id) {
-        Category original = requireOne(id);
-        return toDTO(original);
+//    public CategoryDTO getById(Integer id) {
+//        Category original = requireOne(id);
+//        return toDTO(original);
+//    }
+
+//    private CategoryDTO toDTO(Category category) {
+//        CategoryDTO categoryDto = new CategoryDTO();
+//        BeanUtils.copyProperties(category, categoryDto);
+//        return categoryDto;
+//    }
+
+//    private Category requireOne(Integer id) {
+//        return categoryRepository.findById(id)
+//                .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
+//    }
+
+    public Category getReference(Integer id) {
+        return categoryRepository.getReferenceById(id);
     }
 
     public List<CategoryDTO> getAll() {
@@ -59,4 +74,5 @@ public class CategoryService {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
     }
+
 }

@@ -9,6 +9,7 @@ public class RecipeSharingPlatformApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(RecipeSharingPlatformApplication.class, args);
+
 	}
 
 }

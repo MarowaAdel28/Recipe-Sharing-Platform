@@ -28,8 +28,6 @@ public class RecipeDTO implements Serializable {
 
     private List<ImageDTO> imageList;
 
-    private List<FavoriteRecipeDTO> favoriteRecipeList;
-
     private List<ReviewDTO> reviewList;
 
     private CategoryDTO categoryId;

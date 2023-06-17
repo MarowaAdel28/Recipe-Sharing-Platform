@@ -52,4 +52,9 @@ public class UserService {
         return userRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
     }
+
+
+    public User getReference(Integer id) {
+        return userRepository.getReferenceById(id);
+    }
 }
