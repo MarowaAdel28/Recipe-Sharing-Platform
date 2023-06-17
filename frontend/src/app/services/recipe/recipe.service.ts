@@ -25,7 +25,7 @@ export class RecipeService {
       "Content-Type": "application/json",
     };
 
-    return this._apiService.post(url, body, { headers });
+    return this._apiService.post(url, body,  headers );
   }
   update(recipeModel:RecipeModel){
     return this._apiService.put("recipe",recipeModel)

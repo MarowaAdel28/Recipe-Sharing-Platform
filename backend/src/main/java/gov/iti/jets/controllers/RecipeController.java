@@ -22,6 +22,7 @@ public class RecipeController {
         if (bindingResult.hasErrors()) {
             return "Invalid Data";
         }
+        System.out.println("recipeDto = " + recipeDto);
         return recipeService.save(recipeDto).toString();
     }
 

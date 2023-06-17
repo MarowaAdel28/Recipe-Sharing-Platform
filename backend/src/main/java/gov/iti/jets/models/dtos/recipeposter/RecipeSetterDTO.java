@@ -1,5 +1,6 @@
 package gov.iti.jets.models.dtos.recipeposter;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.iti.jets.annotations.CategoryValidator;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,6 +19,9 @@ import java.util.List;
 public class RecipeSetterDTO implements Serializable {
 
     @NotNull
+    private String recipeName;
+
+    @NotNull
     private List<String> steps;
     @NotNull
     private List<RecipeIngredientsDTO> ingredients;
@@ -28,10 +32,12 @@ public class RecipeSetterDTO implements Serializable {
     private Integer numberOfPersons;
 
     @NotNull
+    @JsonProperty("user")
     private Integer userId;
 
     @NotNull
     @CategoryValidator
+    @JsonProperty("category")
     private Integer categoryId;
 
 

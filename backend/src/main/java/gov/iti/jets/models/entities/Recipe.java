@@ -19,11 +19,31 @@ import jakarta.persistence.*;
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name")
+    private String recipeName;
     @Column(name = "cooks_count")
     private Integer cooksCount;
     @Basic(optional = false)

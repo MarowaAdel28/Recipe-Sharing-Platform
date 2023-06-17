@@ -20,6 +20,7 @@ public class RecipeMapper {
         recipe.setDate(new Date());
         recipe.setPersons(recipeDto.getNumberOfPersons());
         recipe.setPreparingTime(recipeDto.getPreparingTime());
+        recipe.setRecipeName(recipeDto.getRecipeName());
         return recipe;
     }
 }

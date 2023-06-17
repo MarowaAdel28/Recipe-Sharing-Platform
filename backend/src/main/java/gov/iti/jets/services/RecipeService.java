@@ -38,6 +38,7 @@ public class RecipeService {
     private RecipeHasIngredientsService recipeHasIngredientsService;
 
     public Integer save(RecipeSetterDTO recipeDto) {
+        System.out.println("recipeDto.getCategoryId() = " + recipeDto.getCategoryId());
         Category category = categoryService.getReference(recipeDto.getCategoryId());
         User user = userService.getReference(recipeDto.getUserId());
         if (user == null) {
@@ -59,9 +60,9 @@ public class RecipeService {
     }
 
 
-//    public void delete(Integer id) {
-//        recipeRepository.deleteById(id);
-//    }
+    public void delete(Integer id) {
+        recipeRepository.deleteById(id);
+    }
 
 //    public void update(RecipeDTO recipeDto) {
 //        Recipe bean = requireOne(recipeDto.getId());

@@ -1,6 +1,7 @@
 package gov.iti.jets.models.dtos;
 
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -16,6 +17,8 @@ public class RecipeDTO implements Serializable {
 
     private String steps;
 
+    private String recipeName;
+
     private String status;
 
     private LocalDateTime date;
@@ -30,7 +33,7 @@ public class RecipeDTO implements Serializable {
 
     private List<ReviewDTO> reviewList;
 
-    private CategoryDTO categoryId;
+    private CategoryDTO category;
 
     private UserDTO userId;
 
