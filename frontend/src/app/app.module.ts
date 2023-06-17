@@ -9,6 +9,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { ViewRecipeComponent } from './components/view-recipe/view-recipe.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DishAreaComponent } from './components/dish-area/dish-area.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { DishAreaComponent } from './components/dish-area/dish-area.component';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
