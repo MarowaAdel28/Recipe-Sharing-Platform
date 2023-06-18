@@ -10,6 +10,7 @@ import { ViewRecipeComponent } from './components/view-recipe/view-recipe.compon
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DishAreaComponent } from './components/dish-area/dish-area.component';
 import {HttpClientModule} from "@angular/common/http";
+import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HttpClientModule} from "@angular/common/http";
     FooterComponent,
     ViewRecipeComponent,
     RecipesComponent,
-    DishAreaComponent
+    DishAreaComponent,
+    AllCategoriesComponent
 
   ],
   imports: [

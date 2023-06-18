@@ -7,6 +7,9 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +47,13 @@ public class RecipeController {
         return recipeService.getAllRecipes();
     }
     @GetMapping("top3")
-    public List<RecipeDTO> getTop3Categories() {
+    public List<RecipeDTO> getTop3CRecipes() {
         return recipeService.getTop3();
+    }
+    @GetMapping("/getRecipesByPageNo")
+    public List<RecipeDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
+                                                    @RequestParam(defaultValue = "10") int size) {
+        return recipeService.getPaginatedRecipes(page,size);
     }
 //    @GetMapping
 //    public Page<RecipeDTO> query(@Valid RecipeQueryVO recipeDto) {

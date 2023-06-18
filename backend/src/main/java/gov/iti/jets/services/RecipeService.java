@@ -5,6 +5,7 @@ import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -64,6 +65,12 @@ public class RecipeService {
     public List<RecipeDTO> getAllRecipes() {
         List<Recipe> recipes = recipeRepository.findAll();
         return recipes.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+    public List<RecipeDTO> getPaginatedRecipes(int page, int pageSize) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        return recipeRepository.findAll(pageable).stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
     }
