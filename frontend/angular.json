@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-recipe": {
+    "frontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/angular-recipe",
+            "outputPath": "dist/frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -25,10 +25,31 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "src/assets/css/style.css",
+              "src/assets/css/animate.min.css",
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/animate.min.css",
+              "src/assets/css/flaticon.css",
+              "src/assets/css/font-awesome.min.css",
+              "src/assets/css/magnific-popup.css",
+              "src/assets/css/nice-select.css",
+              "src/assets/css/owl.carousel.min.css",
+              "src/assets/css/slicknav.css",
+              "src/assets/css/theme-default.css",
+              "src/assets/css/themify-icons.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/jquery.ajaxchimp.min.js",
+              "src/assets/js/jquery.counterup.min.js",
+              "src/assets/js/jquery.form.js",
+              "src/assets/js/jquery.magnific-popup.min.js",
+              "src/assets/js/jquery.scrollUp.min.js",
+              "src/assets/js/jquery.slicknav.min.js",
+              "src/assets/js/jquery.validate.min.js",
+              "src/assets/js/main.js",
+              "src/assets/js/ajax-form.js",
+              "src/assets/js/contact.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -61,10 +82,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-recipe:build:production"
+              "browserTarget": "frontend:build:production"
             },
             "development": {
-              "browserTarget": "angular-recipe:build:development"
+              "browserTarget": "frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -72,7 +93,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-recipe:build"
+            "browserTarget": "frontend:build"
           }
         },
         "test": {
@@ -97,6 +118,6 @@
     }
   },
   "cli": {
-    "analytics": "15e0cc88-3126-40a8-8068-1bb9e6babd78"
+    "analytics": "7b00eaf2-08cd-4ee0-a06a-35762662d6d0"
   }
 }
