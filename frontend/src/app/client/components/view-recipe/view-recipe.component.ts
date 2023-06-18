@@ -1,7 +1,9 @@
+// @ts-ignore
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {RecipeService} from "../../services/recipe/recipe.service";
 
+// @ts-ignore
 @Component({
   selector: 'app-view-recipe',
   templateUrl: './view-recipe.component.html',
