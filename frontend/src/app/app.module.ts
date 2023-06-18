@@ -1,38 +1,39 @@
-// @ts-ignore
 import { NgModule } from '@angular/core';
-// @ts-ignore
 import { BrowserModule } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
+import {HttpClientModule} from "@angular/common/http";
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './client/components/user/user.component';
-// @ts-ignore
-import {HttpClientModule} from "@angular/common/http";
-import { ViewRecipeComponent } from './client/components/view-recipe/view-recipe.component';
-import {HeaderComponent} from "./client/components/shared/header/header.component";
-import { FooterComponent } from './client/components/shared/footer/footer.component';
-import { RegisterComponent } from './client/components/register/register.component';
-import { LoginComponent } from './client/components/login/login.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import { HomeComponent } from './components/home/home.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { ViewRecipeComponent } from './components/view-recipe/view-recipe.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { DishAreaComponent } from './components/dish-area/dish-area.component';
+// import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent,
-    ViewRecipeComponent,
+    HomeComponent,
     HeaderComponent,
     FooterComponent,
+    ViewRecipeComponent,
+    RecipesComponent,
+    DishAreaComponent,
     RegisterComponent,
     LoginComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    CommonModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
