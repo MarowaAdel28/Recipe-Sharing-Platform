@@ -1,13 +1,14 @@
 package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RecipeDTO;
+import gov.iti.jets.models.dtos.RecipeResponseDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -54,6 +55,7 @@ public class RecipeService {
         return recipeRepository.findById(id)
                 .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
     }
+
     public List<RecipeDTO> getTop3() {
         Pageable pageable = PageRequest.of(0, 3); // Limit the results to 3
         List<Recipe> categories = recipeRepository.findAll(pageable).getContent();
@@ -62,17 +64,30 @@ public class RecipeService {
             recipeDTOS.add(toDTO(recipe));
         return recipeDTOS;
     }
+
     public List<RecipeDTO> getAllRecipes() {
         List<Recipe> recipes = recipeRepository.findAll();
         return recipes.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
     }
-    public List<RecipeDTO> getPaginatedRecipes(int page, int pageSize) {
-        Pageable pageable = PageRequest.of(page, pageSize);
-        return recipeRepository.findAll(pageable).stream()
-                .map(this::toDTO)
-                .collect(Collectors.toList());
-    }
 
+    //    public List<RecipeDTO> getPaginatedRecipes(int page, int pageSize) {
+//        Pageable pageable = PageRequest.of(page, pageSize);
+//        return recipeRepository.findAll(pageable).stream()
+//                .map(this::toDTO)
+//                .collect(Collectors.toList());
+//    }
+    public ResponseEntity<RecipeResponseDTO> getPaginatedRecipes(int page, int pageSize) {
+        Pageable pageable = PageRequest.of(page, pageSize);
+        RecipeResponseDTO recipeResponseDTO = new RecipeResponseDTO();
+        recipeResponseDTO.setData(recipeRepository.findAll(pageable).stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList()));
+        recipeResponseDTO.setTotalItems(getRecipesCount());
+        return ResponseEntity.ok(recipeResponseDTO);
+    }
+    private int getRecipesCount(){
+        return (int)recipeRepository.count();
+    }
 }
