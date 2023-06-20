@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "../api.service";
 import {RecipeModel} from "../../models/recipe-model";
+import {HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,11 @@ export class RecipeService {
   getAll(){
     return this._apiService.getAll("recipe/getAll")
   }
+
+  getPaginationRecipes(params: { page: string; pageSize: string }){
+    return this._apiService.getPaginationRecipes("recipe/getRecipesByPageNo", params)
+  }
+
   getById(id:number){
     return this._apiService.getById("recipe",id)
   }

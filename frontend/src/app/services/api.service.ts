@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
+import {Options} from "@angular/cli/src/command-builder/command-module";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,10 @@ export class ApiService {
   }
   getTop3(url:string){
     return this._http.get<any[]>(`http://localhost:8060/${url}/top3`)
+  }
+
+  getPaginationRecipes(url: string, params: any){
+    return this._http.get<any[]>(`http://localhost:8060/${url}`,params)
   }
   getById(url:string,id:number){
     return this._http.get<any>(`http://localhost:8060/${url}/${id}`)

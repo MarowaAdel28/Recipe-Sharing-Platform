@@ -11,6 +11,7 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { DishAreaComponent } from './components/dish-area/dish-area.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
+import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AllCategoriesComponent } from './components/all-categories/all-categori
     ViewRecipeComponent,
     RecipesComponent,
     DishAreaComponent,
-    AllCategoriesComponent
+    AllCategoriesComponent,
+    AllRecipesComponent
 
   ],
   imports: [
