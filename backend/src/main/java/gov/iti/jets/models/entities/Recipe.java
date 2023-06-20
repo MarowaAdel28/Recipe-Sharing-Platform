@@ -25,6 +25,7 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
+import jakarta.persistence.*;
 
 /**
  *
@@ -35,14 +36,31 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
+    }
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "name")
-    private String name;
-
+    private String recipeName;
     @Column(name = "cooks_count")
     private Integer cooksCount;
     @Basic(optional = false)
@@ -233,14 +251,10 @@ public class Recipe implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Recipe)) {
+        if (!(object instanceof Recipe other)) {
             return false;
         }
-        Recipe other = (Recipe) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return (this.id != null || other.id == null) && (this.id == null || this.id.equals(other.id));
     }
 
     @Override

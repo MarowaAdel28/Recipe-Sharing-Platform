@@ -14,6 +14,10 @@ import { DishAreaComponent } from './components/dish-area/dish-area.component';
 import {HttpClientModule} from "@angular/common/http";
 import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
 import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
+import { PostRecipeComponent } from './components/post-recipe/post-recipe.component';
+import { FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,17 @@ import {AllRecipesComponent} from "./components/all-recipes/all-recipes.componen
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PostRecipeComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

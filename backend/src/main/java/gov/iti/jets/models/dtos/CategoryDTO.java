@@ -15,7 +15,7 @@ public class CategoryDTO implements Serializable {
 
     private String name;
 
-    private Boolean deleted;
+//    private Boolean deleted;
     
 //    private List<RecipeDTO> recipeList;
 

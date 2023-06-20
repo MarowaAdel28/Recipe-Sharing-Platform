@@ -12,8 +12,20 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import gov.iti.jets.mappers.RecipeMapper;
+import gov.iti.jets.models.dtos.recipeposter.RecipeIngredientsDTO;
+import gov.iti.jets.models.dtos.recipeposter.RecipeSetterDTO;
+import gov.iti.jets.models.entities.*;
+import gov.iti.jets.repositories.CategoryRepository;
+import gov.iti.jets.repositories.RecipeRepository;
+import gov.iti.jets.repositories.UserRepository;
+import gov.iti.jets.util.Utility;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
@@ -23,15 +35,45 @@ public class RecipeService {
 
     @Autowired
     private RecipeRepository recipeRepository;
+    @Autowired
+    private CategoryService categoryService;
 
     ModelMapper modelMapper = new ModelMapper();
 
-    public Integer save(RecipeDTO recipeDto) {
-        Recipe recipe = new Recipe();
-        BeanUtils.copyProperties(recipeDto, recipe);
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private RecipeMapper recipeMapper;
+
+    @Autowired
+    private IngredientsService ingredientsService;
+
+    @Autowired
+    private RecipeHasIngredientsService recipeHasIngredientsService;
+
+    public Integer save(RecipeSetterDTO recipeDto) {
+        System.out.println("recipeDto.getCategoryId() = " + recipeDto.getCategoryId());
+        Category category = categoryService.getReference(recipeDto.getCategoryId());
+        User user = userService.getReference(recipeDto.getUserId());
+        if (user == null) {
+            return Utility.INVALID_USER;
+        }
+        if (category == null) {
+            return Utility.INVALID_CATEGORY;
+        }
+        Recipe recipe = recipeMapper.toEntity(recipeDto);
+        recipe.setUserId(user);
+        recipe.setCategoryId(category);
         recipe = recipeRepository.save(recipe);
+
+
+        List<RecipeIngredientsDTO> ingredients = ingredientsService.addListOfIngredients(recipeDto.getIngredients());
+        recipeHasIngredientsService.addListOfRecipeIngredients(ingredients, recipe.getId());
         return recipe.getId();
+
     }
+
 
     public void delete(Integer id) {
         recipeRepository.deleteById(id);

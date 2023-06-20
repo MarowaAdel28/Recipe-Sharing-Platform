@@ -15,8 +15,17 @@ export class RecipeService {
   getById(id:number){
     return this._apiService.getById("recipe",id)
   }
-  post(recipeModel:RecipeModel){
-    return this._apiService.post("recipe",recipeModel)
+  // post(recipeModel:RecipeModel){
+  //   return this._apiService.post("recipe",recipeModel)
+  // }
+  post(recipeModel: any) {
+    const url = "recipe";
+    const body = JSON.stringify(recipeModel);
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    return this._apiService.post(url, body,  headers );
   }
   update(recipeModel:RecipeModel){
     return this._apiService.put("recipe",recipeModel)
