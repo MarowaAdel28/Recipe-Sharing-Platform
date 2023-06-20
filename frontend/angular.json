@@ -36,12 +36,17 @@
               "src/assets/css/owl.carousel.min.css",
               "src/assets/css/slicknav.css",
               "src/assets/css/theme-default.css",
-              "src/assets/css/themify-icons.css"
+              "src/assets/css/themify-icons.css",
+              "src/assets/css/animate.css",
+              "src/assets/css/classy-nav.min.css",
+              "src/assets/css/nice-select.min.css",
+              "src/assets/css/custom-icon.css"
             ],
             "scripts": [
               "src/assets/js/jquery.ajaxchimp.min.js",
               "src/assets/js/jquery.counterup.min.js",
               "src/assets/js/jquery.form.js",
+              "src/assets/js/bootstrap.min.js",
               "src/assets/js/jquery.magnific-popup.min.js",
               "src/assets/js/jquery.scrollUp.min.js",
               "src/assets/js/jquery.slicknav.min.js",

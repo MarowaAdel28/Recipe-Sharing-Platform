@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,9 @@ export class ApiService {
 
   getAll(url:string){
     return this._http.get<any[]>(`http://localhost:8080/${url}`)
+  }
+  getTop3(url:string){
+    return this._http.get<any[]>(`http://localhost:8080/${url}/top3`)
   }
   getById(url:string,id:number){
     return this._http.get<any>(`http://localhost:8080/${url}/${id}`)
@@ -24,4 +27,16 @@ export class ApiService {
   delete(url:string,id:number){
     return this._http.delete<any>(`http://localhost:8080/${url}/${id}`)
   }
+
+  getPaginationRecipes(url: string, params: {page: string; size: string;}) {
+
+  const httpParams = new HttpParams()
+    .set('pageSize', params.size)
+    .set('page', params.page);
+
+  const options = { params: httpParams };
+
+  return this._http.get<any[]>(`http://localhost:8080/${url}`,options);
+  }
+
 }
