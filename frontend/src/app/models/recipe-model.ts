@@ -10,7 +10,7 @@ export class RecipeModel{
   date:string
   preparingTime:string;
   persons:string;
-  categoryId:CategoryModel
+  category:CategoryModel
   recipeHasIngredientsList:IngredientModel[]
 
 }

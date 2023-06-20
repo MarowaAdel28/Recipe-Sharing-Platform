@@ -19,8 +19,13 @@ export class CategoryService {
     return this._apiService.getById("category",id)
   }
   post(categoryModel:CategoryModel){
-    return this._apiService.post("category",categoryModel)
-  }
+    const url = "recipe";
+    const body = JSON.stringify(categoryModel);
+    const headers = {
+      "Content-Type": "application/json",
+    };
+
+    return this._apiService.post(url, body,  headers );  }
   update(categoryModel:CategoryModel){
     return this._apiService.put("category",categoryModel)
   }

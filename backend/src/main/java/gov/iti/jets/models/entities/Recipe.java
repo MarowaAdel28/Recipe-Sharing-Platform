@@ -122,11 +122,11 @@ public class Recipe implements Serializable {
     }
 
     public String getName() {
-        return name;
+        return recipeName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String recipeName) {
+        this.recipeName = recipeName;
     }
 
     public Integer getCooksCount() {
@@ -261,7 +261,7 @@ public class Recipe implements Serializable {
     public String toString() {
         return "Recipe{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + recipeName + '\'' +
                 ", cooksCount=" + cooksCount +
                 ", steps='" + steps + '\'' +
                 ", status='" + status + '\'' +

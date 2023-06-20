@@ -8,8 +8,10 @@ import {ViewRecipeDetailsComponent} from "./components/view-recipe-details/view-
 import {RecipesComponent} from './components/recipes/recipes.component';
 import {DishAreaComponent} from "./components/dish-area/dish-area.component";
 import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
+import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
 
 const routes: Routes = [
+  {path:'',component:HomeComponent},
   {path:'home',component:HomeComponent},
   {path:'view-recipe/details/:id',component:ViewRecipeDetailsComponent},
   {path:'contact',component:ContactComponent},
@@ -17,7 +19,7 @@ const routes: Routes = [
   {path:'recipes' , component:RecipesComponent},
   {path:'dish_area' , component:DishAreaComponent},
   {path:'all-recipes' , component:AllRecipesComponent},
-  {path:'',component:HomeComponent},
+  {path:'post-recipe' , component:PostRecipeComponent},
   {path:'**',component:HomeComponent}
 ];
 

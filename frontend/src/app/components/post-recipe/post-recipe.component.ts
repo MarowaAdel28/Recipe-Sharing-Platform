@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormArray, ɵElement} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormArray} from '@angular/forms';
 import {CategoryService} from '../../services/category/category.service';
-import {CategoryModelModule} from '../../models/category-model/category-model.module';
 import {RecipeService} from "../../services/recipe/recipe.service";
+import {CategoryModel} from "../../models/category-model";
 
-interface Step {
+export interface Step {
   stepDescription: string;
 }
 @Component({
@@ -16,7 +16,7 @@ export class PostRecipeComponent implements OnInit {
 
   recipeForm!: FormGroup;
 
-  categoryModel: CategoryModelModule[];
+  categoryModel: CategoryModel[];
 
   constructor(private formBuilder: FormBuilder, private categoryService:CategoryService, private recipeService:RecipeService) { }
 

@@ -50,9 +50,4 @@ public class CategoryController {
 //    public CategoryDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
 //        return categoryService.getById(id);
 //    }
-
-    @GetMapping
-    public List<CategoryDTO> getAll() {
-        return categoryService.getAll();
-    }
 }
