@@ -14,13 +14,11 @@ const routes: Routes = [
   {path:'view-recipe/details/:id',component:ViewRecipeDetailsComponent},
   {path:'contact',component:ContactComponent},
   {path:'about',component:AboutComponent},
-  {path:'',component:HomeComponent},
-  {path:'**',component:HomeComponent},
-
-  {path:'view-recipe' , component:ViewRecipeComponent},
   {path:'recipes' , component:RecipesComponent},
   {path:'dish_area' , component:DishAreaComponent},
-  {path:'all-recipes' , component:AllRecipesComponent}
+  {path:'all-recipes' , component:AllRecipesComponent},
+  {path:'',component:HomeComponent},
+  {path:'**',component:HomeComponent}
 ];
 
 @NgModule({
