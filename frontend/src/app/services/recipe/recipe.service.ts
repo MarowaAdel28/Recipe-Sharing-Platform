@@ -10,7 +10,7 @@ export class RecipeService {
   constructor(private _apiService:ApiService) { }
 
   getAll(){
-    return this._apiService.getAll("recipe")
+    return this._apiService.getAll("recipe/getAll")
   }
   getById(id:number){
     return this._apiService.getById("recipe",id)
@@ -23,5 +23,12 @@ export class RecipeService {
   }
   delete(id:number){
     return this._apiService.delete("recipe",id)
+  }
+    getTop3(){
+      return this._apiService.getTop3("recipe")
+    }
+
+  getPaginationRecipes(params: { page: string; size: string; }) {
+    return this._apiService.getPaginationRecipes("recipe/getRecipesByPageNo", params)
   }
 }

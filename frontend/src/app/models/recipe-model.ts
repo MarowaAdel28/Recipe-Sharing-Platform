@@ -13,10 +13,4 @@ export class RecipeModel{
   categoryId:CategoryModel
   recipeHasIngredientsList:IngredientModel[]
 
-  // constructor(steps:string,preparingTime:string,persons:string) {
-  //   this.persons = persons;
-  //   this.preparingTime = preparingTime;
-  //   this.steps = steps;
-  // }
-
 }

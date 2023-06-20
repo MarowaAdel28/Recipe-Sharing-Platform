@@ -1,0 +1,77 @@
+<body>
+<!--[if lte IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
+  your browser</a> to improve your experience and security.</p>
+<![endif]-->
+
+<!-- bradcam_area  -->
+<div class="bradcam_area bradcam_bg_1">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-12">
+        <div class="bradcam_text text-center">
+          <h3>Chicken Recipes</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /bradcam_area  -->
+
+<!-- recepie_area_start  -->
+<div class="recepie_area plus_padding">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let recipe of paginatedList">
+        <div class="single_recepie text-center">
+          <div class="recepie_thumb">
+            <img src="../img/recepie/recpie_1.png" alt="">
+          </div>
+          <h3>Egg Manchurian{{recipe.id}}</h3>
+          <span>{{recipe.steps}}</span>
+          <p>Time Needs: {{recipe.preparingTime}}</p>
+          <a href="#" class="line_btn">View Full Recipe</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- /recepie_area_start  -->
+
+<div class="pagination">
+  <button (click)="previousPage()" [disabled]="currentPage == 0">Previous</button>
+  <button *ngFor="let page of totalPagesArray" (click)="goToPage(page)" [class.active]="currentPage === page">{{ page+1 }}</button>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages-1">Next</button>
+</div>
+<br><br>
+<!-- JS here -->
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/ajax-form.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/scrollIt.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/gijgo.min.js"></script>
+
+<!--contact js-->
+<script src="js/contact.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+
+<script src="js/main.js"></script>
+</body>

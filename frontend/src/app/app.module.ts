@@ -8,8 +8,13 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { ViewRecipeDetailsComponent } from './components/view-recipe-details/view-recipe-details.component';
+import { ViewRecipeComponent } from './components/view-recipe/view-recipe.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { DishAreaComponent } from './components/dish-area/dish-area.component';
+import {HttpClientModule} from "@angular/common/http";
+import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
+import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { ViewRecipeDetailsComponent } from './components/view-recipe-details/vie
     FooterComponent,
     AboutComponent,
     ContactComponent,
-    ViewRecipeDetailsComponent
+    ViewRecipeDetailsComponent,
+    ViewRecipeComponent,
+    RecipesComponent,
+    DishAreaComponent,
+    AllCategoriesComponent,
+    AllRecipesComponent
   ],
   imports: [
     BrowserModule,
