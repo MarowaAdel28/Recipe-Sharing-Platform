@@ -2,6 +2,7 @@ package gov.iti.jets.controllers;
 
 import gov.iti.jets.models.dtos.CategoryDTO;
 import gov.iti.jets.models.dtos.RecipeDTO;
+import gov.iti.jets.models.dtos.RecipeResponseDTO;
 import gov.iti.jets.services.RecipeService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -51,8 +52,8 @@ public class RecipeController {
         return recipeService.getTop3();
     }
     @GetMapping("/getRecipesByPageNo")
-    public List<RecipeDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
-                                                    @RequestParam(defaultValue = "10") int size) {
+    public ResponseEntity<RecipeResponseDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
+                                                                  @RequestParam(defaultValue = "10") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
 //    @GetMapping
