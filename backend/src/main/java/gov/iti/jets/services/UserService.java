@@ -17,6 +17,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public Integer save(UserDTO userDto) {
+        System.out.println(userDto.getAge());
         User user = new User();
         BeanUtils.copyProperties(userDto, user);
         user = userRepository.save(user);

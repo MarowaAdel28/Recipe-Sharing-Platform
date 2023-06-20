@@ -4,7 +4,8 @@ export class RegisterModel{
   Email:string;
   Password:string;
   Gender:string;
-  RepeatPassword:string;
+   RepeatPassword:string;
+  //CreateDate:Date;
   // persons:string;
 
   constructor(UserName:string,Age:number,Email:string,Password:string,Gender:string,RepeatPassword:string) {
@@ -14,6 +15,7 @@ export class RegisterModel{
     this.Password=Password;
     this.Gender=Gender;
     this.RepeatPassword=RepeatPassword;
+    //this.CreateDate=CreateDate;
   }
 
 }

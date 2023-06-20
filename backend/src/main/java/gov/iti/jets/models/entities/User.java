@@ -40,7 +40,8 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
-    @Column(name = "create_time")
+//    @Column(nullable = false)
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Id
