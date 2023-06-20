@@ -2,6 +2,8 @@ package gov.iti.jets.models.dtos;
 
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
@@ -15,7 +17,7 @@ public class CategoryDTO implements Serializable {
 
     private Boolean deleted;
     
-    private List<RecipeDTO> recipeList;
+//    private List<RecipeDTO> recipeList;
 
 
 }

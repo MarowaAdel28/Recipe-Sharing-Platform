@@ -1,16 +1,25 @@
 package gov.iti.jets.models.dtos;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.modelmapper.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class RecipeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;
+
+    private String name;
 
     private Integer cooksCount;
 
@@ -18,7 +27,7 @@ public class RecipeDTO implements Serializable {
 
     private String status;
 
-    private LocalDateTime date;
+    private Date date;
 
     private Boolean deleted;
 
@@ -28,6 +37,7 @@ public class RecipeDTO implements Serializable {
 
     private List<ImageDTO> imageList;
 
+    @JsonIgnore
     private List<FavoriteRecipeDTO> favoriteRecipeList;
 
     private List<ReviewDTO> reviewList;

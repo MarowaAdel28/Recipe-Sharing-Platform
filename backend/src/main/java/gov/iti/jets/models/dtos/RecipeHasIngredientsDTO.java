@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class RecipeHasIngredientsDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private RecipeDTO recipeId;
+//    private RecipeDTO recipeId;
 
     private IngredientsDTO ingredientsId;
 
