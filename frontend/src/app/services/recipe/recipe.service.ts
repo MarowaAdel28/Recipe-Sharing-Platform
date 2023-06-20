@@ -27,4 +27,8 @@ export class RecipeService {
     getTop3(){
       return this._apiService.getTop3("recipe")
     }
+
+  getPaginationRecipes(params: { page: string; size: string; }) {
+    return this._apiService.getPaginationRecipes("recipe/getRecipesByPageNo", params)
+  }
 }
