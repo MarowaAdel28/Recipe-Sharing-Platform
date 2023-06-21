@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {HttpClientModule} from "@angular/common/http";
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     ViewRecipeComponent,
-    PostRecipeComponent
+    PostRecipeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
