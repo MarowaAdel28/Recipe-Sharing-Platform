@@ -1,0 +1,41 @@
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fbc2eb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+      }
+      
+      .card .rounded-top {
+        display: flex;
+        flex-direction: row;
+      }
+      
+      .card .ms-4 {
+        width: 150px;
+      }
+      
+      .card img {
+        width: 150px;
+        z-index: 1;
+      }
+      
+      .card .ms-3 {
+        flex-grow: 1;
+        margin-left: 1rem;
+        margin-top: auto;
+      }
+
+      .card .card-body{
+        
+        margin-top: 20px;
+      }
+      
