@@ -20,6 +20,7 @@ public class UserController {
 
     @PostMapping
     public String save(@Valid @RequestBody UserDTO userDto) {
+        System.out.println("user controller");
         return userService.save(userDto).toString();
     }
 

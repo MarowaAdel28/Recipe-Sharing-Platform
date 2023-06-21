@@ -51,10 +51,12 @@ a:hover {
   align-items: center; }
 
 .inner {
-  max-width: 850px;
+  max-width: 45%;
   margin: auto;
   background: #fff;
-  padding: 15px; }
+  padding: 15px;
+  margin-top: 8%;
+}
 
 form {
   border: 1px solid #d3cccc;

@@ -1,36 +1,21 @@
+<div class="inner">
 
-
-
-    <div class="inner">
-
-      <br>
-      <br>
-      <br>
-      <br>
-
-        <div [formGroup]="registrationForm">
-<!--      [formGroup]="registrationForm"-->
-
-      <br>
-      <br>
-      <br>
-      <br>
-     <!-- <h3>Registration Form</h3>-->
+  <div [formGroup]="registrationForm">
 
       <div class="form-group">
 
-
         <div class="form-wrapper">
-          <label for="">Username:</label>
+          <label for="userName">Username:</label>
           <div class="form-holder">
 <!--            <i class="zmdi zmdi-account-o"></i>-->
-            <input [class.is-valid]="!registrationForm.controls['username'].errors" formControlName="username" type="text" class="form-control">
+
+            <input [class.is-valid]="!registrationForm.controls['username'].errors" id="userName" formControlName="username" type="text" class="form-control" placeholder="Enter Your Name">
+
             <div *ngIf="registrationForm.controls['username'].errors && (registrationForm.controls['username'].touched || registrationForm.controls['username'].dirty )">
               <small *ngIf="registrationForm.controls['username'].errors?.['required']"  class="form-text text-danger">User Name is Required</small>
               <small *ngIf="registrationForm.controls['username'].errors?.['minlength']" class="form-text text-danger">Minimum Length</small>
               <small *ngIf="registrationForm.controls['username'].errors?.['maxlength']" class="form-text text-danger">Maximum Length</small>
             </div>
-        <br>
           </div>
         </div>
         <div class="form-wrapper">
@@ -43,9 +28,6 @@
               <small *ngIf="registrationForm.controls['email'].errors?.['pattern']" class="form-text text-danger">Invalid Email</small>
 
             </div>
-
-      <br>
-      <br>
           </div>
         </div>
 
@@ -66,8 +48,6 @@
               <small *ngIf="registrationForm.controls['password'].errors?.['minlength']" class="form-text text-danger">Minimum Length</small>
               <small *ngIf="registrationForm.controls['password'].errors?.['maxlength']" class="form-text text-danger">Maximum Length</small>
             </div>
-      <br>
-      <br>
           </div>
         </div>
 
@@ -79,11 +59,8 @@
             <div *ngIf="registrationForm.controls['repeatPassword'].errors && (registrationForm.controls['repeatPassword'].touched || registrationForm.controls['repeatPassword'].dirty )">
               <small *ngIf="registrationForm.controls['repeatPassword'].errors?.['required']"  class="form-text text-danger">Repeat password is required.</small>
             </div>
-            <div *ngIf="registrationForm.controls['repeatPassword'].hasError('passwordmatcherror')" class="form-text text-danger"> Passwords do not match.</div>
+            <small *ngIf="registrationForm.controls['repeatPassword'].hasError('passwordMismatch')" class="form-text text-danger"> Passwords do not match.</small>
 
-
-            <br>
-      <br>
           </div>
         </div>
 
@@ -102,8 +79,7 @@
               <small *ngIf="registrationForm.controls['age'].errors?.['pattern']" class="form-text text-danger">Invalid Age only accept digits (0-9).</small>
 
             </div>
-            <br>
-      <br>
+
 <!--            <i class="zmdi zmdi-pin"></i>-->
           </div>
         </div>
@@ -120,8 +96,6 @@
               <small *ngIf="registrationForm.controls['gender'].errors?.['required']"  class="form-text text-danger">Gender is Required</small>
 <!--              <small *ngIf="registrationForm.controls['age'].errors?.['pattern']" class="form-text text-danger">Invalid Age only accept digits (0-9).</small>-->
             </div>
-      <br>
-      <br>
 <!--            <i class="zmdi zmdi-face"></i>-->
           </div>
         </div>
@@ -131,11 +105,10 @@
 
       <div class="form-end">
 
-      <br>
-      <br>
+
 
           <button [disabled]="registrationForm.invalid" (click)=" register()" type="button" class="btn btn-primary">Register Now</button>
 
       </div>
-    </div>
+  </div>
 </div>

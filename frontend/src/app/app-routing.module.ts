@@ -8,8 +8,8 @@ import {HomeComponent} from "./components/home/home.component";
 import {RecipesComponent} from './components/recipes/recipes.component';
 import {DishAreaComponent} from "./components/dish-area/dish-area.component";
 // import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
-import {RegisterComponent} from "./components/register/register.component";
-import {LoginComponent} from "./components/login/login.component";
+import {RegisterComponent} from "./components/user/register/register.component";
+import {LoginComponent} from "./components/user/login/login.component";
 
 const routes: Routes = [
    {path:'register',component:RegisterComponent},

@@ -11,8 +11,8 @@ import { ViewRecipeComponent } from './components/view-recipe/view-recipe.compon
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DishAreaComponent } from './components/dish-area/dish-area.component';
 // import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
-import { RegisterComponent } from './components/register/register.component';
-import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { LoginComponent } from './components/user/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 

@@ -18,23 +18,11 @@ public class UserDTO implements Serializable {
 
     private String password;
 
-//    @JsonProperty("createDate")
-    //private Date createTime;
-
     private Integer id;
 
     private Integer age;
 
     private Character gender;
 
-    //private Boolean admin;
-
-    //private Boolean deleted;
-    
-//    private List<FavoriteRecipeDTO> favoriteRecipeList;
-//
-//    private List<ReviewDTO> reviewList;
-//
-//    private List<RecipeDTO> recipeList;
 
 }
