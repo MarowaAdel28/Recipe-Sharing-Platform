@@ -17,7 +17,7 @@ public class RecipeMapper {
     public Recipe toEntity(RecipeSetterDTO recipeDto){
         Recipe recipe = new Recipe();
         recipe.setSteps(recipeDto.getSteps().toString());
-        recipe.setDate(new Date());
+//        recipe.setDate(new Date());
         recipe.setPersons(recipeDto.getNumberOfPersons());
         recipe.setPreparingTime(recipeDto.getPreparingTime());
         recipe.setRecipeName(recipeDto.getRecipeName());

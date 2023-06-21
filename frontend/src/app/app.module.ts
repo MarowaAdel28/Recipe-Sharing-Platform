@@ -12,6 +12,9 @@ import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {HttpClientModule} from "@angular/common/http";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
+import { LoginComponent } from './components/user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import {HttpClientModule} from "@angular/common/http";
     HeaderComponent,
     FooterComponent,
     ViewRecipeComponent,
-    PostRecipeComponent
+    PostRecipeComponent,
+    LoginComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,8 @@ import {HttpClientModule} from "@angular/common/http";
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

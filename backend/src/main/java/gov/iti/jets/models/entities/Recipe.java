@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import gov.iti.jets.configs.RecipeListener;
 import jakarta.persistence.*;
 
 /**
@@ -16,6 +17,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "recipe")
+@EntityListeners(RecipeListener.class)
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
