@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormArray, ɵElement, ValidatorFn, AbstractControl} from '@angular/forms';
 import {CategoryService} from '../../services/category/category.service';
-import {CategoryModelModule} from '../../models/category-model/category-model.module';
+import {CategoryModel} from '../../models/category-model';
 import {RecipeService} from "../../services/recipe/recipe.service";
 import { MatSnackBar,MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
@@ -19,7 +19,7 @@ export class PostRecipeComponent implements OnInit {
 
   recipeForm!: FormGroup;
 
-  categoryModel: CategoryModelModule[];
+  categoryModel: CategoryModel[];
 
   specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
@@ -178,4 +178,6 @@ export class PostRecipeComponent implements OnInit {
     }
 
   }
+
+  protected readonly CategoryModel = CategoryModel;
 }
