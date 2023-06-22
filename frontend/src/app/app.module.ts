@@ -13,6 +13,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {HttpClientModule} from "@angular/common/http";
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { UserRecipesComponent } from './components/user/user-recipes/user-recipes.component';
+import { UserFavoriteRecipesComponent } from './components/user/user-favorite-recipes/user-favorite-recipes.component';
+import { EditingPofileComponent } from './components/user/editing-pofile/editing-pofile.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { ProfileComponent } from './components/user/profile/profile.component';
     FooterComponent,
     ViewRecipeComponent,
     PostRecipeComponent,
-    ProfileComponent
+    ProfileComponent,
+    UserRecipesComponent,
+    UserFavoriteRecipesComponent,
+    EditingPofileComponent
   ],
   imports: [
     BrowserModule,
