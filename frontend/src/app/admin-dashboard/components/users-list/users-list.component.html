@@ -1,0 +1,59 @@
+<body>
+    <main class="main-content" style="overflow-x:auto ;">
+        <div class="product-view-items product-grid col-12 col-sm-12 col-lg-9 sidebar-right">
+
+            <br>
+            <div class="table-responsive" fxShow="true" fxHide.lt-md="true" style="margin-left:15%">
+                <table class="table table-striped custom-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Create Time</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">More</th>
+                            <th hidden scope="col">id</th>
+                        </tr>
+                    </thead>
+                    <tbody id="users-tbody">
+                        <tr *ngFor="let user of users; let currentIndex=index">
+                            <td>{{user.username}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.createTime}}</td>
+                            <td>{{user.age}}</td>
+                            <td>{{user.gender}}</td>
+                            <td>
+                                <div class="tb">
+                                    <input type="checkbox" />
+                                    <span>Show</span>
+                                    <span>Hide</span>
+                                    <table class="collapsible" id="collapsible1">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Recipe Name</th>
+                                                <!-- <th hidden scope="col">ID</th> -->
+                                            </tr>
+                                        </thead>
+                                        <div style="max-height:100px; overflow-y:scroll;">
+                                            <tbody>
+                                                <tr *ngFor="let recipe of user.recipeList">
+                                                    <a mat-button>{{recipe.name}}</a>
+                                                    <!-- <td hidden>{{recipe.id}}</td> -->
+                                                </tr>
+                                            </tbody>
+                                        </div>
+                                    </table>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <mat-paginator [length]="usersCount" [pageIndex]="pageIndex" [pageSize]="pageSize" showFirstLastButtons
+            (page)="onPageChange($event)">
+        </mat-paginator>
+    </main>
+</body>
