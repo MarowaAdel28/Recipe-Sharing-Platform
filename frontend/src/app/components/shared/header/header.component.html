@@ -1,46 +1,70 @@
-<header>
-  <div class="header-area ">
-    <div id="sticky-header" class="main-header-area ">
-      <div class="container">
-        <div class="row align-items-center">
+<header class="header">
+  <div class="header__top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2 col-md-1 col-6 order-md-1 order-1">
           <div class="col-xl-3 col-lg-2">
             <div class="logo">
               <a routerLink="index.html">
-                <img src="img/logo.png" alt="">
+                <img src="assets/img/logo.png" alt="">
               </a>
             </div>
           </div>
-          <div class="col-xl-6 col-lg-7">
-            <div class="main-menu   d-none d-lg-block">
-              <nav>
-                <ul id="navigation">
-                  <li><a routerLink="/home">home</a></li>
-                  <li><a routerLink="about.html">about</a></li>
-                  <li><a routerLink="/view-recipe">Recipes</a></li>
-                  <li><a routerLink="#">Login<i class="ti-angle-down"></i></a>
-                    <ul class="submenu">
-                      <li><a routerLink="/login">Login</a></li>
-                      <li><a routerLink="/register">Don't have account?..Register</a></li>
-                    </ul>
-                  </li>
-                  <li><a routerLink="#">pages <i class="ti-angle-down"></i></a>
-                    <ul class="submenu">
-                      <li><a routerLink="recipes_details.html">Recipes Details</a></li>
-                      <li><a routerLink="elements.html">elements</a></li>
-                    </ul>
-                  </li>
-                  <li><a routerLink="contact.html">Contact</a></li>
+        </div>
+        <div class="col-lg-8 col-md-10 order-md-2 order-3">`
+          <nav class="header__menu">
+            <ul>
+              <li ><a routerLink="/home">Home</a></li>
+              <li><a routerLink="/all-recipes">Recipes</a>
+              </li>
+<!--              <li><a routerLink="#">Dinner</a></li>-->
+<!--              <li><a routerLink="#">Desserts</a></li>-->
+              <li class="dropdown"><a routerLink="#">Pages</a>
+                <ul class="dropdown__menu">
+<!--                  <li><a routerLink="./categories-grid.html">Categories Grid</a></li>-->
+<!--                  <li><a routerLink="./categories-list.html">Categories List</a></li>-->
+                  <li><a routerLink="/post-recipe">Recipe Post</a></li>
+                  <li><a routerLink="/signin">Sign In</a></li>
+                  <li><a routerLink="/register">Register</a></li>
+                  <li><a routerLink="/profile">Profile</a></li>
                 </ul>
-              </nav>
-            </div>
-          </div>
-
-          <div class="col-12">
-            <div class="mobile_menu d-block d-lg-none"></div>
+              </li>
+              <li><a routerLink="/about">About</a></li>
+              <li><a routerLink="/contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-lg-2 col-md-1 col-6 order-md-3 order-2">
+          <div class="header__search">
+            <i class="fa fa-search search-switch"></i>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-lg-3 col-md-3">-->
+<!--        <div class="header__btn">-->
+<!--          <a routerLink="./signin.html" class="primary-btn">Subscribe</a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-6 col-md-6">-->
+<!--        <div class="header__logo">-->
+<!--          <a routerLink="./index.html"><img src="assets/img/logo.png" alt=""></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-3 col-md-3">-->
+<!--        <div class="header__social">-->
+<!--          <a routerLink="#"><i class="fa fa-facebook"></i></a>-->
+<!--          <a routerLink="#"><i class="fa fa-twitter"></i></a>-->
+<!--          <a routerLink="#"><i class="fa fa-youtube-play"></i></a>-->
+<!--          <a routerLink="#"><i class="fa fa-instagram"></i></a>-->
+<!--          <a routerLink="#"><i class="fa fa-envelope-o"></i></a>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
 </header>
+
+

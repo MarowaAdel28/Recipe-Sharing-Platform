@@ -1,0 +1,149 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.form {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 300px;
+}
+
+button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #3c9039;
+}
+
+button:focus {
+  outline: none;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+}
+
+.ingredient-row {
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-row-content {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.ingredient-row-content input {
+  margin-right: 10px; /* Adjust as needed */
+}
+
+.small-button {
+  width: 28px;
+  height: 28px;
+  /*---------------*/
+  padding: 1px;
+  /*border: none;*/
+  /*background-color: transparent;*/
+  /*cursor: pointer;*/
+}
+
+.small-icon {
+  font-size: 22px;
+}
+
+.label-text {
+  /*margin-right: 1px; !* Adjust as needed *!*/
+}
+
+.material-icons {
+  vertical-align: middle;
+}
+
+.recipe-input-text {
+  margin-top: 4px;
+}
+
+
+/*.remove-button {*/
+/*  !*display: none; !* Hide the remove button by default *!*!*/
+/*  width: 30px;*/
+/*  height: 30px;*/
+/*}*/
+
+.form-field:hover .remove-button {
+  /*display: flex; !* Show the remove button when hovering over the form field *!*/
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-field input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.form-field .remove-button {
+  flex-shrink: 0;
+}
+
+.swal2-popup {
+  width: 100px; /* Adjust the width as per your preference */
+  height: auto; /* Adjust the height as per your preference */
+}
+
+.swal2-title,
+.swal2-content {
+  font-size: 14px; /* Adjust the font size as per your preference */
+}

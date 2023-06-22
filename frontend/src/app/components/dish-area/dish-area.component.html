@@ -4,30 +4,22 @@
     <div class="row">
       <div class="col-xl-12">
         <div class="dish_wrap d-flex">
-          <div class="single_dish text-center">
-            <div class="thumb">
-              <img src="assets/img/recepie/recpie_4.png" alt="">
+
+          <li *ngFor="let cat of categories">
+            <div class="single_dish text-center">
+              <div class="thumb">
+                <img src="assets/img/recepie/recpie_4.png" alt="">
+              </div>
+              <h3>{{cat.name}}</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
-            <h3>Birthday Catering</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div class="single_dish text-center">
-            <div class="thumb">
-              <img src="assets/img/recepie/recpie_5.png" alt="">
-            </div>
-            <h3>Birthday Catering</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
-          <div class="single_dish text-center">
-            <div class="thumb">
-              <img src="assets/img/recepie/recpie_6.png" alt="">
-            </div>
-            <h3>Birthday Catering</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          </div>
+          </li>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
 <!--/ dish_area start  -->
