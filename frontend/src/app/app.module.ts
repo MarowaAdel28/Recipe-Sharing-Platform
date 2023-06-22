@@ -11,12 +11,16 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ViewRecipeDetailsComponent } from './components/view-recipe-details/view-recipe-details.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DishAreaComponent } from './components/dish-area/dish-area.component';
-import {HttpClientModule} from "@angular/common/http";
 import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
 import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import {HttpClientModule} from "@angular/common/http";
+import { ProfileComponent } from './components/user/profile/profile.component';
+import { UserRecipesComponent } from './components/user/user-recipes/user-recipes.component';
+import { UserFavoriteRecipesComponent } from './components/user/user-favorite-recipes/user-favorite-recipes.component';
+import { EditingPofileComponent } from './components/user/editing-pofile/editing-pofile.component';
 import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -42,7 +46,12 @@ import { LoginComponent } from './components/user/login/login.component';
     RecipesComponent,
     DishAreaComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PostRecipeComponent,
+    ProfileComponent,
+    UserRecipesComponent,
+    UserFavoriteRecipesComponent,
+    EditingPofileComponent
   ],
   imports: [
     BrowserModule,

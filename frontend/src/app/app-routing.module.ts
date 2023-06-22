@@ -10,6 +10,10 @@ import {AllRecipesComponent} from "./components/all-recipes/all-recipes.componen
 import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
 import {RegisterComponent} from "./components/user/register/register.component";
 import {LoginComponent} from "./components/user/login/login.component";
+import {ProfileComponent} from "./components/user/profile/profile.component";
+import {EditingPofileComponent} from "./components/user/editing-pofile/editing-pofile.component";
+import {UserRecipesComponent} from "./components/user/user-recipes/user-recipes.component";
+import {UserFavoriteRecipesComponent} from "./components/user/user-favorite-recipes/user-favorite-recipes.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -25,6 +29,11 @@ const routes: Routes = [
   {path:'post-recipe' , component:PostRecipeComponent},
   {path:'**',component:HomeComponent},
   // {path:'view-recipe' , component:ViewRecipeComponent},
+  // {path:'view-recipe' , component:ViewRecipeComponent},
+  {path:'profile' , component:ProfileComponent},
+  {path: 'profile/edit' , component:EditingPofileComponent},
+  {path: 'profile/user-recipes',component:UserRecipesComponent},
+  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent}
 ];
 
 @NgModule({
