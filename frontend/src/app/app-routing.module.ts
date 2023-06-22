@@ -27,13 +27,11 @@ const routes: Routes = [
   {path:'dish_area' , component:DishAreaComponent},
   {path:'all-recipes' , component:AllRecipesComponent},
   {path:'post-recipe' , component:PostRecipeComponent},
-  {path:'**',component:HomeComponent},
-  // {path:'view-recipe' , component:ViewRecipeComponent},
-  // {path:'view-recipe' , component:ViewRecipeComponent},
   {path:'profile' , component:ProfileComponent},
   {path: 'profile/edit' , component:EditingPofileComponent},
   {path: 'profile/user-recipes',component:UserRecipesComponent},
-  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent}
+  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
+  {path:'**',component:HomeComponent},
 ];
 
 @NgModule({
