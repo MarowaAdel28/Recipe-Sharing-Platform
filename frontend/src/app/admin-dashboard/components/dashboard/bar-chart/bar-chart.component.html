@@ -1,0 +1,16 @@
+<div class="container">
+    <div style="width:100%;">
+        <canvas id="myChart" width="700" height="320"></canvas>
+          <div>
+     <form  [formGroup]="userForm" >
+        
+        <input type="radio" style = "position:relative; left:70px; top:22px;" formControlName="type" [(ngModel)]="type" value="Gender" (click)="gender()">
+        <strong><label for="Gender" style = "position:relative; left:70px; top:22px; color:blueviolet; "  >Gender</label><br></strong>
+
+        <input type="radio" style = "position:relative;  top: -7px; left:-50px; border-radius: 15px;"  formControlName="type" [(ngModel)]="type" value="Age" (click)="age()">
+        <strong><label for="Age" style = "position:relative;  top: -7px; left:-50px; color:rgb(255, 0, 119); ">Age</label><br></strong>
+
+    </form>
+     </div>
+    </div>
+    </div>
