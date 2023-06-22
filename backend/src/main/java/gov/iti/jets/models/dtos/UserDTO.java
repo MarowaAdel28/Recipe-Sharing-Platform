@@ -1,16 +1,15 @@
 package gov.iti.jets.models.dtos;
 
 
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
-@Setter
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private String username;
@@ -19,28 +18,20 @@ public class UserDTO implements Serializable {
 
     private String password;
 
-    private LocalDateTime createTime;
-
     private Integer id;
 
     private Integer age;
 
-    private String gender;
+    private Character gender;
 
-    private Boolean admin;
+//    private Boolean admin;
 
-    private Boolean deleted;
-    
-    private List<FavoriteRecipeDTO> favoriteRecipeList;
-    
-    private List<ReviewDTO> reviewList;
-    
+//    private Boolean deleted;
+//
+//    private List<FavoriteRecipeDTO> favoriteRecipeList;
+//
+//    private List<ReviewDTO> reviewList;
+//
 //    private List<RecipeDTO> recipeList;
-
-    @Override
-    public String toString() {
-        return "gov.iti.jets.models.entities.User[ id=" + id + " ]";
-    }
-
 
 }

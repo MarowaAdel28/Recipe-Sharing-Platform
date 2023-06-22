@@ -9,9 +9,13 @@ import {RecipesComponent} from './components/recipes/recipes.component';
 import {DishAreaComponent} from "./components/dish-area/dish-area.component";
 import {AllRecipesComponent} from "./components/all-recipes/all-recipes.component";
 import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
+import {RegisterComponent} from "./components/user/register/register.component";
+import {LoginComponent} from "./components/user/login/login.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+   {path:'register',component:RegisterComponent},
+  {path:'login',component:LoginComponent},
   {path:'home',component:HomeComponent},
   {path:'view-recipe/details/:id',component:ViewRecipeDetailsComponent},
   {path:'contact',component:ContactComponent},
@@ -20,7 +24,8 @@ const routes: Routes = [
   {path:'dish_area' , component:DishAreaComponent},
   {path:'all-recipes' , component:AllRecipesComponent},
   {path:'post-recipe' , component:PostRecipeComponent},
-  {path:'**',component:HomeComponent}
+  {path:'**',component:HomeComponent},
+  {path:'view-recipe' , component:ViewRecipeComponent},
 ];
 
 @NgModule({

@@ -7,24 +7,15 @@ package gov.iti.jets.models.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import gov.iti.jets.configs.UserListener;
+import jakarta.persistence.*;
 
 /**
  *
  * @author dell
  */
+@EntityListeners(UserListener.class)
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
@@ -40,7 +31,8 @@ public class User implements Serializable {
     @Column(name = "password")
     private String password;
     @Basic(optional = false)
-    @Column(name = "create_time")
+//    @Column(nullable = false)
+    @Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date createTime;
     @Id

@@ -3,6 +3,7 @@ package gov.iti.jets.services;
 import gov.iti.jets.models.dtos.UserDTO;
 import gov.iti.jets.models.entities.User;
 import gov.iti.jets.repositories.UserRepository;
+import gov.iti.jets.util.Utility;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,7 +18,10 @@ public class UserService {
     private UserRepository userRepository;
 
     public Integer save(UserDTO userDto) {
+        System.out.println("user save method invoked");
+        System.out.println(userDto.getAge());
         User user = new User();
+        userDto.setPassword(Utility.hashPassword(userDto.getPassword()));
         BeanUtils.copyProperties(userDto, user);
         user = userRepository.save(user);
         return user.getId();
