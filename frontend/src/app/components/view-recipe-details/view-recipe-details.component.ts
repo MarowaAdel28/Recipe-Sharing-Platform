@@ -11,6 +11,7 @@ import {RecipeModel} from "../../models/recipe-model";
 export class ViewRecipeDetailsComponent implements OnInit{
 
   recipeModel:RecipeModel = new RecipeModel();
+  steps:string[]
   constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService ) {
   }
 
@@ -23,7 +24,9 @@ export class ViewRecipeDetailsComponent implements OnInit{
           {
             next: response => {
               this.recipeModel = response
-              console.log(response)
+              this.steps = this.recipeModel.steps.split("/");
+              this.steps.splice(this.steps.length-1,1)
+              console.log(this.steps)
             }
           }
         )
