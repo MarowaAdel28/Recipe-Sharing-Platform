@@ -13,9 +13,10 @@
             </div>
             <div class="ms-3" >
               <h2 style="color: green;">Marwa Adel
-                <button mat-icon-button class="edit-button">
-                  <mat-icon>edit</mat-icon>
-                </button>
+
+                <a routerLink="/profile/edit" class="link">
+                    <mat-icon>edit</mat-icon>
+                </a>
               </h2>
               <h5 style="color: green;">marwa@gmail.com</h5>
             </div>
@@ -28,15 +29,19 @@
             </div>
             <div class="row g-2">
               <div class="rectangle container-rectangle  col mb-2">
-                <button ><img src="assets/img/profile-icons/recipe-icon-1.jpg" alt="Image" class="image"></button>
+                <img src="assets/img/profile-icons/recipe-icon-1.jpg" alt="Image" class="image">
                 <div class="title-wrapper">
-                  <h3 class="title">Your Recipes</h3>
+                  <a routerLink="/profile/user-recipes" class="card-link">
+                    <h3 class="title">Your Recipes</h3>
+                  </a>
                 </div>
               </div>
               <div class="rectangle container-rectangle  col mb-2">
-                <button ><img src="assets/img/profile-icons/Icon.png" alt="Image" class="image"></button>
+                  <img src="assets/img/profile-icons/Icon.png" alt="Image" class="image">
                 <div class="title-wrapper">
+                  <a routerLink="/profile/user-favorite-recipes" class="card-link">
                   <h3 class="title">Favorite Recipes</h3>
+                  </a>
                 </div>
               </div>
             </div>
