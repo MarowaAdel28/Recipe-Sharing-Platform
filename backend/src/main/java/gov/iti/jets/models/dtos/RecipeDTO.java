@@ -1,6 +1,7 @@
 package gov.iti.jets.models.dtos;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -30,6 +31,7 @@ public class RecipeDTO implements Serializable {
 
     private String status;
 
+    @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     private Date date;
 
     private Boolean deleted;

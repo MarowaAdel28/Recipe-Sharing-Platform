@@ -5,6 +5,8 @@
 package gov.iti.jets.models.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -21,22 +23,6 @@ import jakarta.persistence.*;
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    public String getRecipeName() {
-        return recipeName;
-    }
-
-    public void setRecipeName(String recipeName) {
-        this.recipeName = recipeName;
-    }
-
-    public Boolean getDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(Boolean deleted) {
-        isDeleted = deleted;
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -100,6 +86,23 @@ public class Recipe implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+
+
+    public String getRecipeName() {
+        return recipeName;
+    }
+
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public void setId(Integer id) {

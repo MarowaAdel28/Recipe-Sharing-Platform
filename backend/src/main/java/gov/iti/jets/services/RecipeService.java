@@ -12,6 +12,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import gov.iti.jets.mappers.RecipeMapper;
 import gov.iti.jets.models.dtos.recipeposter.RecipeIngredientsDTO;
@@ -73,6 +77,13 @@ public class RecipeService {
         recipeHasIngredientsService.addListOfRecipeIngredients(ingredients, recipe.getId());
         return recipe.getId();
     }
+
+//    public LocalDateTime now(){
+//        LocalDateTime now = LocalDateTime.now();
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//        String formattedDate = now.format(formatter);
+//        return formattedDate;
+//    }
 
     public void delete(Integer id) {
         recipeRepository.deleteById(id);
