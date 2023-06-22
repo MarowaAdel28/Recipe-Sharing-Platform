@@ -31,7 +31,7 @@ public class RecipeDTO implements Serializable {
 
     private String status;
 
-    @JsonFormat(pattern="dd/MM/yyyy hh:mm")
+    @JsonFormat(pattern="MMMM dd, yyyy")
     private Date date;
 
     private Boolean deleted;

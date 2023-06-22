@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import gov.iti.jets.configs.UserListener;
+import gov.iti.jets.listeners.UserListener;
 import jakarta.persistence.*;
 
 /**

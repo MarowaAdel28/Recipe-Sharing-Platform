@@ -97,58 +97,45 @@
 <div class="receipe-post-area section-padding-80">
 
   <!-- Receipe Post Search -->
-  <div class="receipe-post-search mb-80">
-    <div class="container">
-      <form action="#" method="post">
-        <div class="row">
-          <div class="col-12 col-lg-3">
-            <select name="select1" id="select1">
-              <option value="1">All Receipies Categories</option>
-              <option value="1">All Receipies Categories 2</option>
-              <option value="1">All Receipies Categories 3</option>
-              <option value="1">All Receipies Categories 4</option>
-              <option value="1">All Receipies Categories 5</option>
-            </select>
-          </div>
-          <div class="col-12 col-lg-3">
-            <select name="select1" id="select2">
-              <option value="1">All Receipies Categories</option>
-              <option value="1">All Receipies Categories 2</option>
-              <option value="1">All Receipies Categories 3</option>
-              <option value="1">All Receipies Categories 4</option>
-              <option value="1">All Receipies Categories 5</option>
-            </select>
-          </div>
-          <div class="col-12 col-lg-3">
-            <input type="search" name="search" placeholder="Search Receipies">
-          </div>
-          <div class="col-12 col-lg-3 text-right">
-            <button type="submit" class="btn delicious-btn">Search</button>
+  <div class="container" style="padding-bottom: inherit">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="breadcrumb__text">
+          <h2 style="font-family: 'Unna', serif; font-size: xx-large ">Reciepe Details</h2>
+          <div class="breadcrumb__option">
+            <a routerLink="/home">Home</a>
+            <a routerLink="/all-recipes">Recipes</a>
+            <span>Details</span>
           </div>
         </div>
-      </form>
-    </div>
-  </div>
-
-  <div class="row" style="margin-left: 300px">
-    <div class="col-12 col-md-8">
-      <div class="receipe-headline my-5">
-        <h6>{{recipeModel.date}}</h6>
-        <h2>{{recipeModel.name}}</h2>
       </div>
     </div>
   </div>
 
-  <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img src="assets/img/bg-img/bg1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="..." class="d-block w-100" alt="...">
+
+  <!--  <div class="row" style="margin-left: 300px">-->
+  <!--    <div class="col-12 col-md-8">-->
+  <!--      <div class="receipe-headline my-5">-->
+  <!--        <h6>{{recipeModel.date}}</h6>-->
+  <!--        <h2>{{recipeModel.name}}</h2>-->
+  <!--      </div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <div class="container">
+    <div class="row">
+      <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="assets/img/bg-img/bg1.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -159,8 +146,8 @@
       <div class="row">
         <div class="col-12 col-md-8">
           <div class="receipe-headline my-5">
-            <span>April 05, 2018</span>
-            <h2>Vegetarian cheese salad</h2>
+            <span>{{recipeModel.date}}</span>
+            <h2>{{recipeModel.name}}</h2>
             <div class="receipe-duration">
               <h6>Prep: {{recipeModel.preparingTime}}</h6>
               <h6>Cook: 30 mins</h6>

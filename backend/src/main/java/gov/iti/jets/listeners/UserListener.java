@@ -1,4 +1,4 @@
-package gov.iti.jets.configs;
+package gov.iti.jets.listeners;
 
 import gov.iti.jets.models.entities.User;
 import jakarta.persistence.PrePersist;
