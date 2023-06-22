@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
 import {UserService} from "../../../services/user/user.service";
+
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
