@@ -12,8 +12,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class ApiService {
-  private baseDashboardUrl = 'http://127.0.0.1:8282/dashboard/'
-  private baseAdminRecipeUrl = 'http://127.0.0.1:8282/adminRecipe/'
+  private baseDashboardUrl = 'http://127.0.0.1:8080/dashboard/'
+  private baseAdminRecipeUrl = 'http://127.0.0.1:8080/adminRecipe/'
 
 
   constructor(private http: HttpClient) { }
