@@ -18,6 +18,8 @@ import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import {PostRecipeComponent} from "./components/post-recipe/post-recipe.componen
     BrowserAnimationsModule,
     MatIconModule,
     HttpClientModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

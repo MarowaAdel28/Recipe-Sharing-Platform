@@ -8,23 +8,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import org.springframework.format.annotation.DateTimeFormat;
+import gov.iti.jets.configs.RecipeListener;
 import jakarta.persistence.*;
 
 /**
@@ -33,6 +17,7 @@ import jakarta.persistence.*;
  */
 @Entity
 @Table(name = "recipe")
+@EntityListeners(RecipeListener.class)
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -119,14 +104,6 @@ public class Recipe implements Serializable {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return recipeName;
-    }
-
-    public void setName(String recipeName) {
-        this.recipeName = recipeName;
     }
 
     public Integer getCooksCount() {
@@ -259,23 +236,7 @@ public class Recipe implements Serializable {
 
     @Override
     public String toString() {
-        return "Recipe{" +
-                "id=" + id +
-                ", name='" + recipeName + '\'' +
-                ", cooksCount=" + cooksCount +
-                ", steps='" + steps + '\'' +
-                ", status='" + status + '\'' +
-                ", date=" + date +
-                ", isDeleted=" + isDeleted +
-                ", preparingTime='" + preparingTime + '\'' +
-                ", persons=" + persons +
-                ", imageList=" + imageList +
-                ", favoriteRecipeList=" + favoriteRecipeList +
-                ", reviewList=" + reviewList +
-                ", categoryId=" + categoryId +
-                ", userId=" + userId +
-                ", recipeHasIngredientsList=" + recipeHasIngredientsList +
-                ", rejectedRecipe=" + rejectedRecipe +
-                '}';
+        return "gov.iti.jets.models.entities.Recipe[ id=" + id + " ]";
     }
+    
 }

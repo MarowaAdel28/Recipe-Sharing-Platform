@@ -23,6 +23,8 @@ import gov.iti.jets.repositories.UserRepository;
 import gov.iti.jets.util.Utility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -53,7 +55,7 @@ public class RecipeService {
     private RecipeHasIngredientsService recipeHasIngredientsService;
 
     public Integer save(RecipeSetterDTO recipeDto) {
-        System.out.println("recipeDto.getCategoryId() = " + recipeDto.getCategoryId());
+//        System.out.println("recipeDto.getCategoryId() = " + recipeDto.getCategoryId());
         Category category = categoryService.getReference(recipeDto.getCategoryId());
         User user = userService.getReference(recipeDto.getUserId());
         if (user == null) {
@@ -67,13 +69,10 @@ public class RecipeService {
         recipe.setCategoryId(category);
         recipe = recipeRepository.save(recipe);
 
-
         List<RecipeIngredientsDTO> ingredients = ingredientsService.addListOfIngredients(recipeDto.getIngredients());
         recipeHasIngredientsService.addListOfRecipeIngredients(ingredients, recipe.getId());
         return recipe.getId();
-
     }
-
 
     public void delete(Integer id) {
         recipeRepository.deleteById(id);

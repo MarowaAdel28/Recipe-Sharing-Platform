@@ -137,3 +137,13 @@ button:focus {
 .form-field .remove-button {
   flex-shrink: 0;
 }
+
+.swal2-popup {
+  width: 100px; /* Adjust the width as per your preference */
+  height: auto; /* Adjust the height as per your preference */
+}
+
+.swal2-title,
+.swal2-content {
+  font-size: 14px; /* Adjust the font size as per your preference */
+}
