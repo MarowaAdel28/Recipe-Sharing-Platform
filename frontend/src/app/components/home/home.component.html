@@ -36,7 +36,7 @@
               <h3>
                 Chicken dish with per boiled egg
               </h3>
-<!--              <a [routerLink]="/view-recipe/details/"  class="boxed-btn3">View all Recipes</a>-->
+              <a [routerLink]="goToRecipes" href="#" class="boxed-btn3">View all Recipes</a>
             </div>
           </div>
         </div>
@@ -91,7 +91,7 @@
         <div class="trand_info text-center">
           <p>Thousands of recipes are waiting to be watched</p>
           <h3>Discover latest trending recipes</h3>
-<!--          <a [routerLink]="goToRecipes" href="#" class="boxed-btn3">View all Recipes</a>-->
+          <a [routerLink]="goToRecipes" href="#" class="boxed-btn3">View all Recipes</a>
         </div>
       </div>
     </div>
@@ -158,3 +158,164 @@
 </body>
 
 </html>
+
+<!--<!doctype html>-->
+<!--<html class="no-js" lang="zxx">-->
+
+<!--<head>-->
+<!--  <meta charset="utf-8">-->
+<!--  <meta http-equiv="x-ua-compatible" content="ie=edge">-->
+<!--  <title>Tasty Recipes</title>-->
+<!--  <meta name="description" content="">-->
+<!--  <meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+<!--  &lt;!&ndash; <link rel="manifest" href="site.webmanifest"> &ndash;&gt;-->
+<!--  &lt;!&ndash; Place favicon.ico in the root directory &ndash;&gt;-->
+
+<!--  &lt;!&ndash; CSS here &ndash;&gt;-->
+
+<!--  &lt;!&ndash; <link rel="stylesheet" href="css/responsive.css"> &ndash;&gt;-->
+<!--</head>-->
+
+<!--<body>-->
+<!--&lt;!&ndash;[if lte IE 9]>-->
+<!--<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>-->
+<!--<![endif]&ndash;&gt;-->
+
+<!--&lt;!&ndash; header-start &ndash;&gt;-->
+
+<!--&lt;!&ndash; header-end &ndash;&gt;-->
+
+<!--&lt;!&ndash; slider_area_start &ndash;&gt;-->
+<!--<div class="slider_area">-->
+<!--  <div class="single_slider  d-flex align-items-center slider_bg_1">-->
+<!--    <div class="container">-->
+<!--      <div class="row align-items-center justify-content-center">-->
+<!--        <div class="col-xl-8 ">-->
+<!--          <div class="slider_text text-center">-->
+<!--            <div class="text">-->
+<!--              <h3>-->
+<!--                Chicken dish with per boiled egg-->
+<!--              </h3>-->
+<!--&lt;!&ndash;              <a [routerLink]="/view-recipe/details/"  class="boxed-btn3">View all Recipes</a>&ndash;&gt;-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; slider_area_end &ndash;&gt;-->
+<!--&lt;!&ndash; recepie_area_start  &ndash;&gt;-->
+<!--<app-recipes></app-recipes>-->
+<!--&lt;!&ndash; /recepie_area_start  &ndash;&gt;-->
+
+<!--&lt;!&ndash; recepie_videos   &ndash;&gt;-->
+<!--<div class="recepie_videoes_area">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-xl-6 col-lg-6 col-md-6">-->
+<!--        <div class="recepie_info">-->
+<!--          <h3>Recipe videos-->
+<!--            that never misses-->
+<!--            any portion</h3>-->
+<!--          <p>inappropriate behavior is often laughed off as “boys will be boys,” women face higher conduct standards especially in the workplace. That’s why it’s crucial that, as women.</p>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-lg-6 col-md-6">-->
+<!--        <div class="videos_thumb">-->
+<!--          <div class="big_img">-->
+<!--            <img src="assets/img/video/big.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="small_thumb">-->
+<!--            <img src="assets/img/video/small_1.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="small_thumb_2">-->
+<!--            <img src="assets/img/video/2.png" alt="">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;/ recepie_videos   &ndash;&gt;-->
+
+<!--&lt;!&ndash; dish_area start  &ndash;&gt;-->
+<!--<app-dish-area/>-->
+<!--&lt;!&ndash;/ dish_area start  &ndash;&gt;-->
+
+<!--&lt;!&ndash; latest_trand     &ndash;&gt;-->
+<!--<div class="latest_trand_area">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-xl-12">-->
+<!--        <div class="trand_info text-center">-->
+<!--          <p>Thousands of recipes are waiting to be watched</p>-->
+<!--          <h3>Discover latest trending recipes</h3>-->
+<!--&lt;!&ndash;          <a [routerLink]="goToRecipes" href="#" class="boxed-btn3">View all Recipes</a>&ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;/ latest_trand     &ndash;&gt;-->
+
+
+<!--&lt;!&ndash; download_app_area &ndash;&gt;-->
+<!--<div class="download_app_area">-->
+<!--  <div class="container">-->
+<!--    <div class="row align-items-center">-->
+<!--      <div class="col-xl-6 col-md-6">-->
+<!--        <div class="download_thumb">-->
+<!--          <div class="big_img">-->
+<!--            <img src="assets/img/video/big_1.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="small_01">-->
+<!--            <img src="assets/img/video/small_sm1.png" alt="">-->
+<!--          </div>-->
+<!--          <div class="small_02">-->
+<!--            <img src="assets/img/video/sm2.png" alt="">-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-xl-6 col-md-6">-->
+<!--        <div class="download_text">-->
+<!--          <h3>Download app to-->
+<!--            get recipes from-->
+<!--            Everywhere</h3>-->
+<!--          <div class="download_android_apple">-->
+<!--            <a class="active" href="#">-->
+<!--              <div class="download_link d-flex">-->
+<!--                <i class="fa fa-apple"></i>-->
+<!--                <div class="store">-->
+<!--                  <h5>Available</h5>-->
+<!--                  <p>on App Store</p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--            <a href="#">-->
+<!--              <div class="download_link d-flex">-->
+<!--                <i class="fa fa-android"></i>-->
+<!--                <div class="store">-->
+<!--                  <h5>Download</h5>-->
+<!--                  <p>from Play Store</p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash;/ download_app_area &ndash;&gt;-->
+
+<!--&lt;!&ndash; footer  &ndash;&gt;-->
+
+<!--&lt;!&ndash;/ footer  &ndash;&gt;-->
+
+<!--&lt;!&ndash; JS here &ndash;&gt;-->
+
+<!--</body>-->
+
+<!--</html>-->

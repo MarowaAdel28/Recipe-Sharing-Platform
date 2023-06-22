@@ -20,13 +20,9 @@ import { MatIconModule } from '@angular/material/icon';
 import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ViewRecipeComponent } from './components/view-recipe/view-recipe.component';
-import { RecipesComponent } from './components/recipes/recipes.component';
-import { DishAreaComponent } from './components/dish-area/dish-area.component';
-// import { AllCategoriesComponent } from './components/all-categories/all-categories.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -43,7 +39,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AllCategoriesComponent,
     PostRecipeComponent,
     AllRecipesComponent,
-    ViewRecipeComponent,
     RecipesComponent,
     DishAreaComponent,
     RegisterComponent,
