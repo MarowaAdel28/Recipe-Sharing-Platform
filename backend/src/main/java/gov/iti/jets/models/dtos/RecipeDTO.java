@@ -1,15 +1,21 @@
 package gov.iti.jets.models.dtos;
 
 
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@ToString
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class RecipeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    private String recipeName;
     private Integer id;
 
     private Integer cooksCount;
@@ -38,6 +44,9 @@ public class RecipeDTO implements Serializable {
 
     private List<RecipeHasIngredientsDTO> recipeHasIngredientsList;
 
+    public RecipeDTO(Integer id) {
+        this.id = id;
+    }
 
 
 }

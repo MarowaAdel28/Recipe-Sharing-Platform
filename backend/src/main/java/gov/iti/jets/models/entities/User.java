@@ -7,19 +7,12 @@ package gov.iti.jets.models.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import gov.iti.jets.models.dtos.stats.AgeStatDTO;
+import gov.iti.jets.models.dtos.stats.GenderStatDTO;
+import gov.iti.jets.models.dtos.stats.RegistrationDateStatDTO;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 
 /**
  *
@@ -27,6 +20,51 @@ import jakarta.persistence.TemporalType;
  */
 @Entity
 @Table(name = "user")
+@NamedNativeQueries(
+        {@NamedNativeQuery(name = "User.findGenderCount",
+                query = "Select SUM(CASE WHEN u.gender = 'F' THEN 1 ELSE 0 END) AS femalesCount, " +
+                        "SUM(CASE WHEN u.gender = 'M' THEN 1 ELSE 0 END) AS malesCount " +
+                        "from User u",
+                resultSetMapping = "Mapping.GenderStatDTO"),
+        @NamedNativeQuery(name = "User.findAgeCount",
+                query = "SELECT SUM(CASE WHEN u.age between 17 and 30 THEN 1 ELSE 0 END) AS youngAdults," +
+                        "SUM(CASE WHEN u.age BETWEEN 31 AND 45 THEN 1 ELSE 0 END) AS middleAged," +
+                        "SUM(CASE WHEN u.age > 45 THEN 1 ELSE 0 END) AS old " +
+                        "FROM User u",
+                resultSetMapping = "Mapping.AgeStatDTO"),
+
+        @NamedNativeQuery(name = "User.findRegisterDateCount",
+                query = "SELECT Sum(CASE WHEN timestampdiff(Month, u.create_time, now() ) between 0 and 6 then 1 else 0 end) AS thirdSixMonths,\n" +
+                        " Sum(CASE WHEN  timestampdiff(Month, u.create_time, now() ) between 7 and 12 then 1 else 0 end) AS secondSixMonths,\n" +
+                        " Sum(CASE WHEN timestampdiff(Month, u.create_time, now() ) between 13 and 18 then 1 else 0 end) AS firstSixMonths,\n" +
+                        " Sum(CASE WHEN timestampdiff(Month, u.create_time, now() )> 18 then 1 else 0 end) AS earlier\n" +
+                        " FROM User u",
+                resultSetMapping = "Mapping.RegistrationStatDTO")
+        }
+
+)
+@SqlResultSetMappings(
+        {@SqlResultSetMapping(name = "Mapping.GenderStatDTO",
+                classes = @ConstructorResult(targetClass = GenderStatDTO.class,
+                        columns = {@ColumnResult(name = "femalesCount", type = Integer.class),
+                                @ColumnResult(name = "malesCount", type = Integer.class)})),
+
+        @SqlResultSetMapping(name = "Mapping.AgeStatDTO",
+                classes = @ConstructorResult(targetClass = AgeStatDTO.class,
+                        columns = {@ColumnResult(name = "youngAdults", type = Integer.class),
+                                @ColumnResult(name = "middleAged", type = Integer.class),
+                                @ColumnResult(name = "old", type = Integer.class)})),
+
+        @SqlResultSetMapping(name = "Mapping.RegistrationStatDTO",
+                classes = @ConstructorResult(targetClass = RegistrationDateStatDTO.class,
+                        columns = {@ColumnResult(name = "firstSixMonths", type = Integer.class),
+                                @ColumnResult(name = "secondSixMonths", type = Integer.class),
+                                @ColumnResult(name = "thirdSixMonths", type = Integer.class),
+                                @ColumnResult(name = "earlier", type = Integer.class)
+                        })),
+
+        })
+
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -64,6 +102,7 @@ public class User implements Serializable {
     private List<FavoriteRecipe> favoriteRecipeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Review> reviewList;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Recipe> recipeList;
 

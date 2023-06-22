@@ -23,16 +23,16 @@ public class RejectedRecipeController {
         return rejectedRecipeService.save(rejectedRecipeDto).toString();
     }
 
-    @DeleteMapping("/{id}")
-    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
-        rejectedRecipeService.delete(id);
-    }
-    
-
-    @GetMapping("/{id}")
-    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
-        return rejectedRecipeService.getById(id);
-    }
+//    @DeleteMapping("/{id}")
+//    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
+//        rejectedRecipeService.delete(id);
+//    }
+//
+//
+//    @GetMapping("/{id}")
+//    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
+//        return rejectedRecipeService.getById(id);
+//    }
 
 //    @GetMapping
 //    public Page<RejectedRecipeDTO> query(@Valid RejectedRecipeQueryVO rejectedRecipeDto) {

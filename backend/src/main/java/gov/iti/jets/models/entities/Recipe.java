@@ -7,21 +7,10 @@ package gov.iti.jets.models.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import jakarta.persistence.Basic;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+
+import gov.iti.jets.models.dtos.stats.GenderStatDTO;
+import gov.iti.jets.models.dtos.stats.RecipeStatusStatDTO;
+import jakarta.persistence.*;
 
 /**
  *
@@ -29,6 +18,20 @@ import jakarta.persistence.TemporalType;
  */
 @Entity
 @Table(name = "recipe")
+@NamedNativeQuery(name = "Recipe.findStatusCount",
+        query = "Select SUM(CASE WHEN r.status = 'accepted' THEN 1 ELSE 0 END) AS accepted, " +
+                "SUM(CASE WHEN r.status = 'rejected' THEN 1 ELSE 0 END) AS rejected, "+
+                "SUM(CASE WHEN r.status = 'waiting' THEN 1 ELSE 0 END) AS waiting " +
+                "from Recipe r",
+        resultSetMapping = "Mapping.RecipeStatusStatDTO")
+
+@SqlResultSetMapping(name = "Mapping.RecipeStatusStatDTO",
+        classes = @ConstructorResult(targetClass = RecipeStatusStatDTO.class,
+                columns = {@ColumnResult(name = "accepted", type = Integer.class),
+                        @ColumnResult(name = "rejected", type = Integer.class),
+                        @ColumnResult(name = "waiting", type = Integer.class)
+                }))
+
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,6 +39,9 @@ public class Recipe implements Serializable {
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;
+
+    @Column(name = "name")
+    private String name;
     @Column(name = "cooks_count")
     private Integer cooksCount;
     @Basic(optional = false)
@@ -80,16 +86,33 @@ public class Recipe implements Serializable {
         this.id = id;
     }
 
-    public Recipe(Integer id, String steps, Date date, String preparingTime, int persons) {
+    public Recipe(Integer id, String name, String steps, Date date, String preparingTime, int persons) {
         this.id = id;
         this.steps = steps;
         this.date = date;
         this.preparingTime = preparingTime;
         this.persons = persons;
+        this.name = name;
     }
 
     public Integer getId() {
         return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Boolean getDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public void setId(Integer id) {
