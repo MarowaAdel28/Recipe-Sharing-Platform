@@ -25,6 +25,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/assets/css/style.css",
               "src/assets/css/animate.min.css",

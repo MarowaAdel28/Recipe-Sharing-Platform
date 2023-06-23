@@ -1,0 +1,7 @@
+<div class="rate-container">
+  <span class="rate">
+    <i *ngFor="let _ of Array(filledStars)" class="fas fa-star filled-star"></i>
+    <i *ngIf="rate % 1 !== 0" class="fas fa-star-half-alt filled-star"></i>
+    <i *ngFor="let _ of Array(emptyStars)" class="far fa-star filled-star"></i>
+  </span>
+</div>

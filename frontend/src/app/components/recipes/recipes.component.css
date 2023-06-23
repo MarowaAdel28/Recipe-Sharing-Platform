@@ -1,0 +1,9 @@
+.rate-container {
+  display: flex;
+  align-items: center;
+}
+
+.rate {
+  font-size: 24px;
+  color: gold;
+}
