@@ -3,6 +3,7 @@ package gov.iti.jets.controllers;
 import gov.iti.jets.models.dtos.CategoryDTO;
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.models.dtos.RecipeResponseDTO;
+import gov.iti.jets.models.dtos.SearchResultDTO;
 import gov.iti.jets.models.dtos.recipeposter.RecipeSetterDTO;
 import gov.iti.jets.services.RecipeService;
 import jakarta.validation.Valid;
@@ -62,20 +63,20 @@ public class RecipeController {
                                                                   @RequestParam(defaultValue = "9") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
-    @GetMapping("/search")
-    public List<RecipeDTO> searchRecipesByName(@RequestParam("keyword") String keyword) {
-        return recipeService.searchRecipesByName(keyword);
-    }
-//    @GetMapping("/findRecipesByName")
-//    public Page<RecipeDTO> searchRecipesByName(
-//            @RequestParam("keyword") String keyword,
-//            @RequestParam(value = "page", defaultValue = "0") int page,
-//            @RequestParam(value = "size", defaultValue = "9") int size
-//    )
-//    {
-//        PageRequest pageable = PageRequest.of(page, size);
-//        return recipeService.searchRecipesByName(keyword, pageable);
+//    @GetMapping("/search")
+//    public List<RecipeDTO> searchRecipesByName(@RequestParam("keyword") String keyword) {
+//        return recipeService.searchRecipesByName(keyword);
 //    }
+    @GetMapping("/findRecipesByName")
+    public ResponseEntity<SearchResultDTO> searchRecipesByName(
+            @RequestParam("keyword") String keyword,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "9") int size
+    )
+    {
+        PageRequest pageable = PageRequest.of(page, size);
+        return recipeService.searchRecipesByName(keyword, pageable);
+    }
 //    @GetMapping
 //    public Page<RecipeDTO> query(@Valid RecipeQueryVO recipeDto) {
 //        return recipeService.query(recipeDto);

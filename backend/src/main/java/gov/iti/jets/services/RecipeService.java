@@ -2,6 +2,7 @@ package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.models.dtos.RecipeResponseDTO;
+import gov.iti.jets.models.dtos.SearchResultDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.modelmapper.ModelMapper;
@@ -9,6 +10,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -140,10 +142,24 @@ public class RecipeService {
         return (int)recipeRepository.count();
     }
 
-    public List<RecipeDTO> searchRecipesByName(String keyword) {
-        List<Recipe> recipes = recipeRepository.findByNameContainingIgnoreCase(keyword);
-        return recipes.stream()
+    public ResponseEntity<SearchResultDTO> searchRecipesByName(String keyword, Pageable pageable) {
+        Page<Recipe> recipePage = recipeRepository.searchByNameContainingIgnoreCase(keyword, pageable);
+        List<RecipeDTO> recipeList = recipePage.getContent().stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
+        long totalSize = recipePage.getTotalElements();
+        SearchResultDTO searchResultDTO = new SearchResultDTO(recipeList, totalSize);
+        return ResponseEntity.ok(searchResultDTO);
     }
+
+//    public Page<RecipeDTO> searchRecipesByName(String keyword, Pageable pageable) {
+//        return recipeRepository.searchByNameContainingIgnoreCase(keyword, pageable)
+//                .map(this::toDTO);
+//    }
+//    public List<RecipeDTO> searchRecipesByName(String keyword) {
+//        List<Recipe> recipes = recipeRepository.findByNameContainingIgnoreCase(keyword);
+//        return recipes.stream()
+//                .map(this::toDTO)
+//                .collect(Collectors.toList());
+//    }
 }
