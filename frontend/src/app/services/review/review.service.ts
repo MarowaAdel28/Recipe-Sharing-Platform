@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "../api.service";
-import {ReviewModel} from "../../models/review-model";
+import {ReviewModelRequest} from "../../models/review-model-request";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class ReviewService {
 
   constructor(private _apiService:ApiService) { }
 
-post(reviewModel:ReviewModel){
+post(reviewModel:ReviewModelRequest){
   const headers = {
     "Content-Type": "application/json",
   };

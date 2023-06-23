@@ -3,7 +3,8 @@ import {ActivatedRoute} from "@angular/router";
 import {RecipeService} from "../../services/recipe/recipe.service";
 import {RecipeModel} from "../../models/recipe-model";
 import {ReviewService} from "../../services/review/review.service";
-import {ReviewModel} from "../../models/review-model";
+import {ReviewModelRequest} from "../../models/review-model-request";
+import {ReviewModelResponse} from "../../models/review-model-response";
 
 @Component({
   selector: 'app-view-recipe-details',
@@ -16,7 +17,8 @@ export class ViewRecipeDetailsComponent implements OnInit{
   steps:string[]
   recipeId:number | null
   isChecked:boolean
-  comments:ReviewModel[]
+  comments:ReviewModelResponse[]
+  recipeRate:number
   constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService , private _reviewService:ReviewService) {
   }
 
@@ -40,9 +42,9 @@ export class ViewRecipeDetailsComponent implements OnInit{
   }
 
   postComment(comment:any):void{
-    let reviewModel = new ReviewModel()
+    let reviewModel = new ReviewModelRequest()
     reviewModel.comment = comment;
-    reviewModel.user = 9
+    reviewModel.userId= 9
     reviewModel.recipeId = this.recipeId
     console.log(JSON.stringify(reviewModel))
     this._reviewService.post(reviewModel).subscribe(
