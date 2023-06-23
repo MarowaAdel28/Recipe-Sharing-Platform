@@ -59,7 +59,7 @@ public class RecipeController {
     }
     @GetMapping("/getRecipesByPageNo")
     public ResponseEntity<RecipeResponseDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
-                                                                  @RequestParam(defaultValue = "6") int size) {
+                                                                  @RequestParam(defaultValue = "9") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
 //    @GetMapping

@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class AllRecipesComponent implements OnInit{
   currentPage: number = 0;
-  pageSize: number = 6;
+  pageSize: number = 9;
   totalItems: number = 0;
   totalPages: number = 0;
   paginatedList: any[] = [];
