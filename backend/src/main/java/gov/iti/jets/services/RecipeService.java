@@ -141,16 +141,32 @@ public class RecipeService {
     private int getRecipesCount(){
         return (int)recipeRepository.count();
     }
-
-    public ResponseEntity<SearchResultDTO> searchRecipesByName(String keyword, Pageable pageable) {
-        Page<Recipe> recipePage = recipeRepository.searchByNameContainingIgnoreCase(keyword, pageable);
-        List<RecipeDTO> recipeList = recipePage.getContent().stream()
+    public ResponseEntity<SearchResultDTO> searchRecipesByName(String name, Category categoryId, Pageable pageable) {
+        List<Recipe> recipeList = recipeRepository.searchByNameAndCategoryIgnoreCase(name, categoryId);
+        int totalSize = recipeList.size();
+        List<Recipe> paginatedList = getPaginatedList(recipeList, pageable);
+        List<RecipeDTO> recipeDTOList = paginatedList.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
-        long totalSize = recipePage.getTotalElements();
-        SearchResultDTO searchResultDTO = new SearchResultDTO(recipeList, totalSize);
+        SearchResultDTO searchResultDTO = new SearchResultDTO(recipeDTOList, totalSize);
         return ResponseEntity.ok(searchResultDTO);
     }
+
+    private List<Recipe> getPaginatedList(List<Recipe> recipeList, Pageable pageable) {
+        int start = (int) pageable.getOffset();
+        int end = Math.min((start + pageable.getPageSize()), recipeList.size());
+        return recipeList.subList(start, end);
+    }
+
+//    public ResponseEntity<SearchResultDTO> searchRecipesByName(String keyword, Pageable pageable) {
+//        Page<Recipe> recipePage = recipeRepository.searchByNameContainingIgnoreCase(keyword, pageable);
+//        List<RecipeDTO> recipeList = recipePage.getContent().stream()
+//                .map(this::toDTO)
+//                .collect(Collectors.toList());
+//        long totalSize = recipePage.getTotalElements();
+//        SearchResultDTO searchResultDTO = new SearchResultDTO(recipeList, totalSize);
+//        return ResponseEntity.ok(searchResultDTO);
+//    }
 
 //    public Page<RecipeDTO> searchRecipesByName(String keyword, Pageable pageable) {
 //        return recipeRepository.searchByNameContainingIgnoreCase(keyword, pageable)
