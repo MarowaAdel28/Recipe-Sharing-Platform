@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RecipeModel} from "../../models/recipe-model";
 import {RecipeService} from "../../services/recipe/recipe.service";
 import {HttpClient} from "@angular/common/http";
+import {ReviewModel} from "../../models/review-model";
 
 @Component({
   selector: 'app-all-recipes',
@@ -21,6 +22,16 @@ export class AllRecipesComponent implements OnInit{
 
   ngOnInit() {
     this.getPaginatedData();
+  }
+
+  getRate(reviews: ReviewModel[]): number{
+
+    const sum = reviews.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
+    const count = reviews.length;
+    if (count === 0) {
+      return 0;
+    }
+    return sum / count;
   }
 
   getPaginatedData() {
