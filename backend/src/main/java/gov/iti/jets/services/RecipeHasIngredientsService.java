@@ -1,6 +1,6 @@
 package gov.iti.jets.services;
 
-import gov.iti.jets.models.dtos.recipeposter.RecipeIngredientsDTO;
+import gov.iti.jets.models.dtos.request.RecipeIngredientsDTO;
 import gov.iti.jets.models.entities.RecipeHasIngredients;
 import gov.iti.jets.models.entities.RecipeHasIngredientsPK;
 import gov.iti.jets.repositories.RecipeHasIngredientsRepository;

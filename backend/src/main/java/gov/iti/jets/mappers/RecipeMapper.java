@@ -1,10 +1,8 @@
 package gov.iti.jets.mappers;
 
-import gov.iti.jets.models.dtos.recipeposter.RecipeSetterDTO;
+import gov.iti.jets.models.dtos.request.RecipeSetterDTO;
 import gov.iti.jets.models.entities.Recipe;
 import org.springframework.stereotype.Component;
-
-import java.util.Date;
 
 @Component
 public class RecipeMapper {

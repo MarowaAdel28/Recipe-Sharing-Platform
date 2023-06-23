@@ -1,4 +1,4 @@
-package gov.iti.jets.models.dtos.recipeposter;
+package gov.iti.jets.models.dtos.request;
 
 import lombok.*;
 import java.io.Serializable;

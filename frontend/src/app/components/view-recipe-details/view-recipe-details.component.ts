@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {RecipeService} from "../../services/recipe/recipe.service";
 import {RecipeModel} from "../../models/recipe-model";
+import {ReviewService} from "../../services/review/review.service";
+import {ReviewModel} from "../../models/review-model";
 
 @Component({
   selector: 'app-view-recipe-details',
@@ -12,15 +14,18 @@ export class ViewRecipeDetailsComponent implements OnInit{
 
   recipeModel:RecipeModel = new RecipeModel();
   steps:string[]
-  constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService ) {
+  recipeId:number | null
+  isChecked:boolean
+  comments:ReviewModel[]
+  constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService , private _reviewService:ReviewService) {
   }
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(parms => {
-        let id = parms.get('id')
+         this.recipeId = parseInt(<string>parms.get('id'))
 
-      if (typeof id === "string") {
-        this.recipeService.getById(parseInt(id)).subscribe(
+
+        this.recipeService.getById(this.recipeId).subscribe(
           {
             next: response => {
               this.recipeModel = response
@@ -30,7 +35,34 @@ export class ViewRecipeDetailsComponent implements OnInit{
             }
           }
         )
-      }
+
     })
   }
+
+  postComment(comment:any):void{
+    let reviewModel = new ReviewModel()
+    reviewModel.comment = comment;
+    reviewModel.user = 9
+    reviewModel.recipeId = this.recipeId
+    console.log(JSON.stringify(reviewModel))
+    this._reviewService.post(reviewModel).subscribe(
+      response => {
+        alert("Success")
+      }
+    )
+  }
+
+  loadComment(){
+
+
+    if (this.isChecked) {
+      this._reviewService.getCommentsByRecipeId(this.recipeId).subscribe(
+        response => {
+          this.comments = response
+          console.log(this.comments)
+        }
+      )
+    }
+  }
+
 }

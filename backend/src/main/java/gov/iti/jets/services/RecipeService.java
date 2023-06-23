@@ -1,37 +1,23 @@
 package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RecipeDTO;
-import gov.iti.jets.models.dtos.RecipeResponseDTO;
+import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.TypeToken;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import gov.iti.jets.mappers.RecipeMapper;
-import gov.iti.jets.models.dtos.recipeposter.RecipeIngredientsDTO;
-import gov.iti.jets.models.dtos.recipeposter.RecipeSetterDTO;
+import gov.iti.jets.models.dtos.request.RecipeIngredientsDTO;
+import gov.iti.jets.models.dtos.request.RecipeSetterDTO;
 import gov.iti.jets.models.entities.*;
-import gov.iti.jets.repositories.CategoryRepository;
-import gov.iti.jets.repositories.RecipeRepository;
-import gov.iti.jets.repositories.UserRepository;
 import gov.iti.jets.util.Utility;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;

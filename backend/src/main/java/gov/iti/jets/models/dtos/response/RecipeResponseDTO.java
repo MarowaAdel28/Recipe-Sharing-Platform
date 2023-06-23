@@ -1,4 +1,4 @@
-package gov.iti.jets.models.dtos;
+package gov.iti.jets.models.dtos.response;
 
 
 import gov.iti.jets.models.dtos.RecipeDTO;

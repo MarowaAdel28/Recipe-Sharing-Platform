@@ -1,16 +1,12 @@
 package gov.iti.jets.services;
 
 import gov.iti.jets.mappers.IngredientsMapper;
-import gov.iti.jets.models.dtos.IngredientsDTO;
-import gov.iti.jets.models.dtos.recipeposter.RecipeIngredientsDTO;
+import gov.iti.jets.models.dtos.request.RecipeIngredientsDTO;
 import gov.iti.jets.models.entities.Ingredients;
 import gov.iti.jets.repositories.IngredientsRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 

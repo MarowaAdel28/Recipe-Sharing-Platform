@@ -18,7 +18,7 @@ export class ApiService {
     return this._http.get<any>(`http://localhost:8080/${url}/${id}`)
   }
 
-  post(url:string,body:any,headers:any){
+  post(url:string,body:any,headers?:any){
     return this._http.post<any>(`http://localhost:8080/${url}`,body,{headers})
   }
   put(url:string,body:any){

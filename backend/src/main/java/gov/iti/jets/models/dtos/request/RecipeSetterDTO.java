@@ -1,7 +1,8 @@
-package gov.iti.jets.models.dtos.recipeposter;
+package gov.iti.jets.models.dtos.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.iti.jets.annotations.CategoryValidator;
+import gov.iti.jets.models.dtos.request.RecipeIngredientsDTO;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
