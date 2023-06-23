@@ -39,4 +39,15 @@ export class ApiService {
   return this._http.get<any[]>(`http://localhost:8060/${url}`,options);
   }
 
+  findRecipesByName(url: string, params: {name: string; page: string; size: string;}) {
+
+  const httpParams = new HttpParams()
+    .set('keyword', params.name)
+    .set('pageSize', params.size)
+    .set('page', params.page);
+
+  const options = { params: httpParams };
+
+  return this._http.get<any[]>(`http://localhost:8060/${url}`,options);
+  }
 }

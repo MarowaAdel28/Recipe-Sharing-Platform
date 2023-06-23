@@ -10,5 +10,12 @@ export class HomeComponent {
   constructor(private router: Router) {}
 
   goToRecipes = '/all-recipes';
+ searchRecipesByName(name: string) {
+    // Implement the logic to search recipes by name
+    console.log('Search for recipes with name:', name);
+
+    // Navigate to the searchRecipesByName component with the name parameter
+    this.router.navigate(['/search-recipe'], { queryParams: { name: name } });
+  }
 
 }

@@ -63,10 +63,7 @@ public class RecipeController {
                                                                   @RequestParam(defaultValue = "9") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
-//    @GetMapping("/search")
-//    public List<RecipeDTO> searchRecipesByName(@RequestParam("keyword") String keyword) {
-//        return recipeService.searchRecipesByName(keyword);
-//    }
+
     @GetMapping("/findRecipesByName")
     public ResponseEntity<SearchResultDTO> searchRecipesByName(
             @RequestParam("keyword") String keyword,
@@ -77,8 +74,5 @@ public class RecipeController {
         PageRequest pageable = PageRequest.of(page, size);
         return recipeService.searchRecipesByName(keyword, pageable);
     }
-//    @GetMapping
-//    public Page<RecipeDTO> query(@Valid RecipeQueryVO recipeDto) {
-//        return recipeService.query(recipeDto);
-//    }
+
 }
