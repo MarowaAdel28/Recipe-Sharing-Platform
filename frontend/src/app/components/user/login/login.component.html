@@ -1,18 +1,11 @@
-
+<div class="image" >
 
 <div class="inner">
 
   <br>
-  <br>
-  <br>
-  <br>
-
   <div [formGroup]="loginForm">
     <!--      [formGroup]="registrationForm"-->
-
     <br>
-    <br>
-
     <br>
     <!-- <h3>Registration Form</h3>-->
 
@@ -20,19 +13,15 @@
 
 
       <div class="form-wrapper">
-        <label for="">Email:</label>
-        <div class="form-holder">
-          <!--            <i style="font-style: normal; font-size: 15px;">@</i>-->
-          <input [class.is-valid]="!loginForm.controls['email'].errors" formControlName="email" type="text" class="form-control">
-          <div *ngIf="loginForm.controls['email'].errors && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty )">
-            <small *ngIf="loginForm.controls['email'].errors?.['required']"  class="form-text text-danger">Email is Required</small>
-            <small *ngIf="loginForm.controls['email'].errors?.['pattern']" class="form-text text-danger">Invalid Email</small>
+        <span  style="color: black; font-size:15px">Email:</span>
 
-          </div>
+        <div class="form-holder">
+          <input [class.is-valid]="!loginForm.controls['email'].errors" formControlName="email" type="text" class="form-control">
 
           <br>
 
         </div>
+
       </div>
 
 
@@ -43,20 +32,14 @@
 
 
       <div class="form-wrapper">
-        <label for="">Password:</label>
+        <span  style=" color: black; font-size:15px">Password:</span>
         <div class="form-holder">
-          <!--            <i class="zmdi zmdi-lock-outline"></i>-->
           <input [class.is-valid]="!loginForm.controls['password'].errors" formControlName="password" type="password" class="form-control" placeholder="********">
-          <div *ngIf="loginForm.controls['password'].errors && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty )">
-            <small *ngIf="loginForm.controls['password'].errors?.['required']"  class="form-text text-danger">Password is Required</small>
-            <small *ngIf="loginForm.controls['password'].errors?.['minlength']" class="form-text text-danger">Minimum Length</small>
-            <small *ngIf="loginForm.controls['password'].errors?.['maxlength']" class="form-text text-danger">Maximum Length</small>
-          </div>
+
           <br>
           <br>
         </div>
       </div>
-
 
     </div>
 
@@ -67,7 +50,20 @@
 
       <button [disabled]="loginForm.invalid" (click)=" onSubmit()" type="button" class="btn btn-primary">login</button>
 
+      <!--
+         <div *ngIf="loginForm.controls['email'].errors && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty )">
+            <small *ngIf="loginForm.controls['email'].errors?.['required']"  class="form-text text-danger">Email is Required</small>
+            <small *ngIf="loginForm.controls['email'].errors?.['pattern']" class="form-text text-danger">Invalid Email</small>
+          </div>
+          -->
+
+      <!--          <div *ngIf="loginForm.controls['password'].errors && (loginForm.controls['password'].touched || loginForm.controls['password'].dirty )">-->
+      <!--            <small *ngIf="loginForm.controls['password'].errors?.['required']"  class="form-text text-danger">Password is Required</small>-->
+      <!--            <small *ngIf="loginForm.controls['password'].errors?.['minlength']" class="form-text text-danger">Minimum Length</small>-->
+      <!--            <small *ngIf="loginForm.controls['password'].errors?.['maxlength']" class="form-text text-danger">Maximum Length</small>-->
+      <!--          </div>-->
+
     </div>
   </div>
 </div>
-
+</div>
