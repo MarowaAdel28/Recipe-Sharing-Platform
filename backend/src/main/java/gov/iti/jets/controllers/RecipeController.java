@@ -62,6 +62,20 @@ public class RecipeController {
                                                                   @RequestParam(defaultValue = "9") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
+    @GetMapping("/search")
+    public List<RecipeDTO> searchRecipesByName(@RequestParam("keyword") String keyword) {
+        return recipeService.searchRecipesByName(keyword);
+    }
+//    @GetMapping("/findRecipesByName")
+//    public Page<RecipeDTO> searchRecipesByName(
+//            @RequestParam("keyword") String keyword,
+//            @RequestParam(value = "page", defaultValue = "0") int page,
+//            @RequestParam(value = "size", defaultValue = "9") int size
+//    )
+//    {
+//        PageRequest pageable = PageRequest.of(page, size);
+//        return recipeService.searchRecipesByName(keyword, pageable);
+//    }
 //    @GetMapping
 //    public Page<RecipeDTO> query(@Valid RecipeQueryVO recipeDto) {
 //        return recipeService.query(recipeDto);

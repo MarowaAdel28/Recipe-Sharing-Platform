@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
+import javax.persistence.Column;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -19,7 +20,6 @@ import java.util.List;
 public class RecipeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;
-
     private String name;
 
     private Integer cooksCount ;

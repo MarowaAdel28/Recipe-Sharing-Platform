@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -137,5 +138,12 @@ public class RecipeService {
     }
     private int getRecipesCount(){
         return (int)recipeRepository.count();
+    }
+
+    public List<RecipeDTO> searchRecipesByName(String keyword) {
+        List<Recipe> recipes = recipeRepository.findByNameContainingIgnoreCase(keyword);
+        return recipes.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 }
