@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { RecipeService } from "../../services/recipe/recipe.service";
 
 @Component({
@@ -7,30 +6,20 @@ import { RecipeService } from "../../services/recipe/recipe.service";
   templateUrl: './search-recipe.component.html',
   styleUrls: ['./search-recipe.component.css']
 })
-export class SearchRecipeComponent implements OnInit {
+export class SearchRecipeComponent {
   currentPage: number = 0;
-  name: string = '';
   pageSize: number = 9;
+  name: string = '';
   totalItems: number = 0;
   totalPages: number = 0;
   paginatedList: any[] = [];
   totalPagesArray: number[] = [];
 
-  constructor(
-    private route: ActivatedRoute,
-    private recipeService: RecipeService
-  ) {}
+  constructor(private recipeService: RecipeService) {}
 
-  ngOnInit() {
-    this.route.queryParams.subscribe(params => {
-      this.name = params['name'] || '';
-      this.searchRecipesByName();
-    });
-  }
-
-  searchRecipesByName() {
+  searchRecipesByName(recipeName: string) {
     const params = {
-      name: this.name,
+      name: recipeName,
       page: this.currentPage.toString(),
       size: this.pageSize.toString()
     };
@@ -46,23 +35,21 @@ export class SearchRecipeComponent implements OnInit {
   goToPage(pageNumber: number) {
     if (pageNumber >= 0 && pageNumber < this.totalPages) {
       this.currentPage = pageNumber;
-      this.searchRecipesByName();
+      this.searchRecipesByName(this.name);
     }
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.searchRecipesByName();
+      this.searchRecipesByName(this.name);
     }
   }
 
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.searchRecipesByName();
+      this.searchRecipesByName(this.name);
     }
   }
-
-  protected readonly requestIdleCallback = requestIdleCallback;
 }

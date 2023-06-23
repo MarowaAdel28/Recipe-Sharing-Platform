@@ -29,7 +29,7 @@ const routes: Routes = [
   {path:'all-recipes' , component:AllRecipesComponent},
   {path:'post-recipe' , component:PostRecipeComponent},
   {path:'profile' , component:ProfileComponent},
-  {path:'search-recipe' , component:ProfileComponent},
+  {path:'search-recipe' , component:SearchRecipeComponent},
   {path: 'profile/edit' , component:EditingPofileComponent},
   {path: 'profile/user-recipes',component:UserRecipesComponent},
   {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
