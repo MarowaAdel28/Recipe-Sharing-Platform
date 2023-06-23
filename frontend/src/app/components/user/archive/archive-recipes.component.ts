@@ -1,16 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {RecipeModel} from "../../../models/recipe-model";
-import {RecipeService} from "../../../services/recipe/recipe.service";
-import {HttpClient} from "@angular/common/http";
+import { Component } from '@angular/core';
 import {UserRecipeService} from "../../../services/user-recipe/user-recipe.service";
 import {NotificationService} from "../../../services/notifications/notification.service";
 
 @Component({
-  selector: 'app-all-recipes',
-  templateUrl: './user-recipes.component.html',
-  styleUrls: ['./user-recipes.component.css']
+  selector: 'app-archive-recipes',
+  templateUrl: './archive-recipes.component.html',
+  styleUrls: ['./archive-recipes.component.css']
 })
-export class UserRecipesComponent implements OnInit{
+export class ArchiveRecipesComponent {
+
   currentPage: number = 0;
   pageSize: number = 9;
   totalItems: number = 0;
@@ -25,13 +23,13 @@ export class UserRecipesComponent implements OnInit{
     this.getPaginatedData();
   }
 
-  deleteRecipe(id:number){
+  restoreRecipe(id:number){
     console.log("delete recipe")
-    this.userRecipeService.updateRecipeDeletion(id,{isDeleted:true}).subscribe(response=>{
-      this.notificationService.showNotification("Recipe Deleted Successfully")
+    this.userRecipeService.updateRecipeDeletion(id,{isDeleted:false}).subscribe(response=>{
+      this.notificationService.showNotification("Restore Successfully")
       this.getPaginatedData();
     }, error => {
-     this.notificationService.showErrorNotification("Failed to delete recipe")
+      this.notificationService.showErrorNotification("Failed to restore recipe")
     })
   }
 
@@ -41,7 +39,7 @@ export class UserRecipesComponent implements OnInit{
       size: this.pageSize.toString()
     };
 
-    this.userRecipeService.getPaginationUserRecipes(1,params).subscribe((response: any) => {
+    this.userRecipeService.getPaginationUserRecipesArchive(1,params).subscribe((response: any) => {
       this.paginatedList = response.data;
       this.totalItems = response.totalItems;
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);

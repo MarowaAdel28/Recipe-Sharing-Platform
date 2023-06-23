@@ -15,4 +15,15 @@ export class UserService {
     }
     return this._apiService.post("user",JSON.stringify(userData),headers)
   }
+
+  put(userData:any){
+    const headers = {
+      "Content-Type": "application/json",
+    }
+    return this._apiService.put("user",JSON.stringify(userData),headers)
+  }
+
+  getUserById(id:number) {
+    return this._apiService.getById("user",id);
+  }
 }

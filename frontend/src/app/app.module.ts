@@ -26,6 +26,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { ArchiveRecipesComponent } from './components/user/archive/archive-recipes.component';
 
 
 
@@ -51,7 +52,8 @@ import { LoginComponent } from './components/user/login/login.component';
     ProfileComponent,
     UserRecipesComponent,
     UserFavoriteRecipesComponent,
-    EditingPofileComponent
+    EditingPofileComponent,
+    ArchiveRecipesComponent
   ],
   imports: [
     BrowserModule,

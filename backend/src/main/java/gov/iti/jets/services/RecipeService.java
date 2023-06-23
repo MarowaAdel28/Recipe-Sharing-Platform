@@ -2,6 +2,8 @@ package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.models.dtos.RecipeResponseDTO;
+import gov.iti.jets.models.dtos.profile.UserRecipeDTO;
+import gov.iti.jets.models.dtos.profile.UserRecipeResponseDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.modelmapper.ModelMapper;
@@ -74,8 +76,8 @@ public class RecipeService {
         return recipe.getId();
     }
 
-    public void delete(Integer id) {
-        recipeRepository.deleteById(id);
+    public void delete(Integer id,boolean isDeleted) {
+        recipeRepository.updateRecipeDeletion(isDeleted,id);
     }
 
     public void update(RecipeDTO recipeDto) {
@@ -135,6 +137,42 @@ public class RecipeService {
         recipeResponseDTO.setTotalItems(getRecipesCount());
         return ResponseEntity.ok(recipeResponseDTO);
     }
+    public ResponseEntity<UserRecipeResponseDTO> getAllRecipesForUser(int userId, int page, int pageSize) {
+        User user = userService.getReference(userId);
+        Pageable pageable = PageRequest.of(page, pageSize);
+        UserRecipeResponseDTO recipeResponseDTO = new UserRecipeResponseDTO();
+        recipeResponseDTO.setData(recipeRepository.findAllByUserIdAndIsDeletedFalse(user, pageable).stream()
+                .map(this::toUserRecipeDTO)
+                .collect(Collectors.toList()));
+        recipeResponseDTO.setTotalItems(getRecipesCountForUser(userId));
+        return ResponseEntity.ok(recipeResponseDTO);
+    }
+
+    public ResponseEntity<UserRecipeResponseDTO> getAllArchiveRecipesForUser(int userId, int page, int pageSize) {
+        User user = userService.getReference(userId);
+        Pageable pageable = PageRequest.of(page, pageSize);
+        UserRecipeResponseDTO recipeResponseDTO = new UserRecipeResponseDTO();
+        recipeResponseDTO.setData(recipeRepository.findAllByUserIdAndIsDeletedTrue(user, pageable).stream()
+                .map(this::toUserRecipeDTO)
+                .collect(Collectors.toList()));
+        recipeResponseDTO.setTotalItems(getArchiveRecipesCountForUser(userId));
+        return ResponseEntity.ok(recipeResponseDTO);
+    }
+
+    private UserRecipeDTO toUserRecipeDTO(Recipe recipe) {
+        return modelMapper.map(recipe,UserRecipeDTO.class);
+    }
+
+    private long getRecipesCountForUser(int userId) {
+        User user = userService.getReference(userId);
+        return recipeRepository.findAllByUserIdAndIsDeletedFalse(user).size();
+    }
+
+    private long getArchiveRecipesCountForUser(int userId) {
+        User user = userService.getReference(userId);
+        return recipeRepository.findAllByUserIdAndIsDeletedTrue(user).size();
+    }
+
     private int getRecipesCount(){
         return (int)recipeRepository.count();
     }

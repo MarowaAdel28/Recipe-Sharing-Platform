@@ -14,6 +14,7 @@ import {ProfileComponent} from "./components/user/profile/profile.component";
 import {EditingPofileComponent} from "./components/user/editing-pofile/editing-pofile.component";
 import {UserRecipesComponent} from "./components/user/user-recipes/user-recipes.component";
 import {UserFavoriteRecipesComponent} from "./components/user/user-favorite-recipes/user-favorite-recipes.component";
+import {ArchiveRecipesComponent} from "./components/user/archive/archive-recipes.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'profile/edit' , component:EditingPofileComponent},
   {path: 'profile/user-recipes',component:UserRecipesComponent},
   {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
+  {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent},
   {path:'**',component:HomeComponent},
 ];
 

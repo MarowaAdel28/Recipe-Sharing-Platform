@@ -1,5 +1,7 @@
-<div class="container">
+<body style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/img/profile-icons/background.jpg) no-repeat center center/cover; padding-top: 0px;">
 
+<div class="container card">
+  <h2 style="text-align: center; color:green">Recipe Form</h2>
   <form [formGroup]="recipeForm" >
 <!--    (ngSubmit)="submitForm()">-->
     <div class="form-group">
@@ -52,7 +54,7 @@
             <small *ngIf="ingredient.get('ingredientQuantity')?.hasError('notallowed') && ingredient.get('ingredientQuantity')?.touched"
                    class="form-text text-danger">invalid ingredient quantity</small>
 
-            <button mat-fab color="warn" (click)="removeIngredient(i)" class="remove-button small-button">
+            <button mat-fab  (click)="removeIngredient(i)" class="remove-button small-button bg-danger">
               <mat-icon class="small-icon">clear</mat-icon>
             </button>
           </div>
@@ -82,7 +84,7 @@
             <small *ngIf="step.get('stepDescription')?.hasError('notallowed') && step.get('stepDescription')?.touched"
                    class="form-text text-danger">invalid step</small>
 
-            <button mat-fab color="warn" (click)="removeStep(i)" class="small-button">
+            <button mat-fab color="warn" (click)="removeStep(i)" class="small-button bg-danger">
               <mat-icon class="small-icon">clear</mat-icon>
             </button>
             <!-- <button type="button" (click)="removeStep(i)">Remove</button> -->

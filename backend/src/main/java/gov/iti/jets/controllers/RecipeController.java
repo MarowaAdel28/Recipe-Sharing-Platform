@@ -36,8 +36,8 @@ public class RecipeController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
-        recipeService.delete(id);
+    public void delete(@Valid @NotNull @PathVariable("id") Integer id,@RequestParam boolean isDeleted) {
+        recipeService.delete(id,isDeleted);
     }
 
 //    @PutMapping
@@ -59,7 +59,7 @@ public class RecipeController {
     }
     @GetMapping("/getRecipesByPageNo")
     public ResponseEntity<RecipeResponseDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
-                                                                  @RequestParam(defaultValue = "10") int size) {
+                                                                  @RequestParam(defaultValue = "9") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
 //    @GetMapping
