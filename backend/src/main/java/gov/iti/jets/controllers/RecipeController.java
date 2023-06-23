@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8060")
 @Validated
 @RestController
 @RequestMapping("/recipe")
@@ -59,7 +59,7 @@ public class RecipeController {
     }
     @GetMapping("/getRecipesByPageNo")
     public ResponseEntity<RecipeResponseDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
-                                                                  @RequestParam(defaultValue = "10") int size) {
+                                                                  @RequestParam(defaultValue = "6") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
 //    @GetMapping

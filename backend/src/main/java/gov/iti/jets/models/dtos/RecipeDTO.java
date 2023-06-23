@@ -22,7 +22,7 @@ public class RecipeDTO implements Serializable {
 
     private String name;
 
-    private Integer cooksCount;
+    private Integer cooksCount ;
 
     private String steps;
 
