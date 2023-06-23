@@ -53,7 +53,7 @@ import { SearchRecipeComponent } from './components/search-recipe/search-recipe.
     UserRecipesComponent,
     UserFavoriteRecipesComponent,
     EditingPofileComponent,
-    SearchRecipeComponent
+    SearchRecipeComponent,
   ],
   imports: [
     BrowserModule,

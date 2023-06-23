@@ -1,30 +1,34 @@
-import {Component, OnInit} from '@angular/core';
-import {RecipeModel} from "../../models/recipe-model";
-import {RecipeService} from "../../services/recipe/recipe.service";
-import {HttpClient} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RecipeService } from "../../services/recipe/recipe.service";
 
 @Component({
   selector: 'app-search-recipe',
   templateUrl: './search-recipe.component.html',
   styleUrls: ['./search-recipe.component.css']
 })
-export class SearchRecipeComponent implements OnInit{
+export class SearchRecipeComponent implements OnInit {
   currentPage: number = 0;
-  name = '';
+  name: string = '';
   pageSize: number = 9;
   totalItems: number = 0;
   totalPages: number = 0;
   paginatedList: any[] = [];
   totalPagesArray: number[] = [];
 
-
-  constructor(private recipeService: RecipeService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private recipeService: RecipeService
+  ) {}
 
   ngOnInit() {
-    this.searchRecipesByName(this.name);
+    this.route.queryParams.subscribe(params => {
+      this.name = params['name'] || '';
+      this.searchRecipesByName();
+    });
   }
 
-  searchRecipesByName(name: string) {
+  searchRecipesByName() {
     const params = {
       name: this.name,
       page: this.currentPage.toString(),
@@ -42,24 +46,23 @@ export class SearchRecipeComponent implements OnInit{
   goToPage(pageNumber: number) {
     if (pageNumber >= 0 && pageNumber < this.totalPages) {
       this.currentPage = pageNumber;
-      this.searchRecipesByName(this.name);
+      this.searchRecipesByName();
     }
   }
 
   nextPage() {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.searchRecipesByName(this.name);
+      this.searchRecipesByName();
     }
   }
 
   previousPage() {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.searchRecipesByName(this.name);
+      this.searchRecipesByName();
     }
   }
-
 
   protected readonly requestIdleCallback = requestIdleCallback;
 }
