@@ -10,11 +10,13 @@ import java.util.List;
 
 import gov.iti.jets.configs.UserListener;
 import jakarta.persistence.*;
+//import lombok.Builder;
 
 /**
  *
  * @author dell
  */
+//@Builder // added
 @EntityListeners(UserListener.class)
 @Entity
 @Table(name = "user")
