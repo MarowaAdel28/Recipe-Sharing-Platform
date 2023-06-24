@@ -50,7 +50,7 @@ public class ReviewService {
 
     public List<ReviewResponseDTO> getReviewsByRecipeId(Integer recipeDto){
         Recipe recipe = recipeRepository.findById(recipeDto).get();
-        List<Review> recipes = reviewRepository.findReviewByRecipeIdOrderByDateDesc(recipe);
+        List<Review> recipes = reviewRepository.retreiveReviewsByRecipeId(recipe);
         return recipes.stream()
                 .map((element) -> mapper.map(element, ReviewResponseDTO.class))
                 .collect(Collectors.toList());

@@ -157,14 +157,11 @@
           </div>
         </div>
 
-        <div class="col-12 col-md-4">
-          <div class="receipe-ratings text-right my-5">
+        <div class="col-8 col-md-2 rating-card"  >
+          <div class="receipe-ratings text-left-bottom my-1">
+            <h4>Rating</h4>
             <div class="ratings">
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star" aria-hidden="true"></i>
-              <i class="fa fa-star-o" aria-hidden="true"></i>
+              <app-rating (change)="onRateChange($event)"/>
             </div>
 
           </div>
@@ -172,7 +169,7 @@
       </div>
 
       <div class="row">
-        <div class="col-12 col-lg-8">
+        <div class="col-12 col-lg-8 text-left">
           <!-- Single Preparation Step -->
           <div class="single-preparation-step d-flex" *ngFor="let item of steps;let currentIndex=index;">
             <h4>0{{currentIndex + 1}}.</h4>
@@ -195,7 +192,7 @@
           </div>
         </div>
       </div>
-    <app-rating [rate]="3"></app-rating>
+<!--    <app-rating [rate]="3"></app-rating>-->
       <div class="row">
         <div class="col-12 col-lg-4">
           <div class="card-body p-2 d-flex align-items-xl-center">

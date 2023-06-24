@@ -1,0 +1,7 @@
+<ng-container *ngFor="let item of stars">
+  <i
+    [class]="'fa fa-star ' + (rate >= item ? '' : 'fa-star-o')"
+    aria-hidden="true"
+    (click)="setRate(item)"
+  ></i>
+</ng-container>

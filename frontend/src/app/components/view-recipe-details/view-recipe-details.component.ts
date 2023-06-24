@@ -54,6 +54,11 @@ export class ViewRecipeDetailsComponent implements OnInit{
     )
   }
 
+  onRateChange(rate:number){
+    this.recipeRate = rate;
+    console.log(this.recipeRate)
+  }
+
   loadComment(){
 
 

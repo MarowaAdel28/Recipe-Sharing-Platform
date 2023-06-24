@@ -19,4 +19,6 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
     List<Review> retreiveReviewsByRecipeId(@Param("recipeId") Recipe recipeId);
 
     List<Review> findReviewByRecipeIdOrderByDateDesc(Recipe recipeId);
+
+    Review updateByRecipeId(Recipe recipeId);
 }
