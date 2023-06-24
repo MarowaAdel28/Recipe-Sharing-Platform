@@ -1,4 +1,6 @@
+// @ts-ignore
 import { TestBed } from '@angular/core/testing';
+// @ts-ignore
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 

@@ -1,0 +1,154 @@
+/*.profile-body {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  height: 100vh;*/
+/*}*/
+
+/*.content-body {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  margin-bottom: 20px;*/
+/*}*/
+
+/*.left-section {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*}*/
+
+/*.right-section {*/
+/*  margin-left: 20px;*/
+/*}*/
+
+/*.profile-picture {*/
+/*  width: 100px;*/
+/*  height: 100px;*/
+/*  border-radius: 50%;*/
+/*  object-fit: cover;*/
+/*}*/
+
+/*.name {*/
+/*  font-size: 18px;*/
+/*  font-weight: bold;*/
+/*  margin-left: 10px;*/
+/*}*/
+
+/*.recipe-body {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*}*/
+
+/*.recipe {*/
+/*  display: flex;*/
+/*  flex-direction: column;*/
+/*  align-items: center;*/
+/*  margin: 0 10px;*/
+/*}*/
+
+/*.recipe-picture {*/
+/*  width: 100px;*/
+/*  height: 100px;*/
+/*  border-radius: 50%;*/
+/*  object-fit: cover;*/
+/*}*/
+
+/*.recipe-name {*/
+/*  font-size: 16px;*/
+/*  margin-top: 5px;*/
+/*}*/
+
+/*.container-wrapper {*/
+/*  display: flex;*/
+/*}*/
+
+.container-rectangle  {
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*align-items: center;*/
+  /*text-align: center;*/
+  /*margin-right: 20px; !* Adjust the spacing between containers *!*/
+  margin-left: 5%;
+  padding-left: 5%;
+}
+
+.image {
+  width: 40px;
+  height: 100px;
+  /*object-fit: cover;*/
+  /*border-radius: 50%;*/
+  margin-bottom: 10px;
+}
+
+/*.title {*/
+/*  font-size: 18px;*/
+/*  font-weight: bold;*/
+/*}*/
+
+.gradient-custom-2 {
+    /* fallback for old browsers */
+    background: #fbc2eb;
+
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+    }
+
+    .card {
+        display: flex;
+        align-items: center;
+      }
+
+      .card .rounded-top {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .card .ms-4 {
+        width: 150px;
+      }
+
+      .card img {
+        width: 150px;
+        z-index: 1;
+      }
+
+      .card .ms-3 {
+        flex-grow: 1;
+        margin-left: 1rem;
+        margin-top: auto;
+      }
+
+      .card .card-body{
+
+        margin-top: 20px;
+      }
+.rectangle {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  /*border: 2px solid gray; !* Adjust border color and thickness as needed *!*/
+  border-radius: 4px; /* Adjust border radius for rounded corners */
+  margin:auto;
+  margin-left: 5px;
+
+  flex-direction: column;
+
+  text-align: center;
+}
+
+.icon {
+  font-size: 16px; /* Adjust the icon size */
+  margin-right: 10px; /* Adjust spacing between icon and title */
+}
+
+.title {
+  font-size: 18px; /* Adjust the title font size */
+}
+
+.title-wrapper {
+  margin-top: 10px; /* Adjust the spacing between the image and the title */
+}

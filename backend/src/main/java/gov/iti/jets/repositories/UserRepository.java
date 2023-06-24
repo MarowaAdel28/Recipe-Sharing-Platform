@@ -9,7 +9,10 @@ import jakarta.transaction.Transactional;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
 
 import java.util.List;
 
@@ -25,4 +28,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     List<UserStatDTO> getUsers(PageRequest pageRequest);
 
 
+
+    Optional<User> findByEmail(String email);
 }

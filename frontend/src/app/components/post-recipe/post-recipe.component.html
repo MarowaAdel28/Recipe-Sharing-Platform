@@ -1,0 +1,113 @@
+<div class="container">
+
+  <form [formGroup]="recipeForm" >
+<!--    (ngSubmit)="submitForm()">-->
+    <div class="form-group">
+      <label for="recipeName">Recipe Name:</label>
+      <input type="text" id="recipeName" class="form-control" formControlName="recipeName" placeholder="Enter Recipe Name">
+      <small *ngIf="recipeForm.controls['recipeName'].touched && recipeForm.controls['recipeName'].errors?.['required']"
+             class="form-text text-danger">
+        Recipe Name is required.
+      </small>
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select id="category" class="form-control" formControlName="category" >
+        <option *ngFor="let category of categoryModel" [value]=category.id>{{ category.name }}</option>
+      </select>
+      <small *ngIf="recipeForm.controls['category'].touched && recipeForm.controls['category'].errors?.['required']"
+             class="form-text text-danger">
+        Category is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <label for="ingredients" >Ingredients:
+          <button mat-fab color="accent" (click)="addIngredient()" class="small-button" >
+            <mat-icon class="small-icon" >add</mat-icon>
+          </button>
+        </label>
+      </div>
+      <div formArrayName="ingredients">
+        <div *ngFor="let ingredient of ingredientControls.controls; let i = index" [formGroupName]="i" class="ingredient-row">
+          <div class="ingredient-row-content">
+            <input type="text" class="form-control" formControlName="ingredientName" placeholder="Enter Ingredient Name" class="recipe-input-text"
+                   [ngClass]="{ 'is-invalid': ingredient.get('ingredientName')?.errors && ingredient.get('ingredientName')?.touched,
+                    'notallowed': ingredient.get('ingredientName')?.errors && ingredient.get('ingredientName')?.touched }">
+
+            <small *ngIf="ingredient.get('ingredientName')?.hasError('required') && ingredient.get('ingredientName')?.touched"
+                   class="form-text text-danger">Required ingredient name</small>
+
+            <small *ngIf="ingredient.get('ingredientName')?.hasError('notallowed') && ingredient.get('ingredientName')?.touched"
+                   class="form-text text-danger">invalid ingredient name</small>
+
+            <input type="text" class="form-control" formControlName="ingredientQuantity" placeholder="Enter Ingredient Quantity" class="recipe-input-text"
+                   [ngClass]="{ 'is-invalid': ingredient.get('ingredientQuantity')?.errors && ingredient.get('ingredientQuantity')?.touched,
+                    'notallowed': ingredient.get('ingredientQuantity')?.errors && ingredient.get('ingredientQuantity')?.touched }">
+
+            <small *ngIf="ingredient.get('ingredientQuantity')?.hasError('required') && ingredient.get('ingredientQuantity')?.touched"
+                   class="form-text text-danger">Required quantity</small>
+
+            <small *ngIf="ingredient.get('ingredientQuantity')?.hasError('notallowed') && ingredient.get('ingredientQuantity')?.touched"
+                   class="form-text text-danger">invalid ingredient quantity</small>
+
+            <button mat-fab color="warn" (click)="removeIngredient(i)" class="remove-button small-button">
+              <mat-icon class="small-icon">clear</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div>
+        <label for="steps">Steps:
+          <button mat-fab color="accent" (click)="addStep()" class="small-button">
+            <mat-icon class="small-icon">add</mat-icon>
+          </button>
+        </label>
+      </div>
+      <div formArrayName="steps">
+        <div *ngFor="let step of stepControls.controls; let i = index" [formGroupName]="i" class="ingredient-row">
+          <div class="ingredient-row-content">
+            <input type="text" class="form-control" formControlName="stepDescription" placeholder="Enter step No: {{ i+1 }}"
+                   [ngClass]="{ 'is-invalid': step.get('stepDescription')?.errors && step.get('stepDescription')?.touched,
+                        'notallowed': step.get('stepDescription')?.errors && step.get('stepDescription')?.touched}"
+                   class="recipe-input-text">
+
+            <small *ngIf="step.get('stepDescription')?.hasError('required') && step.get('stepDescription')?.touched"
+                   class="form-text text-danger">Step is required</small>
+
+            <small *ngIf="step.get('stepDescription')?.hasError('notallowed') && step.get('stepDescription')?.touched"
+                   class="form-text text-danger">invalid step</small>
+
+            <button mat-fab color="warn" (click)="removeStep(i)" class="small-button">
+              <mat-icon class="small-icon">clear</mat-icon>
+            </button>
+            <!-- <button type="button" (click)="removeStep(i)">Remove</button> -->
+          </div>
+        </div>
+      </div>
+      <!-- <button type="button" (click)="addStep()">Add Step</button> -->
+    </div>
+
+    <div class="form-group">
+      <label for="preparingTime">Preparing Time:</label>
+      <input type="text" id="preparingTime" class="form-control" formControlName="preparingTime" placeholder="Enter Preparing Time">
+      <small *ngIf="recipeForm.controls['preparingTime'].touched && recipeForm.controls['preparingTime'].errors?.['required']" class="form-text text-danger">
+        Preparing Time is required.
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="numberOfPersons">Number of Persons:</label>
+      <input type="number" id="numberOfPersons" class="form-control" formControlName="numberOfPersons" placeholder="Enter Number Of Persons">
+      <small *ngIf="recipeForm.controls['numberOfPersons'].touched && recipeForm.controls['numberOfPersons'].errors?.['required']" class="form-text text-danger">
+        Number of Persons is required.
+      </small>
+    </div>
+    <button type="submit" (click)="submitForm()" >Submit</button>
+
+  </form>
+</div>

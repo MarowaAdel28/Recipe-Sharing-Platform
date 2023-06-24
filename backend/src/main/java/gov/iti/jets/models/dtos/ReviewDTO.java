@@ -19,7 +19,7 @@ public class ReviewDTO implements Serializable {
 
     private LocalDateTime date;
 
-    private RecipeDTO recipeId;
+//    private RecipeDTO recipeId;
   
     private UserDTO userId;
 

@@ -1,0 +1,152 @@
+<div class="image"  >
+
+<div class="inner">
+<!--  style="opacity: 0.9;"-->
+  <div [formGroup]="registrationForm"  >
+<!--    style="margin-top: 8%;"-->
+      <div class="form-group">
+
+        <div class="form-wrapper">
+          <span  style="color: black; font-size:15px">Username:</span>
+          <br><br>
+          <div class="form-holder">
+<!--            <i class="zmdi zmdi-account-o"></i>-->
+
+            <input [class.is-valid]="!registrationForm.controls['username'].errors" id="userName" formControlName="username" type="text" class="form-control" placeholder="Enter Your Name" style="">
+
+            <div *ngIf="registrationForm.controls['username'].errors && (registrationForm.controls['username'].touched || registrationForm.controls['username'].dirty )">
+              <small *ngIf="registrationForm.controls['username'].errors?.['required']"  class="form-text text-danger">
+                <span style="color: red;font-size:10px">User Name is Required</span>
+              </small>
+              <small *ngIf="registrationForm.controls['username'].errors?.['minlength']" class="form-text text-danger">
+                <span style="color: red;font-size:10px">Minimum Length</span>
+              </small>
+              <small *ngIf="registrationForm.controls['username'].errors?.['maxlength']" class="form-text text-danger">
+                <span style="color: red; font-size:10px">Maximum Length</span>
+              </small>
+            </div>
+          </div>
+        </div>
+        <div class="form-wrapper">
+          <span  style="color: black; font-size:15px">Email:</span>
+          <br><br>
+          <div class="form-holder">
+<!--            <i style="font-style: normal; font-size: 15px;">@</i>-->
+            <input [class.is-valid]="!registrationForm.controls['email'].errors" formControlName="email" type="text" class="form-control">
+            <div *ngIf="registrationForm.controls['email'].errors && (registrationForm.controls['email'].touched || registrationForm.controls['email'].dirty )">
+              <small *ngIf="registrationForm.controls['email'].errors?.['required']"  class="form-text text-danger">
+                <span style="color: red; font-size:10px">Email is Required</span>
+              </small>
+              <small *ngIf="registrationForm.controls['email'].errors?.['pattern']" class="form-text text-danger">
+                <span style="color: red;font-size:10px">Invalid Email</span>
+              </small>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+      <div class="form-group">
+
+
+        <div class="form-wrapper">
+          <span  style=" color: black; font-size:15px">Password:</span>
+          <br><br>
+          <div class="form-holder">
+<!--            <i class="zmdi zmdi-lock-outline"></i>-->
+            <input [class.is-valid]="!registrationForm.controls['password'].errors" formControlName="password" type="password" class="form-control" placeholder="********">
+            <div *ngIf="registrationForm.controls['password'].errors && (registrationForm.controls['password'].touched || registrationForm.controls['password'].dirty )">
+              <small *ngIf="registrationForm.controls['password'].errors?.['required']"  class="form-text text-danger">
+                <span style="color: red; font-size:10px">Password is Required</span>
+              </small>
+              <small *ngIf="registrationForm.controls['password'].errors?.['minlength']" class="form-text text-danger">
+                <span style="color: red;font-size:10px">Minimum Length</span>
+              </small>
+              <small *ngIf="registrationForm.controls['password'].errors?.['maxlength']" class="form-text text-danger">
+                <span style="color: red; font-size:10px">Maximum Length</span>
+              </small>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-wrapper">
+          <span  style=" color: black; font-size:15px">Repeat Password:</span>
+          <br><br>
+          <div class="form-holder">
+            <!--            <i class="zmdi zmdi-lock-outline"></i>-->
+            <input formControlName="repeatPassword" type="password" class="form-control" placeholder="********" >
+            <div *ngIf="registrationForm.controls['repeatPassword'].errors && (registrationForm.controls['repeatPassword'].touched || registrationForm.controls['repeatPassword'].dirty )">
+              <small *ngIf="registrationForm.controls['repeatPassword'].errors?.['required']"  class="form-text text-danger">
+                <span style="color: red;font-size:10px ">Repeat password is required.</span>
+              </small>
+            </div>
+            <small *ngIf="registrationForm.controls['repeatPassword'].hasError('passwordMismatch')" class="form-text text-danger">
+              <span style="color: red;font-size:10px ">Passwords do not match.</span>
+            </small>
+
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="form-group">
+
+
+        <div class="form-wrapper">
+          <span  style=" color: black; font-size:15px  " >Age:</span>
+          <br><br>
+          <div class="form-holder">
+            <input [class.is-valid]="!registrationForm.controls['age'].errors" formControlName="age" type="number" class="form-control">
+            <div *ngIf="registrationForm.controls['age'].errors && (registrationForm.controls['age'].touched || registrationForm.controls['age'].dirty )">
+              <small *ngIf="registrationForm.controls['age'].errors?.['required']"  class="form-text text-danger">
+                 <span style="color: red;font-size:10px ">Age is Required</span>
+              </small>
+              <small *ngIf="registrationForm.controls['age'].errors?.['pattern']" class="form-text text-danger">
+                <span style="color: red;font-size:10px ">Invalid Age only accept digits (0-9).</span>
+              </small>
+
+            </div>
+
+<!--            <i class="zmdi zmdi-pin"></i>-->
+          </div>
+        </div>
+
+
+        <div class="form-wrapper">
+          <span  style=" color: black; font-size:15px  " >Gender:</span> <!--formControlName="gender"-->
+          <br><br>
+          <div class="form-holder select">
+            <select formControlName="gender" name="" id="" class="form-control">
+              <option  value="m">Male</option>
+              <option value="f">Female</option>
+            </select>
+            <div *ngIf="registrationForm.controls['gender'].errors && (registrationForm.controls['gender'].touched || registrationForm.controls['gender'].dirty )">
+              <small *ngIf="registrationForm.controls['gender'].errors?.['required']"  class="form-text text-danger">
+                <span style="color: red;font-size:10px">Gender is Required </span>
+              </small>
+<!--              <small *ngIf="registrationForm.controls['age'].errors?.['pattern']" class="form-text text-danger">Invalid Age only accept digits (0-9).</small>-->
+            </div>
+<!--            <i class="zmdi zmdi-face"></i>-->
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="form-end">
+
+
+
+          <button [disabled]="registrationForm.invalid" (click)=" register()" type="button" class="btn btn-primary">Register Now</button>
+
+      </div>
+  </div>
+
+
+  </div>
+</div>
+
