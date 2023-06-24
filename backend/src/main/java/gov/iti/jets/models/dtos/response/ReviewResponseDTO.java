@@ -19,8 +19,6 @@ public class ReviewResponseDTO implements Serializable {
 
     private String comment;
 
-    private Integer rate;
-
     @JsonFormat(pattern="MMMM dd, yyyy")
     private Date date;
 

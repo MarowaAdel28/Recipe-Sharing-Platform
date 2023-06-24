@@ -113,7 +113,8 @@ public class User implements Serializable, UserDetails {
     private List<FavoriteRecipe> favoriteRecipeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Review> reviewList;
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Rate> rateList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Recipe> recipeList;
 
