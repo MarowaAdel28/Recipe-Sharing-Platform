@@ -5,6 +5,7 @@ import {RecipeModel} from "../../models/recipe-model";
 import {ReviewService} from "../../service/review/review.service";
 import {ReviewModelRequest} from "../../models/review-model-request";
 import {ReviewModelResponse} from "../../models/review-model-response";
+import {HttpParams} from "@angular/common/http";
 
 @Component({
   selector: 'app-view-recipe-details',
@@ -52,7 +53,17 @@ export class ViewRecipeDetailsComponent implements OnInit{
 
   onRateChange(rate:number){
     this.recipeRate = rate;
+    const httpParams = {
+      'recipeId': this.recipeId,
+      'userId': 2,
+      'rate': this.recipeRate
+    };
     console.log(this.recipeRate)
+    this._reviewService.postRate(httpParams).subscribe((response:any)=>{
+      console.log("rate done")
+    },(error:any)=>{
+      console.log("faild to rate")
+    })
   }
 
   loadComment(){

@@ -30,6 +30,7 @@
           </div>
           <h3>{{recipe.name}}</h3>
           <span style="font-size: medium">{{recipe.category.name}}</span>
+          <app-app-rate [rate]="getRate(recipe.rateList)"></app-app-rate>
           <span>
           <p style="font-size: large;display: inline-block;" [ngStyle]="getStatusColorStyle(recipe.status)">
             {{ recipe.status }}
@@ -79,6 +80,10 @@
           </button>
   </span>
         </div>
+      </div>
+
+      <div class="text-center" *ngIf="paginatedList.length === 0">
+        <p>No recipes available</p>
       </div>
 
 

@@ -30,6 +30,7 @@
           </div>
           <h3>{{recipe.name}}</h3>
           <span>{{recipe.category.name}}</span>
+          <app-app-rate [rate]="getRate(recipe.rateList)"></app-app-rate>
           <button type="button" (click)="restoreRecipe(recipe.id)" class="btn btn-outline-success">Restore</button>
 <!--          <p>Status: {{recipe.status}}</p>-->
           <!--          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-square-text-fill" viewBox="0 0 16 16">-->
@@ -58,11 +59,14 @@
 
     </div>
   </div>
+      <div class="text-center" *ngIf="paginatedList.length === 0">
+        <p>No recipes available</p>
+      </div>
 </div>
 <!-- /recepie_area_start  -->
 
-<div class="pagination">
-  <button (click)="previousPage()" [disabled]="currentPage == 0">Previous</button>
+<div class="pagination" *ngIf="paginatedList.length >1">
+  <button (click)="previousPage()" [disabled]="currentPage == 0" >Previous</button>
   <button *ngFor="let page of totalPagesArray" (click)="goToPage(page)" [class.active]="currentPage === page">{{ page+1 }}</button>
   <button (click)="nextPage()" [disabled]="currentPage === totalPages-1">Next</button>
 </div>

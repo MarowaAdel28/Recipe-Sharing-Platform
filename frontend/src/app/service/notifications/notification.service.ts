@@ -26,7 +26,14 @@ export class NotificationService {
     });
   }
 
-
+  showInfo(message:string) {
+    Swal.fire({
+      icon: 'info',
+      title: 'message from admin',
+      text: message,
+      confirmButtonText: 'OK'
+    });
+  }
 
   // showNotification(): void {
   //   const horizontalPosition: MatSnackBarHorizontalPosition = 'center';

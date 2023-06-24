@@ -17,6 +17,7 @@ export class DishAreaComponent {
   ngOnInit() {
     this.categoryService.getTop3().subscribe((categories) => {
         this.categories = categories;
+        console.log(categories)
       },
       (error) => {
         console.error('Failed to load categories', error);

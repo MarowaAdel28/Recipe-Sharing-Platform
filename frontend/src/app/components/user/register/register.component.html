@@ -13,16 +13,16 @@
           <div class="form-holder">
 <!--            <i class="zmdi zmdi-account-o"></i>-->
 
-            <input [class.is-valid]="!registrationForm.controls['username'].errors" id="userName" formControlName="username" type="text" class="form-control" placeholder="Enter Your Name" style="">
+            <input [class.is-valid]="!registrationForm.controls['userName'].errors" id="userName" formControlName="userName" type="text" class="form-control" placeholder="Enter Your Name" style="">
 
-            <div *ngIf="registrationForm.controls['username'].errors && (registrationForm.controls['username'].touched || registrationForm.controls['username'].dirty )">
-              <small *ngIf="registrationForm.controls['username'].errors?.['required']"  class="form-text text-danger">
+            <div *ngIf="registrationForm.controls['userName'].errors && (registrationForm.controls['userName'].touched || registrationForm.controls['userName'].dirty )">
+              <small *ngIf="registrationForm.controls['userName'].errors?.['required']"  class="form-text text-danger">
                 <span style="color: red;font-size:10px">User Name is Required</span>
               </small>
-              <small *ngIf="registrationForm.controls['username'].errors?.['minlength']" class="form-text text-danger">
+              <small *ngIf="registrationForm.controls['userName'].errors?.['minlength']" class="form-text text-danger">
                 <span style="color: red;font-size:10px">Minimum Length</span>
               </small>
-              <small *ngIf="registrationForm.controls['username'].errors?.['maxlength']" class="form-text text-danger">
+              <small *ngIf="registrationForm.controls['userName'].errors?.['maxlength']" class="form-text text-danger">
                 <span style="color: red; font-size:10px">Maximum Length</span>
               </small>
             </div>

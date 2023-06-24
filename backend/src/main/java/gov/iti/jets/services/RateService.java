@@ -28,12 +28,12 @@ public class RateService {
 
     ModelMapper mapper = new ModelMapper();
 
-    public void addRate(Integer userId, Integer recipeId, int rating) {
+    public void addRate(RateDto rateDto) {
         System.out.println("rating service add");
-        RatePK ratePK = new RatePK(userId,recipeId);
-        Rate rate = new Rate(ratePK,rating);
-        rate.setRecipe(recipeRepository.getReferenceById(recipeId));
-        rate.setUser(userRepository.getReferenceById(userId));
+        RatePK ratePK = new RatePK(rateDto.getUserId(),rateDto.getRecipeId());
+        Rate rate = new Rate(ratePK,rateDto.getRate());
+        rate.setRecipe(recipeRepository.getReferenceById(rateDto.getRecipeId()));
+        rate.setUser(userRepository.getReferenceById(rateDto.getUserId()));
         rateRepository.save(rate);
     }
 

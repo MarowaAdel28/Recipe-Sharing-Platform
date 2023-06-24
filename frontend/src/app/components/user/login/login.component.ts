@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {NotificationService} from "../../../service/notifications/notification.service";
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private notificationService:NotificationService) {
   }
 
   ngOnInit() {
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       alert(JSON.stringify(this.loginForm.value))
+
     }
   }
 

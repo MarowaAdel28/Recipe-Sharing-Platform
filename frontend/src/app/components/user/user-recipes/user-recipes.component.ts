@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserRecipeService} from "../../../service/user-recipe/user-recipe.service";
 import {NotificationService} from "../../../service/notifications/notification.service";
+import {ReviewService} from "../../../service/review/review.service";
+import {RateModel} from "../../../models/rate-model";
 
 @Component({
   selector: 'app-all-recipes',
@@ -16,15 +18,18 @@ export class UserRecipesComponent implements OnInit{
   totalPagesArray: number[] = [];
 
 
-  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService) {}
+  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService, private reviewService:ReviewService ) {}
 
   ngOnInit() {
     this.getPaginatedData();
   }
 
+
+
   getRejectionMessage(id:number) {
     this.userRecipeService.getRejectedRecipe(id).subscribe(response => {
-      alert(response.message)
+      // alert(response.message)
+      this.notificationService.showInfo(response.message)
     }, error => {
       this.notificationService.showErrorNotification("Oops! something is wrong")
     })
@@ -106,4 +111,11 @@ export class UserRecipesComponent implements OnInit{
       this.getPaginatedData();
     }
   }
+
+  getRate(rateList: RateModel[]):number {
+    return this.reviewService.getRate(rateList)
+  }
+
+
+
 }

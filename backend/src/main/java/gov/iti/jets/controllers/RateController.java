@@ -20,14 +20,12 @@ public class RateController {
     RateService rateService;
 
     @PostMapping
-    public void post(@RequestParam int userId,
-                     @RequestParam int recipeId,
-                     @RequestParam(defaultValue = "0") int rating) {
+    public void post(@Valid @RequestBody RateDto rateDto) {
         System.out.println("rate controller post");
-        System.out.println("userId = " + userId);
-        System.out.println("recipeId = " + recipeId);
-        System.out.println("rating = " + rating);
-        rateService.addRate(userId,recipeId,rating);
+        System.out.println("userId = " + rateDto.getUserId());
+        System.out.println("recipeId = " + rateDto.getRecipeId());
+        System.out.println("rating = " + rateDto.getRate());
+        rateService.addRate(rateDto);
     }
 
     @GetMapping

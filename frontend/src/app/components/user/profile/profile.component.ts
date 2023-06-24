@@ -56,8 +56,8 @@ export class ProfileComponent implements OnInit{
     }
   fetchData(){
     this.userService.getUserById(5).subscribe((response:any) => {
-        // console.log(response); // Do whatever you want with the data
-        this.user=new UserProfile(response.username,response.age,response.email,response.gender);
+        console.log(response); // Do whatever you want with the data
+        this.user=new UserProfile(response.userName,response.age,response.email,response.gender);
         console.log(this.user)
         this.userForm.patchValue({
           userName: this.user.userName,

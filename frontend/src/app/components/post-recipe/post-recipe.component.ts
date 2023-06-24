@@ -36,7 +36,7 @@ export class PostRecipeComponent implements OnInit {
   }
   notAllowedSpecialCharacters(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};:"\\|<>\/?]/;
+      const specialCharactersRegex = /[\\/]/;
 
       if (specialCharactersRegex.test(control.value)) {
         return { notallowed: true }; // Validation failed
@@ -97,8 +97,8 @@ export class PostRecipeComponent implements OnInit {
   createIngredient(): FormGroup {
     console.log("create ingredient")
     return this.formBuilder.group({
-      ingredientName: ['', [Validators.required,this.notAllowedSpecialCharacters()]],
-      ingredientQuantity:['', [Validators.required,this.notAllowedSpecialCharacters()]]
+      ingredientName: ['', [Validators.required]],
+      ingredientQuantity:['', [Validators.required]]
     });
   }
 
