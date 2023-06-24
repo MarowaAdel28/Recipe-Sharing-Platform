@@ -17,6 +17,7 @@ export class AllRecipesComponent implements OnInit {
   totalPagesArray: number[] = [];
   categories: CategoryModel[];
   name: string = '';
+  categoryId: string = '';
 
 
   constructor(private recipeService: RecipeService, private categoryService: CategoryService) {}
@@ -72,14 +73,15 @@ export class AllRecipesComponent implements OnInit {
       }
     );
   }
-  searchRecipesByName(recipeName: string) {
+  findRecipesByNameAndCategory(recipeName: string, recipeCategoryId: string) {
     const params = {
       name: recipeName,
+      categoryId: recipeCategoryId,
       page: this.currentPage.toString(),
       size: this.pageSize.toString()
     };
 
-    this.recipeService.findRecipesByName(params).subscribe((response: any) => {
+    this.recipeService.findRecipesByNameAndCategory(params).subscribe((response: any) => {
       this.paginatedList = response.data;
       this.totalItems = response.totalItems;
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);
