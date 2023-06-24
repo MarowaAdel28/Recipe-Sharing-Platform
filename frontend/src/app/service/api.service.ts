@@ -18,8 +18,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
 
-  private baseDashboardUrl = 'http://127.0.0.1:8080/dashboard/'
-  private baseAdminRecipeUrl = 'http://127.0.0.1:8080/adminRecipe/'
+  private baseDashboardUrl = 'http://127.0.0.1:8282/dashboard/'
+  private baseAdminRecipeUrl = 'http://127.0.0.1:8282/adminRecipe/'
 
 
 
@@ -123,27 +123,27 @@ export class ApiService {
 
 
   getAll(url:string){
-    return this.http.get<any[]>(`http://localhost:8080/${url}`)
+    return this.http.get<any[]>(`http://localhost:8282/${url}`)
   }
   getTop3(url:string){
-    return this.http.get<any[]>(`http://localhost:8080/${url}/top3`)
+    return this.http.get<any[]>(`http://localhost:8282/${url}/top3`)
   }
   getById(url:string,id:number){
-    return this.http.get<any>(`http://localhost:8080/${url}/${id}`)
+    return this.http.get<any>(`http://localhost:8282/${url}/${id}`)
   }
 
   post(url:string,body:any,headers:any){
-    return this.http.post<any>(`http://localhost:8080/${url}`,body,{headers})
+    return this.http.post<any>(`http://localhost:8282/${url}`,body,{headers})
   }
   put(url:string,body:any){
-    return this.http.put<any>(`http://localhost:8080/${url}`,body)
+    return this.http.put<any>(`http://localhost:8282/${url}`,body)
   }
 
   put_header(url:string,body:any,headers:any){
-    return this.http.put<any>(`http://localhost:8080/${url}`,body,{headers})
+    return this.http.put<any>(`http://localhost:8282/${url}`,body,{headers})
   }
   delete(url:string,id:number){
-    return this.http.delete<any>(`http://localhost:8080/${url}/${id}`)
+    return this.http.delete<any>(`http://localhost:8282/${url}/${id}`)
   }
 
   softDelete(url:string,id:number,params: {isDeleted:boolean}){
@@ -151,7 +151,7 @@ export class ApiService {
       .set('isDeleted', params.isDeleted);
 
     const options = { params: httpParams };
-    return this.http.delete<any>(`http://localhost:8080/${url}/${id}`,options)
+    return this.http.delete<any>(`http://localhost:8282/${url}/${id}`,options)
   }
 
   getPaginationRecipes(url: string, params: {page: string; size: string;}) {
@@ -162,7 +162,7 @@ export class ApiService {
 
   const options = { params: httpParams };
 
-  return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
+  return this.http.get<any[]>(`http://localhost:8282/${url}`,options);
   }
   getPaginationUserRecipes(url: string,id:number, params: {page: string; size: string;}) {
 
@@ -172,7 +172,7 @@ export class ApiService {
 
     const options = { params: httpParams };
 
-    return this.http.get<any[]>(`http://localhost:8080/${url}/${id}`,options);
+    return this.http.get<any[]>(`http://localhost:8282/${url}/${id}`,options);
   }
 
   findRecipesByNameAndCategory(url: string, params: {name: string; categoryId: string; page: string; size: string;}) {
@@ -185,7 +185,7 @@ export class ApiService {
 
     const options = { params: httpParams };
 
-    return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
+    return this.http.get<any[]>(`http://localhost:8282/${url}`,options);
   }
 
 }
