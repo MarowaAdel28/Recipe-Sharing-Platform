@@ -35,9 +35,10 @@ public class FavoriteRecipeController {
         favoriteRecipeService.update(favoriteRecipeDto);
     }
 
-    @GetMapping("/{id}")
-    public FavoriteRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
-        return favoriteRecipeService.getById(id);
+    @GetMapping("/getByIds")
+    public FavouriteResponseDTO getById(@Valid @RequestBody FavouriteResponseDTO favoriteRecipeDTO) {
+        System.out.println("favoriteRecipeDTO = " + favoriteRecipeDTO);
+        return favoriteRecipeService.getById(favoriteRecipeDTO);
     }
 
     @PostMapping("/deletefav")

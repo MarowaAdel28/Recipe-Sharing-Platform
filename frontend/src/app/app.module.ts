@@ -27,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RatingComponent } from './components/shared/rating/rating.component';
+import { FavouriteRecipeComponent } from './components/favourite-recipe/favourite-recipe.component';
 
 
 
@@ -53,7 +54,8 @@ import { RatingComponent } from './components/shared/rating/rating.component';
     UserRecipesComponent,
     UserFavoriteRecipesComponent,
     EditingPofileComponent,
-    RatingComponent
+    RatingComponent,
+    FavouriteRecipeComponent
   ],
   imports: [
     ReactiveFormsModule,

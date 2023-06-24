@@ -14,4 +14,6 @@ public interface FavoriteRecipeRepository extends JpaRepository<FavoriteRecipe, 
     @Modifying
     @Transactional
     void deleteFavoriteRecipeByRecipeIdAndUserId(Recipe recipeId, User userId);
+
+    FavoriteRecipe findDistinctByRecipeIdAndUserId(Recipe recipeId, User userId);
 }

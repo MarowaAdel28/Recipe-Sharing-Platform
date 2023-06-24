@@ -26,7 +26,6 @@ public class RecipeSetterDTO implements Serializable {
     private String recipeName;
 
     @NotNull
-    @JsonIgnore
     private List<String> steps;
     @NotNull
     private List<RecipeIngredientsDTO> ingredients;

@@ -4,12 +4,10 @@ import gov.iti.jets.models.dtos.FavoriteRecipeDTO;
 import gov.iti.jets.models.dtos.request.FavouriteSetterDTO;
 import gov.iti.jets.models.dtos.response.FavouriteResponseDTO;
 import gov.iti.jets.models.entities.FavoriteRecipe;
-import gov.iti.jets.models.entities.Review;
 import gov.iti.jets.repositories.FavoriteRecipeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
@@ -41,16 +39,15 @@ public class FavoriteRecipeService {
         favoriteRecipeRepository.save(favoriteRecipe);
     }
 
-    public FavoriteRecipeDTO getById(Integer id) {
-        FavoriteRecipe original = requireOne(id);
-        return toDTO(original);
+    public FavouriteResponseDTO getById(FavouriteResponseDTO favoriteRecipeDTO) {
+        FavoriteRecipe favoriteRecipe = mapper.map(favoriteRecipeDTO , FavoriteRecipe.class);
+        favoriteRecipeRepository.findDistinctByRecipeIdAndUserId(favoriteRecipe.getRecipeId(),favoriteRecipe.getUserId());
+        return toDTO(favoriteRecipe);
     }
 
 
-    private FavoriteRecipeDTO toDTO(FavoriteRecipe original) {
-        FavoriteRecipeDTO bean = new FavoriteRecipeDTO();
-        BeanUtils.copyProperties(original, bean);
-        return bean;
+    private FavouriteResponseDTO toDTO(FavoriteRecipe original) {
+        return mapper.map(original,FavouriteResponseDTO.class);
     }
 
     private FavoriteRecipe requireOne(Integer id) {

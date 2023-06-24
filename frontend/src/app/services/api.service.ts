@@ -18,6 +18,10 @@ export class ApiService {
     return this._http.get<any>(`http://localhost:8080/${url}/${id}`)
   }
 
+  getByTwoIds(url:string , body:any){
+    return this._http.get<any>(`http://localhost:8080/${url}`,body)
+  }
+
   post(url:string,body:any,headers?:any){
     return this._http.post<any>(`http://localhost:8080/${url}`,body,{headers})
   }

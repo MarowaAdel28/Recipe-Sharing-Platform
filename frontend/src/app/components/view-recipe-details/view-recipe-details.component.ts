@@ -18,6 +18,7 @@ import {UserModel} from "../../models/user-model";
 export class ViewRecipeDetailsComponent implements OnInit{
 
   recipeModel:RecipeModel = new RecipeModel();
+  favouritModel:FavouriteResponseModel
   steps:string[]
   recipeId:number | null
   isChecked:boolean
@@ -28,6 +29,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
               ,private recipeService: RecipeService
               ,private _reviewService:ReviewService
               ,private _favouriteService:FavouriteService) {
+
   }
 
   ngOnInit(): void {
@@ -41,12 +43,28 @@ export class ViewRecipeDetailsComponent implements OnInit{
               this.recipeModel = response
               this.steps = this.recipeModel.steps.split("/");
               this.steps.splice(this.steps.length-1,1)
-              console.log(this.steps)
+              let user = new UserModel(9)
+              this.favouritModel = new FavouriteResponseModel(this.recipeModel,user)
+              console.log(this.favouritModel)
+              this.loadFavStatus()
             }
           }
         )
-
     })
+  }
+
+  loadFavStatus(){
+    this._favouriteService.findByRecipeAndUserIds(this.favouritModel).subscribe(
+      {
+        next:response => {
+          console.log(response)
+          this.isFav = response != null;
+          console.log(this.isFav)
+        }
+
+      },
+
+    )
   }
 
   postComment(comment:any):void{

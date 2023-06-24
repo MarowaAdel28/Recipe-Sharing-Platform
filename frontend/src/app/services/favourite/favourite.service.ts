@@ -20,6 +20,10 @@ export class FavouriteService {
     return this._apiService.post(url, body,  headers );
   }
 
+  findByRecipeAndUserIds(favouriteModel:FavouriteResponseModel){
+    return this._apiService.getByTwoIds('favoriteRecipe/getByIds',favouriteModel)
+  }
+
   delete(favouriteModel:FavouriteResponseModel){
     return this._apiService.deleteFromFavourite(`favoriteRecipe/deletefav`,favouriteModel)
   }
