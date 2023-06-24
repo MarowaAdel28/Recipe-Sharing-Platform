@@ -1,6 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import{FormGroup,FormControl } from '@angular/forms';
-import { ApiService } from 'src/app/Services/api.service';
+import { ApiService } from 'src/app/service/api.service';
 import { Chart } from 'chart.js/auto';
 
 @Component({

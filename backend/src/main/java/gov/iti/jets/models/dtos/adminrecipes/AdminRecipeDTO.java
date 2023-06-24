@@ -16,7 +16,7 @@ public interface AdminRecipeDTO extends Serializable {
     Integer getId();
     @JsonProperty("user")
     User getUserId();
-    String getName();
+    String getRecipeName();
     String getSteps();
     @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     LocalDateTime getDate();
@@ -39,7 +39,7 @@ public interface AdminRecipeDTO extends Serializable {
     }
 
     interface User {
-        String getUsername();
+        String getUserName();
     }
 
     interface RejectedRecipe {

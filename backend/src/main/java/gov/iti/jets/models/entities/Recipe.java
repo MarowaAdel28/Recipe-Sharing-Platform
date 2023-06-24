@@ -105,26 +105,19 @@ public class Recipe implements Serializable {
         this.id = id;
     }
 
-    public Recipe(Integer id, String name, String steps, Date date, String preparingTime, int persons) {
+    public Recipe(Integer id, String recipeName, String steps, Date date, String preparingTime, int persons) {
         this.id = id;
         this.steps = steps;
         this.date = date;
         this.preparingTime = preparingTime;
         this.persons = persons;
-        this.name = name;
+        this.recipeName = recipeName;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public void setId(Integer id) {
         this.id = id;

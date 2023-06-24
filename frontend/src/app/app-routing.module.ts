@@ -20,8 +20,8 @@ import {UserFavoriteRecipesComponent} from "./components/user/user-favorite-reci
 
 const routes: Routes = [
   {path: 'dashboard', component:DashboardSchemaComponent},
-  {path: 'usersStats', component:UsersListComponent},
-  {path: 'recipesStats', component:RecipesListComponent},
+  {path: 'usersStat', component:UsersListComponent},
+  {path: 'recipesStat', component:RecipesListComponent},
 
   {path:'home',component:HomeComponent},
   {path:'register',component:RegisterComponent},

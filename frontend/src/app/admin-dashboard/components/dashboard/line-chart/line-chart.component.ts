@@ -1,7 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js/auto'
-import { ApiService } from 'src/app/Services/api.service';
+import { ApiService } from 'src/app/service/api.service';
 import { subMonths , addMonths} from 'date-fns';
 
 @Component({

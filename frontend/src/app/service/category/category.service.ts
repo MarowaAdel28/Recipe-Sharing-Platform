@@ -7,7 +7,7 @@ import {CategoryModel} from "../../models/category-model";
 })
 export class CategoryService {
 
-  constructor(private _apiService:ApiService) { }
+  constructor(private _apiService: ApiService) { }
 
   getAll(){
     return this._apiService.getAll("category")

@@ -1,5 +1,10 @@
-import { NgModule } from '@angular/core';
+import {ErrorHandler,NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { TokenInterceptorService } from './service/token-interceptor.service';
+import { AuthService } from './service/auth.service';
+import { GlobalErrorHandlerService } from './service/global-error-handler.service';
+import { GlobalHttpInterceptorService } from './service/global-http-interceptor.service';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +35,7 @@ import { LineChartComponent } from './admin-dashboard/components/dashboard/line-
 import { CardComponent } from './admin-dashboard/components/dashboard/card/card.component';
 import { MiniCardComponent } from './admin-dashboard/components/dashboard/mini-card/mini-card.component';
 import { PieChartComponent } from './admin-dashboard/components/dashboard/pie-chart/pie-chart.component';
-import { HeaderComponent } from './admin-dashboard/components/header/header.component';
+import {AdminHeaderComponent } from './admin-dashboard/components/header/admin-header.component';
 import { UsersListComponent } from './admin-dashboard/components/users-list/users-list.component';
 import { RecipesListComponent } from './admin-dashboard/components/recipes-list/recipes-list.component';
 import {MatExpansionModule} from '@angular/material/expansion';
@@ -49,7 +54,7 @@ import {AllRecipesComponent} from "./components/all-recipes/all-recipes.componen
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
-import {HttpClientModule} from "@angular/common/http";
+import {HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { UserRecipesComponent } from './components/user/user-recipes/user-recipes.component';
 import { UserFavoriteRecipesComponent } from './components/user/user-favorite-recipes/user-favorite-recipes.component';
@@ -59,6 +64,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { ApiService } from './service/api.service';
 
 
 
@@ -73,7 +79,7 @@ import { LoginComponent } from './components/user/login/login.component';
     CardComponent,
     MiniCardComponent,
     PieChartComponent,
-    HeaderComponent,
+    AdminHeaderComponent,
     UsersListComponent,
     RecipesListComponent,
     StepsPipe,
@@ -95,7 +101,7 @@ import { LoginComponent } from './components/user/login/login.component';
     ProfileComponent,
     UserRecipesComponent,
     UserFavoriteRecipesComponent,
-    EditingPofileComponent
+    EditingPofileComponent,
   ],
   imports: [
     MatExpansionModule,
@@ -138,7 +144,12 @@ import { LoginComponent } from './components/user/login/login.component';
     MatSnackBarModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [AuthService,ApiService,
+
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+    { provide: ErrorHandler, useClass: GlobalErrorHandlerService }],
+
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

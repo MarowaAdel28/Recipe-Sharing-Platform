@@ -18,7 +18,7 @@
                     </thead>
                     <tbody id="users-tbody">
                         <tr *ngFor="let user of users; let currentIndex=index">
-                            <td>{{user.username}}</td>
+                            <td>{{user.userName}}</td>
                             <td>{{user.email}}</td>
                             <td>{{user.createTime}}</td>
                             <td>{{user.age}}</td>
@@ -38,7 +38,7 @@
                                         <div style="max-height:100px; overflow-y:scroll;">
                                             <tbody>
                                                 <tr *ngFor="let recipe of user.recipeList">
-                                                    <a mat-button>{{recipe.name}}</a>
+                                                    <a mat-button>{{recipe.recipeName}}</a>
                                                     <!-- <td hidden>{{recipe.id}}</td> -->
                                                 </tr>
                                             </tbody>

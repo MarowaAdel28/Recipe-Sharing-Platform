@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserStatDTO extends Serializable {
     Integer getId();
-    String getUsername();
+    String getUserName();
     String getEmail();
     @JsonFormat(pattern="dd/MM/yyyy hh:mm")
     LocalDateTime getCreateTime();
@@ -17,7 +17,7 @@ public interface UserStatDTO extends Serializable {
     String getGender();
     List<RecipeDTO> getRecipeList();
     interface RecipeDTO{
-        String getName();
+        String getRecipeName();
         Integer getId();
     }
 

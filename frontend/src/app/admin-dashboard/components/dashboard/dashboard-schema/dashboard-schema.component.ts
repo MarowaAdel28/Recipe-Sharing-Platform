@@ -2,7 +2,7 @@ import { summaryData } from './../../summary';
 import { Component, DoBootstrap } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
-import { ApiService } from 'src/app/Services/api.service';
+import { ApiService } from 'src/app/service/api.service';
 
 
 @Component({

@@ -4,8 +4,7 @@ package gov.iti.jets.models.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.modelmapper.internal.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
 
 import java.io.Serializable;
@@ -24,13 +23,12 @@ public class RecipeDTO implements Serializable {
     private String recipeName;
     private Integer id;
 
-    private String name;
+    // private String name;
 
     private Integer cooksCount;
 
     private String steps;
 
-    private String recipeName;
 
     private String status;
 

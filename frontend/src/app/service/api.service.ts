@@ -1,22 +1,27 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import {HttpClient, HttpParams, HttpHeaders} from "@angular/common/http";
+
 
 const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-  }),
-};
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
+  
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  constructor(private http: HttpClient) { }
+  
+
   private baseDashboardUrl = 'http://127.0.0.1:8080/dashboard/'
   private baseAdminRecipeUrl = 'http://127.0.0.1:8080/adminRecipe/'
 
-
-  constructor(private http: HttpClient) { }
+ 
 
   rejectRecipe(recipeId:number, message:string) {
     return this.http.patch(`${this.baseAdminRecipeUrl+"rejectRecipe?recipeId="+recipeId+"&message="+message}`, {});
@@ -113,6 +118,39 @@ export class ApiService {
       .then((data) => {
         return data;
       });
+  }
+
+
+
+  getAll(url:string){
+    return this.http.get<any[]>(`http://localhost:8080/${url}`)
+  }
+  getTop3(url:string){
+    return this.http.get<any[]>(`http://localhost:8080/${url}/top3`)
+  }
+  getById(url:string,id:number){
+    return this.http.get<any>(`http://localhost:8080/${url}/${id}`)
+  }
+
+  post(url:string,body:any,headers:any){
+    return this.http.post<any>(`http://localhost:8080/${url}`,body,{headers})
+  }
+  put(url:string,body:any){
+    return this.http.put<any>(`http://localhost:8080/${url}`,body)
+  }
+  delete(url:string,id:number){
+    return this.http.delete<any>(`http://localhost:8080/${url}/${id}`)
+  }
+
+  getPaginationRecipes(url: string, params: {page: string; size: string;}) {
+
+  const httpParams = new HttpParams()
+    .set('pageSize', params.size)
+    .set('page', params.page);
+
+  const options = { params: httpParams };
+
+  return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
   }
 
 }

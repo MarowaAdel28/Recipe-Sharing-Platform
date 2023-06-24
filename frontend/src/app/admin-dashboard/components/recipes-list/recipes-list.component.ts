@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { ApiService } from 'src/app/Services/api.service';
+import { ApiService } from 'src/app/service/api.service';
 import Swal from 'sweetalert2';
 
 

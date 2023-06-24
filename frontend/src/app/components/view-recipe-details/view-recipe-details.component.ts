@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {RecipeService} from "../../services/recipe/recipe.service";
+import {RecipeService} from "../../service/recipe/recipe.service";
 import {RecipeModel} from "../../models/recipe-model";
 
 @Component({
@@ -12,7 +12,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
 
   recipeModel:RecipeModel = new RecipeModel();
   steps:string[]
-  constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService ) {
+  constructor(private _activatedRoute:ActivatedRoute, private recipeService: RecipeService ) {
   }
 
   ngOnInit(): void {

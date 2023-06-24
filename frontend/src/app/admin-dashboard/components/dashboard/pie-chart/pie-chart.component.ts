@@ -1,6 +1,6 @@
 import { Component, OnInit,ViewChild} from '@angular/core';
 import {Chart} from 'chart.js'
-import { ApiService } from 'src/app/Services/api.service';
+import { ApiService } from 'src/app/service/api.service';
 
 @Component({
   selector: 'app-pie-chart',
