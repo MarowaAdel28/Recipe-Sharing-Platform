@@ -19,4 +19,8 @@ export class UserRecipeService {
   updateRecipeDeletion(id:number,params: { isDeleted:boolean; }) {
     return this._apiService.softDelete("recipe",id,params)
   }
+
+  getRejectedRecipe(id:number) {
+    return this._apiService.getById("rejectedRecipe",id);
+  }
 }

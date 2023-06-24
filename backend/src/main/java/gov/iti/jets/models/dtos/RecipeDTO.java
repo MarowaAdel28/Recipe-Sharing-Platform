@@ -26,7 +26,7 @@ public class RecipeDTO implements Serializable {
 
     private String steps;
 
-    private String recipeName;
+//    private String recipeName;
 
     private String status;
 
@@ -38,19 +38,17 @@ public class RecipeDTO implements Serializable {
 
     private Integer persons;
 
-    private List<ImageDTO> imageList;
+//    private List<ImageDTO> imageList;
 
-    @JsonIgnore
-    private List<FavoriteRecipeDTO> favoriteRecipeList;
-
-    private List<ReviewDTO> reviewList;
+//    @JsonIgnore
+//    private List<FavoriteRecipeDTO> favoriteRecipeList;
+//
+//    private List<ReviewDTO> reviewList;
 
     private CategoryDTO category;
 
     private UserDTO userId;
 
     private List<RecipeHasIngredientsDTO> recipeHasIngredientsList;
-
-
-
+//    private List<IngredientsDTO> IngredientsList;
 }

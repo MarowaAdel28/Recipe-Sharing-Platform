@@ -25,6 +25,44 @@ export class UserRecipesComponent implements OnInit{
     this.getPaginatedData();
   }
 
+  getRejectionMessage(id:number) {
+    this.userRecipeService.getRejectedRecipe(id).subscribe(response => {
+      alert(response.message)
+    }, error => {
+      this.notificationService.showErrorNotification("Oops! something is wrong")
+    })
+  }
+
+  getStatusColorStyle(status: string): object {
+    let color: string;
+
+    if (status === 'waiting') {
+      color = '#4682B4';
+    } else if (status === 'accepted') {
+      color = 'green';
+    } else if (status === 'rejected') {
+      color = 'red';
+    } else {
+      color = ''; // Default color if none of the conditions match
+    }
+
+    return { 'color': color };
+  }
+
+  // getStatusColorClass(status: string): string {
+  //   if (status === 'waiting') {
+  //     console.log('waiting')
+  //     return 'status-yellow';
+  //   } else if (status === 'accepted') {
+  //     return 'status-green';
+  //   } else if (status === 'rejected') {
+  //     return 'status-red';
+  //   } else {
+  //     return ''; // Default class if none of the conditions match
+  //   }
+  // }
+
+
   deleteRecipe(id:number){
     console.log("delete recipe")
     this.userRecipeService.updateRecipeDeletion(id,{isDeleted:true}).subscribe(response=>{

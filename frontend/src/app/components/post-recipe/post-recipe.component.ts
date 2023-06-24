@@ -3,9 +3,6 @@ import {FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractCont
 import {CategoryService} from '../../services/category/category.service';
 import {CategoryModel} from '../../models/category-model';
 import {RecipeService} from "../../services/recipe/recipe.service";
-import { MatSnackBar,MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
 import {NotificationService} from "../../services/notifications/notification.service";
 
 interface Step {
@@ -21,8 +18,6 @@ export class PostRecipeComponent implements OnInit {
   recipeForm!: FormGroup;
 
   categoryModel: CategoryModel[];
-
-  specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
   constructor(private formBuilder: FormBuilder, private categoryService:CategoryService,
               private recipeService:RecipeService, private notificationService:NotificationService) { }

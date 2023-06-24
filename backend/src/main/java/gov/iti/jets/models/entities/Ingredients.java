@@ -96,7 +96,7 @@ public class Ingredients implements Serializable {
 
     @Override
     public String toString() {
-        return "gov.iti.jets.models.entities.Ingredients[ id=" + id + " ]";
+        return "gov.iti.jets.models.entities.Ingredients[ id= " + id + "name= "+name+ " ]";
     }
     
 }

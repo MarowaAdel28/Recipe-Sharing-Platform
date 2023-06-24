@@ -1,6 +1,8 @@
 package gov.iti.jets.services;
 
+import gov.iti.jets.models.dtos.IngredientsDTO;
 import gov.iti.jets.models.dtos.RecipeDTO;
+import gov.iti.jets.models.dtos.RecipeHasIngredientsDTO;
 import gov.iti.jets.models.dtos.RecipeResponseDTO;
 import gov.iti.jets.models.dtos.profile.UserRecipeDTO;
 import gov.iti.jets.models.dtos.profile.UserRecipeResponseDTO;
@@ -87,12 +89,27 @@ public class RecipeService {
 
     public RecipeDTO getById(Integer id) {
         Recipe original = requireOne(id);
-        System.out.println("original = " + original);
-        System.out.println("toDTO(original).getDate() = " + toDTO(original));
-        return toDTO(original);
+//        System.out.println("original = " + original);
+        RecipeDTO recipeDTO = toDTO(original);
+//        System.out.println("toDTO(original) " + recipeDTO);
+        recipeDTO.setRecipeHasIngredientsList(getRecipeHasIngredientList(original));
+//        recipeDTO.getRecipeHasIngredientsList().stream().map(r->RecipeHasIngredients::getIngredientList).toList();
+        return recipeDTO;
     }
 
-
+    private List<RecipeHasIngredientsDTO> getRecipeHasIngredientList(Recipe recipe) {
+        List<RecipeHasIngredientsDTO> recipeHasIngredientsDTOS = new ArrayList<>();
+        List<RecipeHasIngredients> recipeHasIngredientsList = recipe.getRecipeHasIngredientsList();
+        recipeHasIngredientsList.forEach(recipeHasIngredients-> {
+            RecipeHasIngredientsDTO recipeIngredientsDTO = modelMapper.map(recipeHasIngredients,RecipeHasIngredientsDTO.class);
+            Ingredients ingredients = recipeHasIngredients.getIngredients();
+            IngredientsDTO ingredientsDTO = modelMapper.map(ingredients, IngredientsDTO.class);
+            ingredientsDTO.setName(ingredients.getName());
+            recipeIngredientsDTO.setIngredientsId(ingredientsDTO);
+            recipeHasIngredientsDTOS.add(recipeIngredientsDTO);
+        });
+        return recipeHasIngredientsDTOS;
+    }
     private RecipeDTO toDTO(Recipe recipe) {
         return modelMapper.map(recipe,RecipeDTO.class);
     }

@@ -14,6 +14,6 @@ public class RejectedRecipeDTO implements Serializable {
     
     private String message;
 
-    private RecipeDTO recipe;
+//    private RecipeDTO recipe;
 
 }
