@@ -20,5 +20,5 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findReviewByRecipeIdOrderByDateDesc(Recipe recipeId);
 
-    Review updateByRecipeId(Recipe recipeId);
+//    Review updateByRecipeId(Recipe recipeId);
 }

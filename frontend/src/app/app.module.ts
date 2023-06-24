@@ -60,6 +60,7 @@ import { RatingComponent } from './components/shared/rating/rating.component';
     FormsModule,
     BrowserAnimationsModule,
     MatIconModule,
+    AppRoutingModule,
     HttpClientModule,
     MatSnackBarModule,
     MatDialogModule,

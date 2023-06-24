@@ -2,7 +2,7 @@ package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
-import gov.iti.jets.models.dtos.RecipeResponseDTO;
+import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
 import gov.iti.jets.models.dtos.SearchResultDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;

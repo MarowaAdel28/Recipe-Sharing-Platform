@@ -49,7 +49,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
     console.log(JSON.stringify(reviewModel))
     this._reviewService.post(reviewModel).subscribe(
       response => {
-        alert("Success")
+        this.loadComment()
       }
     )
   }
