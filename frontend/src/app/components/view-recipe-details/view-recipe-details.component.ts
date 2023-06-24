@@ -5,6 +5,10 @@ import {RecipeModel} from "../../models/recipe-model";
 import {ReviewService} from "../../services/review/review.service";
 import {ReviewModelRequest} from "../../models/review-model-request";
 import {ReviewModelResponse} from "../../models/review-model-response";
+import {FavouriteService} from "../../services/favourite/favourite.service";
+import {FavouriteRequestModel} from "../../models/favourite-request-model";
+import {FavouriteResponseModel} from "../../models/favourite-response-model";
+import {UserModel} from "../../models/user-model";
 
 @Component({
   selector: 'app-view-recipe-details',
@@ -17,9 +21,13 @@ export class ViewRecipeDetailsComponent implements OnInit{
   steps:string[]
   recipeId:number | null
   isChecked:boolean
+  isFav:boolean
   comments:ReviewModelResponse[]
   recipeRate:number
-  constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService , private _reviewService:ReviewService) {
+  constructor(private _activatedRoute:ActivatedRoute
+              ,private recipeService: RecipeService
+              ,private _reviewService:ReviewService
+              ,private _favouriteService:FavouriteService) {
   }
 
   ngOnInit(): void {
@@ -57,6 +65,11 @@ export class ViewRecipeDetailsComponent implements OnInit{
   onRateChange(rate:number){
     this.recipeRate = rate;
     console.log(this.recipeRate)
+    this._reviewService.update(this.recipeModel,this.recipeRate).subscribe(
+      response => {
+        alert("Updated")
+      }
+    )
   }
 
   loadComment(){
@@ -70,6 +83,36 @@ export class ViewRecipeDetailsComponent implements OnInit{
         }
       )
     }
+  }
+
+
+  loadStatus(){
+    let status = this.isFav
+    if(status)
+      this.addToFavourites(status)
+    else
+      this.removeFromFavourites()
+}
+
+  addToFavourites(status:boolean){
+
+    let favModel = new FavouriteRequestModel(this.recipeModel.id,9)
+    console.log(favModel);
+    this._favouriteService.post(favModel).subscribe(
+      response => {
+        console.log("Fav inserted <3")
+      }
+    )
+  }
+
+  removeFromFavourites(){
+    let user = new UserModel(9) //dumy user
+    let favModel = new FavouriteResponseModel(this.recipeModel,user)
+      this._favouriteService.delete(favModel).subscribe(
+        response => {
+          console.log("Fav Deleted")
+        }
+      )
   }
 
 }

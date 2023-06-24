@@ -1,5 +1,9 @@
 export class UserModel{
+  id:number;
   username:string;
   email:string;
-  id:number;
+
+  constructor(id:number) {
+    this.id = id;
+  }
 }

@@ -21,13 +21,16 @@ export class ApiService {
   post(url:string,body:any,headers?:any){
     return this._http.post<any>(`http://localhost:8080/${url}`,body,{headers})
   }
-  put(url:string,body:any){
-    return this._http.put<any>(`http://localhost:8080/${url}`,body)
+  put(url:string,body:any , newValue?:any){
+    return this._http.put<any>(`http://localhost:8080/${url}`,body , newValue)
   }
   delete(url:string,id:number){
     return this._http.delete<any>(`http://localhost:8080/${url}/${id}`)
   }
 
+  deleteFromFavourite(url:string , body:any){
+    return this._http.post<any>(`http://localhost:8080/${url}`,body)
+  }
   getPaginationRecipes(url: string, params: {page: string; size: string;}) {
 
   const httpParams = new HttpParams()
