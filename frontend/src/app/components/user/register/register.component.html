@@ -8,7 +8,6 @@
           <label for="userName">Username:</label>
           <div class="form-holder">
 <!--            <i class="zmdi zmdi-account-o"></i>-->
-
             <input [class.is-valid]="!registrationForm.controls['username'].errors" id="userName" formControlName="username" type="text" class="form-control" placeholder="Enter Your Name">
 
             <div *ngIf="registrationForm.controls['username'].errors && (registrationForm.controls['username'].touched || registrationForm.controls['username'].dirty )">
@@ -17,6 +16,7 @@
               <small *ngIf="registrationForm.controls['username'].errors?.['maxlength']" class="form-text text-danger">Maximum Length</small>
             </div>
           </div>
+
         </div>
         <div class="form-wrapper">
           <label for="">Email:</label>

@@ -28,6 +28,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RatingComponent } from './components/shared/rating/rating.component';
 import { ArchiveRecipesComponent } from './components/user/archive/archive-recipes.component';
 import { EditingRecipeComponent } from './components/user/editing-user-recipe/editing-recipe.component';
+import { AppRateComponent } from './components/app-rate/app-rate.component';
 
 
 
@@ -56,7 +57,9 @@ import { EditingRecipeComponent } from './components/user/editing-user-recipe/ed
     // EditingPofileComponent,
     RatingComponent,
     ArchiveRecipesComponent,
-    EditingRecipeComponent
+    EditingRecipeComponent,
+    // EditingPofileComponent,
+    AppRateComponent
   ],
   imports: [
     ReactiveFormsModule,

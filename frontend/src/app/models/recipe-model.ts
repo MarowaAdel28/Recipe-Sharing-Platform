@@ -1,5 +1,6 @@
 import {CategoryModel} from "./category-model";
 import {IngredientModel} from "./ingredient-model";
+import {ReviewModel} from "./review-model";
 
 export class RecipeModel{
   id:number;
@@ -10,7 +11,7 @@ export class RecipeModel{
   date:string
   preparingTime:string;
   persons:string;
-  category:CategoryModel
-  recipeHasIngredientsList:IngredientModel[]
-
+  category:CategoryModel;
+  recipeHasIngredientsList:IngredientModel[];
+  reviewList:ReviewModel[];
 }
