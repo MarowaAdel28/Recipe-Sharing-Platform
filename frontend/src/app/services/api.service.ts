@@ -21,11 +21,18 @@ export class ApiService {
   post(url:string,body:any,headers?:any){
     return this._http.post<any>(`http://localhost:8080/${url}`,body,{headers})
   }
-  put(url:string,body:any){
-    return this._http.put<any>(`http://localhost:8080/${url}`,body)
+  put(url:string,body:any,headers:any){
+    return this._http.put<any>(`http://localhost:8080/${url}`,body,{headers})
   }
   delete(url:string,id:number){
     return this._http.delete<any>(`http://localhost:8080/${url}/${id}`)
+  }
+  softDelete(url:string,id:number,params: {isDeleted:boolean}){
+    const httpParams = new HttpParams()
+      .set('isDeleted', params.isDeleted);
+
+    const options = { params: httpParams };
+    return this._http.delete<any>(`http://localhost:8080/${url}/${id}`,options)
   }
 
   getPaginationRecipes(url: string, params: {page: string; size: string;}) {
@@ -37,6 +44,17 @@ export class ApiService {
   const options = { params: httpParams };
 
   return this._http.get<any[]>(`http://localhost:8080/${url}`,options);
+  }
+
+  getPaginationUserRecipes(url: string,id:number, params: {page: string; size: string;}) {
+
+    const httpParams = new HttpParams()
+      .set('pageSize', params.size)
+      .set('page', params.page);
+
+    const options = { params: httpParams };
+
+    return this._http.get<any[]>(`http://localhost:8080/${url}/${id}`,options);
   }
 
   findRecipesByNameAndCategory(url: string, params: {name: string; categoryId: string; page: string; size: string;}) {

@@ -37,8 +37,8 @@ public class RecipeController {
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
-        recipeService.delete(id);
+    public void delete(@Valid @NotNull @PathVariable("id") Integer id,@RequestParam boolean isDeleted) {
+        recipeService.delete(id,isDeleted);
     }
 
 //    @PutMapping
@@ -48,6 +48,8 @@ public class RecipeController {
 
     @GetMapping("/{id}")
     public RecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
+
+        System.out.println("recipe controller");
         return recipeService.getById(id);
     }
     @GetMapping("/getAll")

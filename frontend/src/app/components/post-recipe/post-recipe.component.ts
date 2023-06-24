@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormArray, ɵElement, ValidatorFn, AbstractControl} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl} from '@angular/forms';
 import {CategoryService} from '../../services/category/category.service';
 import {CategoryModel} from '../../models/category-model';
 import {RecipeService} from "../../services/recipe/recipe.service";
-import { MatSnackBar,MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
+import {NotificationService} from "../../services/notifications/notification.service";
 
 interface Step {
   stepDescription: string;
@@ -21,10 +19,8 @@ export class PostRecipeComponent implements OnInit {
 
   categoryModel: CategoryModel[];
 
-  specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
-
   constructor(private formBuilder: FormBuilder, private categoryService:CategoryService,
-              private recipeService:RecipeService, private snackBar: MatSnackBar,private dialog: MatDialog) { }
+              private recipeService:RecipeService, private notificationService:NotificationService) { }
 
   ngOnInit() {
 
@@ -50,36 +46,6 @@ export class PostRecipeComponent implements OnInit {
     };
   }
 
-  showNotification(message:string): void {
-    Swal.fire({
-      title: 'Success!',
-      text: message,
-      icon: 'success',
-      confirmButtonText: 'OK',
-    });
-  }
-
-  showErrorNotification(message:string): void {
-    Swal.fire({
-      title: 'Error!',
-      text: message,
-      icon: 'error',
-      confirmButtonText: 'OK',
-    });
-  }
-
-
-
-  // showNotification(): void {
-  //   const horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  //   const verticalPosition: MatSnackBarVerticalPosition = 'top';
-  //   this.snackBar.open('Adding Recipe Successful!', 'Close', {
-  //     duration: 3000, // Set the duration for how long the notification will be displayed (in milliseconds)
-  //     horizontalPosition: horizontalPosition,
-  //     verticalPosition: verticalPosition
-  //   });
-  // }
-
   fetchData(): void {
     this.categoryService.getAll()
       .subscribe(
@@ -88,7 +54,7 @@ export class PostRecipeComponent implements OnInit {
           console.log(this.categoryModel); // Do whatever you want with the data
         },
         error => {
-          this.showErrorNotification("Oops!! something is wrong!!")
+          this.notificationService.showErrorNotification("Oops!! something is wrong!!")
           console.error(error);
         }
       );
@@ -99,14 +65,14 @@ export class PostRecipeComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response); // Do whatever you want with the data
-          this.showNotification("Adding new Recipe successfully!!");
+          this.notificationService.showNotification("Adding new Recipe successfully!!");
           // this.showNotification();
 
           // this.openDialog();
         },
         error => {
           console.error(error);
-          this.showErrorNotification("Failed to add new recipe!")
+          this.notificationService.showErrorNotification("Failed to add new recipe!")
         }
       );
   }
@@ -173,7 +139,7 @@ export class PostRecipeComponent implements OnInit {
       // Handle form validation errors
       console.log(JSON.stringify(this.recipeForm.value))
 
-      this.showErrorNotification("Failed to validate recipe!")
+      this.notificationService.showErrorNotification("Failed to validate recipe!")
 
     }
 

@@ -28,7 +28,10 @@ export class RecipeService {
     return this._apiService.post(url, body,  headers );
   }
   update(recipeModel:RecipeModel){
-    return this._apiService.put("recipe",recipeModel)
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    return this._apiService.put("recipe",recipeModel,headers)
   }
   delete(id:number){
     return this._apiService.delete("recipe",id)

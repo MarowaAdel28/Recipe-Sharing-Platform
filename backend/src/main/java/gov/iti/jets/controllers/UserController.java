@@ -1,11 +1,11 @@
 package gov.iti.jets.controllers;
 
 import gov.iti.jets.models.dtos.UserDTO;
+import gov.iti.jets.models.dtos.profile.UserProfile;
 import gov.iti.jets.services.UserService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +30,7 @@ public class UserController {
     }
 
     @PutMapping
-    public void update(@Valid @RequestBody UserDTO userDto) {
+    public void update(@Valid @RequestBody UserProfile userDto) {
         userService.update(userDto);
     }
 

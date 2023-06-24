@@ -11,10 +11,11 @@ import {PostRecipeComponent} from "./components/post-recipe/post-recipe.componen
 import {RegisterComponent} from "./components/user/register/register.component";
 import {LoginComponent} from "./components/user/login/login.component";
 import {ProfileComponent} from "./components/user/profile/profile.component";
-import {EditingPofileComponent} from "./components/user/editing-pofile/editing-pofile.component";
 import {UserRecipesComponent} from "./components/user/user-recipes/user-recipes.component";
 import {UserFavoriteRecipesComponent} from "./components/user/user-favorite-recipes/user-favorite-recipes.component";
 // import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
+import {ArchiveRecipesComponent} from "./components/user/archive/archive-recipes.component";
+import {EditingRecipeComponent} from "./components/user/editing-user-recipe/editing-recipe.component";
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -29,9 +30,13 @@ const routes: Routes = [
   {path:'all-recipes' , component:AllRecipesComponent},
   {path:'post-recipe' , component:PostRecipeComponent},
   {path:'profile' , component:ProfileComponent},
-  {path:'profile/edit', component:EditingPofileComponent},
-  {path:'profile/user-recipes',component:UserRecipesComponent},
-  {path:'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
+  // {path:'profile/edit', component:EditingPofileComponent},
+  // {path:'profile/user-recipes',component:UserRecipesComponent},
+  // {path:'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
+  {path: 'profile/user-recipes',component:UserRecipesComponent},
+  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
+  {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent},
+  {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent},
   {path:'**',component:HomeComponent},
 ];
 

@@ -18,15 +18,15 @@ public class RejectedRecipeController {
     @Autowired
     private RejectedRecipeService rejectedRecipeService;
 
-    @PostMapping
-    public String save(@Valid @RequestBody RejectedRecipeDTO rejectedRecipeDto) {
-        return rejectedRecipeService.save(rejectedRecipeDto).toString();
-    }
+//    @PostMapping
+//    public String save(@Valid @RequestBody RejectedRecipeDTO rejectedRecipeDto) {
+//        return rejectedRecipeService.save(rejectedRecipeDto).toString();
+//    }
 
-    @DeleteMapping("/{id}")
-    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
-        rejectedRecipeService.delete(id);
-    }
+//    @DeleteMapping("/{id}")
+//    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
+//        rejectedRecipeService.delete(id);
+//    }
     
 
     @GetMapping("/{id}")

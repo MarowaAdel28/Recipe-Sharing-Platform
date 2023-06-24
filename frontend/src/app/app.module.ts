@@ -20,13 +20,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { ProfileComponent } from './components/user/profile/profile.component';
 import { UserRecipesComponent } from './components/user/user-recipes/user-recipes.component';
 import { UserFavoriteRecipesComponent } from './components/user/user-favorite-recipes/user-favorite-recipes.component';
-import { EditingPofileComponent } from './components/user/editing-pofile/editing-pofile.component';
 import {PostRecipeComponent} from "./components/post-recipe/post-recipe.component";
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material/dialog';
+// import { MatSnackBarModule } from '@angular/material/snack-bar';
+// import { MatDialogModule } from '@angular/material/dialog';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { RatingComponent } from './components/shared/rating/rating.component';
+import { ArchiveRecipesComponent } from './components/user/archive/archive-recipes.component';
+import { EditingRecipeComponent } from './components/user/editing-user-recipe/editing-recipe.component';
 
 
 
@@ -52,8 +53,10 @@ import { RatingComponent } from './components/shared/rating/rating.component';
     ProfileComponent,
     UserRecipesComponent,
     UserFavoriteRecipesComponent,
-    EditingPofileComponent,
-    RatingComponent
+    // EditingPofileComponent,
+    RatingComponent,
+    ArchiveRecipesComponent,
+    EditingRecipeComponent
   ],
   imports: [
     ReactiveFormsModule,
@@ -62,8 +65,8 @@ import { RatingComponent } from './components/shared/rating/rating.component';
     MatIconModule,
     AppRoutingModule,
     HttpClientModule,
-    MatSnackBarModule,
-    MatDialogModule,
+    // MatSnackBarModule,
+    // MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

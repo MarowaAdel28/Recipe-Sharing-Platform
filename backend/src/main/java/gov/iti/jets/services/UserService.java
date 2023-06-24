@@ -1,14 +1,15 @@
 package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.UserDTO;
+import gov.iti.jets.models.dtos.profile.UserProfile;
 import gov.iti.jets.models.entities.User;
 import gov.iti.jets.repositories.UserRepository;
 import gov.iti.jets.util.Utility;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.NoSuchElementException;
 
 @Service
@@ -23,6 +24,7 @@ public class UserService {
         User user = new User();
         userDto.setPassword(Utility.hashPassword(userDto.getPassword()));
         BeanUtils.copyProperties(userDto, user);
+        user.setCreateTime(new Date());
         user = userRepository.save(user);
         return user.getId();
     }
@@ -31,10 +33,11 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void update(UserDTO userDto) {
-        User user = requireOne(userDto.getId());
-        BeanUtils.copyProperties(userDto, user);
-        userRepository.save(user);
+    public void update(UserProfile userDto) {
+//        User user = requireOne(userDto.getId());
+        System.out.println("userDto = " + userDto);
+        userRepository.updateUser(userDto.getUserName(), userDto.getId());
+        System.out.println("user = " + requireOne(userDto.getId()));
     }
 
     public UserDTO getById(Integer id) {
