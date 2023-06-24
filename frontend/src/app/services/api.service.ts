@@ -21,8 +21,11 @@ export class ApiService {
   post(url:string,body:any,headers?:any){
     return this._http.post<any>(`http://localhost:8080/${url}`,body,{headers})
   }
-  put(url:string,body:any,headers:any){
+  put_header(url:string,body:any,headers:any){
     return this._http.put<any>(`http://localhost:8080/${url}`,body,{headers})
+  }
+  put(url:string,body:any){
+    return this._http.put<any>(`http://localhost:8080/${url}`,body)
   }
   delete(url:string,id:number){
     return this._http.delete<any>(`http://localhost:8080/${url}/${id}`)

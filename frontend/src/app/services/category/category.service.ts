@@ -30,7 +30,7 @@ export class CategoryService {
     const headers = {
       "Content-Type": "application/json",
     };
-    return this._apiService.put("category",categoryModel,headers)
+    return this._apiService.put_header("category",categoryModel,headers)
   }
   delete(id:number){
     return this._apiService.delete("category",id)

@@ -3,18 +3,18 @@ package gov.iti.jets.services;
 import gov.iti.jets.models.dtos.IngredientsDTO;
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
-import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
+//import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
 import gov.iti.jets.models.dtos.SearchResultDTO;
 import gov.iti.jets.models.dtos.RecipeHasIngredientsDTO;
-import gov.iti.jets.models.dtos.RecipeResponseDTO;
+//import gov.iti.jets.models.dtos.RecipeResponseDTO;
 import gov.iti.jets.models.dtos.profile.UserRecipeDTO;
 import gov.iti.jets.models.dtos.profile.UserRecipeResponseDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
+//import org.springframework.data.domain.Page;
+//import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -82,9 +82,11 @@ public class RecipeService {
 
     public void delete(Integer id) {
         recipeRepository.deleteById(id);
-    public void delete(Integer id,boolean isDeleted) {
-        recipeRepository.updateRecipeDeletion(isDeleted,id);
     }
+    public void delete (Integer id,boolean isDeleted){
+        recipeRepository.updateRecipeDeletion(isDeleted, id);
+    }
+
 
     public void update(RecipeDTO recipeDto) {
         Recipe bean = requireOne(recipeDto.getId());

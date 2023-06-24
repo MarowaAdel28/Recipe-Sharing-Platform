@@ -20,7 +20,7 @@ export class UserService {
     const headers = {
       "Content-Type": "application/json",
     }
-    return this._apiService.put("user",JSON.stringify(userData),headers)
+    return this._apiService.put_header("user",JSON.stringify(userData),headers)
   }
 
   getUserById(id:number) {

@@ -31,7 +31,7 @@ export class RecipeService {
     const headers = {
       "Content-Type": "application/json",
     };
-    return this._apiService.put("recipe",recipeModel,headers)
+    return this._apiService.put_header("recipe",recipeModel,headers)
   }
   delete(id:number){
     return this._apiService.delete("recipe",id)

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/user/user.service";
 import { FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
-import {UserModel} from "../../../models/user-model";
 import {NotificationService} from "../../../services/notifications/notification.service";
+import {UserProfile} from "../../../models/user-profile";
 
 @Component({
   selector: 'app-profile',
@@ -11,7 +11,7 @@ import {NotificationService} from "../../../services/notifications/notification.
 })
 export class ProfileComponent implements OnInit{
 
-  user:UserModel;
+  user:UserProfile;
 
   userForm: FormGroup;
 
@@ -57,7 +57,7 @@ export class ProfileComponent implements OnInit{
   fetchData(){
     this.userService.getUserById(5).subscribe(response => {
         // console.log(response); // Do whatever you want with the data
-        this.user=new UserModel(response.username,response.age,response.email,response.gender);
+        this.user=new UserProfile(response.username,response.age,response.email,response.gender);
         console.log(this.user)
         this.userForm.patchValue({
           userName: this.user.userName,
