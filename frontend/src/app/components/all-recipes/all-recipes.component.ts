@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { CategoryService } from "../../services/category/category.service";
-import { CategoryModel } from "../../models/category-model";
-import {RecipeService} from "../../services/recipe/recipe.service";
-import {ReviewModel} from "../../models/review-model";
+import {Component, OnInit} from '@angular/core';
+import {RecipeModel} from "../../models/recipe-model";
+import {RecipeService} from "../../service/recipe/recipe.service";
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-all-recipes',
@@ -92,26 +91,5 @@ export class AllRecipesComponent implements OnInit {
       size: this.pageSize.toString()
     };
 
-    this.recipeService.findRecipesByNameAndCategory(params).subscribe((response: any) => {
-      this.paginatedList = response.data;
-      this.totalItems = response.totalItems;
-      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i );
-    });
-  }
-  // findRecipesByCategory(recipeCategoryId: string) {
-  //   const params = {
-  //     categoryId: recipeCategoryId,
-  //     page: this.currentPage.toString(),
-  //     size: this.pageSize.toString()
-  //   };
-  //
-  //   this.recipeService.findRecipesByNameAndCategory(params).subscribe((response: any) => {
-  //     this.paginatedList = response.data;
-  //     this.totalItems = response.totalItems;
-  //     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  //     this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i );
-  //   });
-  // }
   protected readonly requestIdleCallback = requestIdleCallback;
 }

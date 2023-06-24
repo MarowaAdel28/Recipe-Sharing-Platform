@@ -1,5 +1,8 @@
+import { DashboardSchemaComponent } from './admin-dashboard/components/dashboard/dashboard-schema/dashboard-schema.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UsersListComponent } from './admin-dashboard/components/users-list/users-list.component';
+import { RecipesListComponent } from './admin-dashboard/components/recipes-list/recipes-list.component';
 import {HomeComponent} from "./components/home/home.component";
 import {ContactComponent} from "./components/contact/contact.component";
 import {AboutComponent} from "./components/about/about.component";
@@ -18,7 +21,10 @@ import {ArchiveRecipesComponent} from "./components/user/archive/archive-recipes
 import {EditingRecipeComponent} from "./components/user/editing-user-recipe/editing-recipe.component";
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
+  {path: 'dashboard', component:DashboardSchemaComponent},
+  {path: 'usersStat', component:UsersListComponent},
+  {path: 'recipesStat', component:RecipesListComponent},
+
   {path:'home',component:HomeComponent},
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
@@ -38,6 +44,8 @@ const routes: Routes = [
   {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent},
   {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent},
   {path:'**',component:HomeComponent},
+  {path:'',component:HomeComponent},
+
 ];
 
 @NgModule({

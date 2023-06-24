@@ -11,12 +11,14 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
+
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserDTO implements Serializable {
     private static final long serialVersionUID = 1L;
-    private String username;
+    private String userName;
 
     private String email;
 

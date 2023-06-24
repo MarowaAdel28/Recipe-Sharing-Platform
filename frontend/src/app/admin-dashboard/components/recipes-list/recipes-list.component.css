@@ -1,0 +1,21 @@
+body {
+    background-color: #808080;
+}
+
+.row.gutterFix{
+    --bs-gutter-x: 0
+}
+
+.colLeftSide{
+    flex: 0 0 auto;
+    width: 30%;
+}
+
+.colMain{
+    flex: 0 0 auto;
+    width: 45%;
+}
+.colRightSide{
+    flex: 0 0 auto;
+    width: 25%;
+}

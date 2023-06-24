@@ -5,11 +5,21 @@
 package gov.iti.jets.models.entities;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import gov.iti.jets.listeners.UserListener;
+import gov.iti.jets.configs.UserListener;
+import gov.iti.jets.util.Utility;
 import jakarta.persistence.*;
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import gov.iti.jets.models.dtos.stats.AgeStatDTO;
+import gov.iti.jets.models.dtos.stats.GenderStatDTO;
+import gov.iti.jets.models.dtos.stats.RegistrationDateStatDTO;
 
 /**
  *
@@ -18,12 +28,59 @@ import jakarta.persistence.*;
 @EntityListeners(UserListener.class)
 @Entity
 @Table(name = "user")
-public class User implements Serializable {
+@Builder
+@AllArgsConstructor
+@NamedNativeQueries(
+        {@NamedNativeQuery(name = "User.findGenderCount",
+                query = "Select SUM(CASE WHEN u.gender = 'F' THEN 1 ELSE 0 END) AS femalesCount, " +
+                        "SUM(CASE WHEN u.gender = 'M' THEN 1 ELSE 0 END) AS malesCount " +
+                        "from User u",
+                resultSetMapping = "Mapping.GenderStatDTO"),
+        @NamedNativeQuery(name = "User.findAgeCount",
+                query = "SELECT SUM(CASE WHEN u.age between 17 and 30 THEN 1 ELSE 0 END) AS youngAdults," +
+                        "SUM(CASE WHEN u.age BETWEEN 31 AND 45 THEN 1 ELSE 0 END) AS middleAged," +
+                        "SUM(CASE WHEN u.age > 45 THEN 1 ELSE 0 END) AS old " +
+                        "FROM User u",
+                resultSetMapping = "Mapping.AgeStatDTO"),
+
+        @NamedNativeQuery(name = "User.findRegisterDateCount",
+                query = "SELECT Sum(CASE WHEN timestampdiff(Month, u.create_time, now() ) between 0 and 6 then 1 else 0 end) AS thirdSixMonths,\n" +
+                        " Sum(CASE WHEN  timestampdiff(Month, u.create_time, now() ) between 7 and 12 then 1 else 0 end) AS secondSixMonths,\n" +
+                        " Sum(CASE WHEN timestampdiff(Month, u.create_time, now() ) between 13 and 18 then 1 else 0 end) AS firstSixMonths,\n" +
+                        " Sum(CASE WHEN timestampdiff(Month, u.create_time, now() )> 18 then 1 else 0 end) AS earlier\n" +
+                        " FROM User u",
+                resultSetMapping = "Mapping.RegistrationStatDTO")
+        }
+
+)
+@SqlResultSetMappings(
+        {@SqlResultSetMapping(name = "Mapping.GenderStatDTO",
+                classes = @ConstructorResult(targetClass = GenderStatDTO.class,
+                        columns = {@ColumnResult(name = "femalesCount", type = Integer.class),
+                                @ColumnResult(name = "malesCount", type = Integer.class)})),
+
+        @SqlResultSetMapping(name = "Mapping.AgeStatDTO",
+                classes = @ConstructorResult(targetClass = AgeStatDTO.class,
+                        columns = {@ColumnResult(name = "youngAdults", type = Integer.class),
+                                @ColumnResult(name = "middleAged", type = Integer.class),
+                                @ColumnResult(name = "old", type = Integer.class)})),
+
+        @SqlResultSetMapping(name = "Mapping.RegistrationStatDTO",
+                classes = @ConstructorResult(targetClass = RegistrationDateStatDTO.class,
+                        columns = {@ColumnResult(name = "firstSixMonths", type = Integer.class),
+                                @ColumnResult(name = "secondSixMonths", type = Integer.class),
+                                @ColumnResult(name = "thirdSixMonths", type = Integer.class),
+                                @ColumnResult(name = "earlier", type = Integer.class)
+                        })),
+
+        })
+
+public class User implements Serializable, UserDetails {
 
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @Column(name = "username")
-    private String username;
+    private String userName;
     @Basic(optional = false)
     @Column(name = "email")
     private String email;
@@ -56,6 +113,7 @@ public class User implements Serializable {
     private List<FavoriteRecipe> favoriteRecipeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Review> reviewList;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "userId")
     private List<Recipe> recipeList;
 
@@ -66,9 +124,9 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Integer id, String username, String email, String password, Date createTime, int age, Character gender, boolean isAdmin, boolean isDeleted) {
+    public User(Integer id, String userName, String email, String password, Date createTime, int age, Character gender, boolean isAdmin, boolean isDeleted) {
         this.id = id;
-        this.username = username;
+        this.userName = userName;
         this.email = email;
         this.password = password;
         this.createTime = createTime;
@@ -78,12 +136,33 @@ public class User implements Serializable {
         this.isDeleted = isDeleted;
     }
 
+    @Override
     public String getUsername() {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
@@ -94,8 +173,21 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(isAdmin){
+            return List.of(new SimpleGrantedAuthority(Utility.USER_ROLE));
+        }
+        return List.of(new SimpleGrantedAuthority(Utility.USER_ROLE));
+    }
+
+    @Override
     public String getPassword() {
         return password;
+    }
+
+    public String getUserName() {
+        return userName;
     }
 
     public void setPassword(String password) {

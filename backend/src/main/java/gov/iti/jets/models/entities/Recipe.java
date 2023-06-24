@@ -7,6 +7,9 @@ package gov.iti.jets.models.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import gov.iti.jets.configs.RecipeListener;
+import gov.iti.jets.models.dtos.stats.GenderStatDTO;
+import gov.iti.jets.models.dtos.stats.RecipeStatusStatDTO;
 
 import gov.iti.jets.listeners.RecipeListener;
 import jakarta.persistence.*;
@@ -18,6 +21,20 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "recipe")
 @EntityListeners(RecipeListener.class)
+@NamedNativeQuery(name = "Recipe.findStatusCount",
+        query = "Select SUM(CASE WHEN r.status = 'accepted' THEN 1 ELSE 0 END) AS accepted, " +
+                "SUM(CASE WHEN r.status = 'rejected' THEN 1 ELSE 0 END) AS rejected, "+
+                "SUM(CASE WHEN r.status = 'waiting' THEN 1 ELSE 0 END) AS waiting " +
+                "from Recipe r",
+        resultSetMapping = "Mapping.RecipeStatusStatDTO")
+
+@SqlResultSetMapping(name = "Mapping.RecipeStatusStatDTO",
+        classes = @ConstructorResult(targetClass = RecipeStatusStatDTO.class,
+                columns = {@ColumnResult(name = "accepted", type = Integer.class),
+                        @ColumnResult(name = "rejected", type = Integer.class),
+                        @ColumnResult(name = "waiting", type = Integer.class)
+                }))
+
 public class Recipe implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,12 +91,13 @@ public class Recipe implements Serializable {
         this.id = id;
     }
 
-    public Recipe(Integer id, String steps, Date date, String preparingTime, int persons) {
+    public Recipe(Integer id, String recipeName, String steps, Date date, String preparingTime, int persons) {
         this.id = id;
         this.steps = steps;
         this.date = date;
         this.preparingTime = preparingTime;
         this.persons = persons;
+        this.recipeName = recipeName;
     }
 
     public Integer getId() {
@@ -102,6 +120,7 @@ public class Recipe implements Serializable {
     public void setDeleted(Boolean deleted) {
         isDeleted = deleted;
     }
+
 
     public void setId(Integer id) {
         this.id = id;

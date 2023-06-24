@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {RecipeService} from "../../services/recipe/recipe.service";
+import {RecipeService} from "../../service/recipe/recipe.service";
 import {RecipeModel} from "../../models/recipe-model";
 import {ReviewService} from "../../services/review/review.service";
 import {ReviewModelRequest} from "../../models/review-model-request";
@@ -20,6 +20,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
   comments:ReviewModelResponse[]
   recipeRate:number
   constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService , private _reviewService:ReviewService) {
+  constructor(private _activatedRoute:ActivatedRoute, private recipeService: RecipeService ) {
   }
 
   ngOnInit(): void {
@@ -51,7 +52,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
       response => {
         this.loadComment()
       }
-    )
+    })
   }
 
   onRateChange(rate:number){

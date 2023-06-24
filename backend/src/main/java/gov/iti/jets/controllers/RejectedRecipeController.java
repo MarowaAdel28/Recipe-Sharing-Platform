@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RestController
 @RequestMapping("/rejectedRecipe")
-@CrossOrigin(origins = "http://localhost:8060")
+@CrossOrigin(origins = "http://localhost:8080")
 public class RejectedRecipeController {
 
     @Autowired
     private RejectedRecipeService rejectedRecipeService;
 
-//    @PostMapping
-//    public String save(@Valid @RequestBody RejectedRecipeDTO rejectedRecipeDto) {
-//        return rejectedRecipeService.save(rejectedRecipeDto).toString();
-//    }
+    @PostMapping
+    public String save(@Valid @RequestBody RejectedRecipeDTO rejectedRecipeDto) {
+        return rejectedRecipeService.save(rejectedRecipeDto).toString();
+    }
 
 //    @DeleteMapping("/{id}")
 //    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
@@ -33,6 +33,16 @@ public class RejectedRecipeController {
     public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
         return rejectedRecipeService.getById(id);
     }
+//    @DeleteMapping("/{id}")
+//    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
+//        rejectedRecipeService.delete(id);
+//    }
+//
+//
+//    @GetMapping("/{id}")
+//    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
+//        return rejectedRecipeService.getById(id);
+//    }
 
 //    @GetMapping
 //    public Page<RejectedRecipeDTO> query(@Valid RejectedRecipeQueryVO rejectedRecipeDto) {

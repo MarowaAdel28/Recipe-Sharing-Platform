@@ -13,8 +13,12 @@ import java.util.NoSuchElementException;
 @Service
 public class RejectedRecipeService {
 
-    @Autowired
     private RejectedRecipeRepository rejectedRecipeRepository;
+
+    @Autowired
+    public RejectedRecipeService(RejectedRecipeRepository rejectedRecipeRepository){
+        this.rejectedRecipeRepository = rejectedRecipeRepository;
+    }
 
     public Integer save(RejectedRecipeDTO rejectedRecipeDto) {
         RejectedRecipe bean = new RejectedRecipe();
@@ -23,33 +27,33 @@ public class RejectedRecipeService {
         return bean.getRecipeId();
     }
 
-    public void delete(Integer id) {
-        rejectedRecipeRepository.deleteById(id);
-    }
-
-    public void update(RejectedRecipeDTO rejectedRecipeDto) {
-        RejectedRecipe rejectedRecipe = requireOne(rejectedRecipeDto.getId());
-        BeanUtils.copyProperties(rejectedRecipeDto, rejectedRecipe);
-        rejectedRecipeRepository.save(rejectedRecipe);
-    }
-
-    public RejectedRecipeDTO getById(Integer id) {
-        RejectedRecipe original = requireOne(id);
-        return toDTO(original);
-    }
-
-//    public Page<RejectedRecipeDTO> query(RejectedRecipeQueryVO rejectedRecipeDto) {
-//        throw new UnsupportedOperationException();
+//    public void delete(Integer id) {
+//        rejectedRecipeRepository.deleteById(id);
 //    }
-
-    private RejectedRecipeDTO toDTO(RejectedRecipe rejectedRecipe) {
-        RejectedRecipeDTO rejectedRecipeDto = new RejectedRecipeDTO();
-        BeanUtils.copyProperties(rejectedRecipe, rejectedRecipeDto);
-        return rejectedRecipeDto;
-    }
-
-    private RejectedRecipe requireOne(Integer id) {
-        return rejectedRecipeRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
-    }
+//
+//    public void update(RejectedRecipeDTO rejectedRecipeDto) {
+//        RejectedRecipe rejectedRecipe = requireOne(rejectedRecipeDto.getId());
+//        BeanUtils.copyProperties(rejectedRecipeDto, rejectedRecipe);
+//        rejectedRecipeRepository.save(rejectedRecipe);
+//    }
+//
+//    public RejectedRecipeDTO getById(Integer id) {
+//        RejectedRecipe original = requireOne(id);
+//        return toDTO(original);
+//    }
+//
+////    public Page<RejectedRecipeDTO> query(RejectedRecipeQueryVO rejectedRecipeDto) {
+////        throw new UnsupportedOperationException();
+////    }
+//
+//    private RejectedRecipeDTO toDTO(RejectedRecipe rejectedRecipe) {
+//        RejectedRecipeDTO rejectedRecipeDto = new RejectedRecipeDTO();
+//        BeanUtils.copyProperties(rejectedRecipe, rejectedRecipeDto);
+//        return rejectedRecipeDto;
+//    }
+//
+//    private RejectedRecipe requireOne(Integer id) {
+//        return rejectedRecipeRepository.findById(id)
+//                .orElseThrow(() -> new NoSuchElementException("Resource not found: " + id));
+//    }
 }

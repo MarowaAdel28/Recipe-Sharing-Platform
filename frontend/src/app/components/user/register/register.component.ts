@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators} from '@angular/forms';
-import {UserService} from "../../../services/user/user.service";
+import {UserService} from "../../../service/user/user.service";
+
 import Swal from 'sweetalert2';
 import {NotificationService} from "../../../services/notifications/notification.service";
 @Component({
@@ -46,11 +47,11 @@ export class RegisterComponent implements OnInit {
     postData(user:any): void {
       this.userService.post(user)
         .subscribe(
-          response => {
+          (response: any) => {
             console.log(response); // Do whatever you want with the data
             this.notificationService.showNotification("Register Successfully!")
           },
-          error => {
+          (error: any) => {
             console.error(error);
             this.notificationService.showErrorNotification("Failed to register")
           }
