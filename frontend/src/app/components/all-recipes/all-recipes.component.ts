@@ -3,6 +3,7 @@ import {RecipeService} from "../../service/recipe/recipe.service";
 import {CategoryModel} from "../../models/category-model";
 import {CategoryService} from "../../service/category/category.service";
 import {ReviewModel} from "../../models/review-model";
+import {RateModel} from "../../models/rate-model";
 
 @Component({
   selector: 'app-all-recipes',
@@ -29,10 +30,10 @@ export class AllRecipesComponent implements OnInit {
     this.getAllCategories();
   }
 
-  getRate(reviews: ReviewModel[]): number {
+  getRate(rates: RateModel[]): number {
 
-    const sum = reviews.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
-    const count = reviews.length;
+    const sum = rates.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
+    const count = rates.length;
     if (count === 0) {
       return 0;
     }
