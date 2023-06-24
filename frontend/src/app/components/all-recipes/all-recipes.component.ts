@@ -99,5 +99,19 @@ export class AllRecipesComponent implements OnInit {
       this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i );
     });
   }
+  // findRecipesByCategory(recipeCategoryId: string) {
+  //   const params = {
+  //     categoryId: recipeCategoryId,
+  //     page: this.currentPage.toString(),
+  //     size: this.pageSize.toString()
+  //   };
+  //
+  //   this.recipeService.findRecipesByNameAndCategory(params).subscribe((response: any) => {
+  //     this.paginatedList = response.data;
+  //     this.totalItems = response.totalItems;
+  //     this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+  //     this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i );
+  //   });
+  // }
   protected readonly requestIdleCallback = requestIdleCallback;
 }

@@ -23,7 +23,7 @@
       <form action="#" method="post">
         <div class="row align-items-center">
           <div class="col-12 col-lg-4">
-            <select class="form-control"  id="select1" [(ngModel)]="categoryId" name="category">
+            <select class="form-control"  id="select1" [(ngModel)]="categoryId" name="category" (ngModelChange)="findRecipesByNameAndCategory(searchInput.value,categoryId)">
               <option value="">All Recipes Categories</option>
               <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
             </select>
