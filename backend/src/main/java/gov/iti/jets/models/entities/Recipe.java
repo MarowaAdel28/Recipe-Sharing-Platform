@@ -7,8 +7,6 @@ package gov.iti.jets.models.entities;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-import gov.iti.jets.configs.RecipeListener;
-import gov.iti.jets.models.dtos.stats.GenderStatDTO;
 import gov.iti.jets.models.dtos.stats.RecipeStatusStatDTO;
 
 import gov.iti.jets.listeners.RecipeListener;

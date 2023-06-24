@@ -5,7 +5,6 @@ import gov.iti.jets.services.RejectedRecipeService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,10 +28,10 @@ public class RejectedRecipeController {
 //    }
     
 
-    @GetMapping("/{id}")
-    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
-        return rejectedRecipeService.getById(id);
-    }
+//    @GetMapping("/{id}")
+//    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
+//        return rejectedRecipeService.getById(id);
+//    }
 //    @DeleteMapping("/{id}")
 //    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
 //        rejectedRecipeService.delete(id);

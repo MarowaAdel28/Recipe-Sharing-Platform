@@ -3,7 +3,7 @@ import {AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, 
 import {UserService} from "../../../service/user/user.service";
 
 import Swal from 'sweetalert2';
-import {NotificationService} from "../../../services/notifications/notification.service";
+import {NotificationService} from "../../../service/notifications/notification.service";
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {UserRecipeService} from "../../../services/user-recipe/user-recipe.service";
-import {NotificationService} from "../../../services/notifications/notification.service";
-import {RecipeService} from "../../../services/recipe/recipe.service";
+import {NotificationService} from "../../../service/notifications/notification.service";
+import {RecipeService} from "../../../service/recipe/recipe.service";
 import {ActivatedRoute} from "@angular/router";
 import {AbstractControl, FormArray, FormBuilder, FormGroup, ValidatorFn, Validators} from "@angular/forms";
 import {CategoryModel} from "../../../models/category-model";
-import {CategoryService} from "../../../services/category/category.service";
+import {CategoryService} from "../../../service/category/category.service";
 
 @Component({
   selector: 'app-editing-recipe',

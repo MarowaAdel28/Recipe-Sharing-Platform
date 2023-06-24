@@ -5,10 +5,7 @@ import gov.iti.jets.models.entities.RejectedRecipe;
 import gov.iti.jets.repositories.RejectedRecipeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
-
-import java.util.NoSuchElementException;
 
 @Service
 public class RejectedRecipeService {

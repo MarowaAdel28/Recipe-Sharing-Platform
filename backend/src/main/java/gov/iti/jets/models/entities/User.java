@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
-import gov.iti.jets.configs.UserListener;
+import gov.iti.jets.listeners.UserListener;
 import gov.iti.jets.util.Utility;
 import jakarta.persistence.*;
 import lombok.*;

@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {RecipeModel} from "../../models/recipe-model";
 import {RecipeService} from "../../service/recipe/recipe.service";
-import {HttpClient} from "@angular/common/http";
+import {CategoryModel} from "../../models/category-model";
+import {CategoryService} from "../../service/category/category.service";
+import {ReviewModel} from "../../models/review-model";
 
 @Component({
   selector: 'app-all-recipes',
@@ -20,14 +21,15 @@ export class AllRecipesComponent implements OnInit {
   categoryId: string = '';
 
 
-  constructor(private recipeService: RecipeService, private categoryService: CategoryService) {}
+  constructor(private recipeService: RecipeService, private categoryService: CategoryService) {
+  }
 
   ngOnInit() {
     this.getPaginatedData();
     this.getAllCategories();
   }
 
-  getRate(reviews: ReviewModel[]): number{
+  getRate(reviews: ReviewModel[]): number {
 
     const sum = reviews.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
     const count = reviews.length;
@@ -47,7 +49,7 @@ export class AllRecipesComponent implements OnInit {
       this.paginatedList = response.data;
       this.totalItems = response.totalItems;
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i);
+      this.totalPagesArray = Array.from({length: this.totalPages}, (_, i) => i);
     });
   }
 
@@ -83,6 +85,7 @@ export class AllRecipesComponent implements OnInit {
       }
     );
   }
+
   findRecipesByNameAndCategory(recipeName: string, recipeCategoryId: string) {
     const params = {
       name: recipeName,
@@ -90,6 +93,7 @@ export class AllRecipesComponent implements OnInit {
       page: this.currentPage.toString(),
       size: this.pageSize.toString()
     };
-
+  }
   protected readonly requestIdleCallback = requestIdleCallback;
+
 }

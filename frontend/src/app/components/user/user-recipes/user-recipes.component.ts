@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {RecipeModel} from "../../../models/recipe-model";
-import {RecipeService} from "../../../services/recipe/recipe.service";
-import {HttpClient} from "@angular/common/http";
-import {UserRecipeService} from "../../../services/user-recipe/user-recipe.service";
-import {NotificationService} from "../../../services/notifications/notification.service";
+import {UserRecipeService} from "../../../service/user-recipe/user-recipe.service";
+import {NotificationService} from "../../../service/notifications/notification.service";
 
 @Component({
   selector: 'app-all-recipes',

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {UserRecipeService} from "../../../services/user-recipe/user-recipe.service";
-import {NotificationService} from "../../../services/notifications/notification.service";
+import {UserRecipeService} from "../../../service/user-recipe/user-recipe.service";
+import {NotificationService} from "../../../service/notifications/notification.service";
 
 @Component({
   selector: 'app-archive-recipes',

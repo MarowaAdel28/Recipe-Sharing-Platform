@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../../../services/user/user.service";
 import { FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
-import {NotificationService} from "../../../services/notifications/notification.service";
+import {NotificationService} from "../../../service/notifications/notification.service";
 import {UserProfile} from "../../../models/user-profile";
+import {UserService} from "../../../service/user/user.service";
 
 @Component({
   selector: 'app-profile',
@@ -48,14 +48,14 @@ export class ProfileComponent implements OnInit{
         userName: this.user.userName,
       };
       console.log(body)
-      this.userService.put(body).subscribe(response => {
+      this.userService.put(body).subscribe((response:any) => {
         this.notificationService.showNotification("Updated Successfully")
-      }, error => {
+      }, (error:any) => {
         this.notificationService.showErrorNotification("Updated Failed")
       });
     }
   fetchData(){
-    this.userService.getUserById(5).subscribe(response => {
+    this.userService.getUserById(5).subscribe((response:any) => {
         // console.log(response); // Do whatever you want with the data
         this.user=new UserProfile(response.username,response.age,response.email,response.gender);
         console.log(this.user)
@@ -64,7 +64,7 @@ export class ProfileComponent implements OnInit{
           age: this.user.age
         });
       },
-      error => {
+      (error:any) => {
         // console.error(error);
         this.notificationService.showErrorNotification("Oops! Something is wrong!")
       }

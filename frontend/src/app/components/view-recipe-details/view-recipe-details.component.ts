@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {RecipeService} from "../../service/recipe/recipe.service";
 import {RecipeModel} from "../../models/recipe-model";
-import {ReviewService} from "../../services/review/review.service";
+import {ReviewService} from "../../service/review/review.service";
 import {ReviewModelRequest} from "../../models/review-model-request";
 import {ReviewModelResponse} from "../../models/review-model-response";
 
@@ -19,14 +19,11 @@ export class ViewRecipeDetailsComponent implements OnInit{
   isChecked:boolean
   comments:ReviewModelResponse[]
   recipeRate:number
-  constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService , private _reviewService:ReviewService) {
-  constructor(private _activatedRoute:ActivatedRoute, private recipeService: RecipeService ) {
-  }
+  constructor(private _activatedRoute:ActivatedRoute,private recipeService: RecipeService , private _reviewService:ReviewService) {}
 
   ngOnInit(): void {
-    this._activatedRoute.paramMap.subscribe(parms => {
-         this.recipeId = parseInt(<string>parms.get('id'))
-
+    this._activatedRoute.paramMap.subscribe(params => {
+         this.recipeId = parseInt(<string>params.get('id'))
 
         this.recipeService.getById(this.recipeId).subscribe(
           {
@@ -42,17 +39,15 @@ export class ViewRecipeDetailsComponent implements OnInit{
     })
   }
 
-  postComment(comment:any):void{
+  postComment(comment:any){
     let reviewModel = new ReviewModelRequest()
     reviewModel.comment = comment;
     reviewModel.userId= 9
     reviewModel.recipeId = this.recipeId
     console.log(JSON.stringify(reviewModel))
-    this._reviewService.post(reviewModel).subscribe(
-      response => {
+    this._reviewService.post(reviewModel).subscribe(() => {
         this.loadComment()
-      }
-    })
+      })
   }
 
   onRateChange(rate:number){
@@ -61,15 +56,11 @@ export class ViewRecipeDetailsComponent implements OnInit{
   }
 
   loadComment(){
-
-
     if (this.isChecked) {
-      this._reviewService.getCommentsByRecipeId(this.recipeId).subscribe(
-        response => {
+      this._reviewService.getCommentsByRecipeId(this.recipeId).subscribe((response:any) => {
           this.comments = response
           console.log(this.comments)
-        }
-      )
+        })
     }
   }
 

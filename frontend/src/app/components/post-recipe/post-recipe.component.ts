@@ -1,15 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormArray, ɵElement, ValidatorFn, AbstractControl} from '@angular/forms';
 import {CategoryService} from '../../service/category/category.service';
 import {FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractControl} from '@angular/forms';
-import {CategoryService} from '../../services/category/category.service';
 import {CategoryModel} from '../../models/category-model';
 import {RecipeService} from "../../service/recipe/recipe.service";
-import { MatSnackBar,MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
-import { MatDialog } from '@angular/material/dialog';
-import Swal from 'sweetalert2';
-import {RecipeService} from "../../services/recipe/recipe.service";
-import {NotificationService} from "../../services/notifications/notification.service";
+import {NotificationService} from "../../service/notifications/notification.service";
 
 interface Step {
   stepDescription: string;

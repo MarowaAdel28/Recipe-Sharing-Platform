@@ -7,7 +7,7 @@ const httpOptions = {
       'Content-Type': 'application/json',
     }),
   };
-  
+
 
 
 @Injectable({
@@ -16,12 +16,12 @@ const httpOptions = {
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  
+
 
   private baseDashboardUrl = 'http://127.0.0.1:8080/dashboard/'
   private baseAdminRecipeUrl = 'http://127.0.0.1:8080/adminRecipe/'
 
- 
+
 
   rejectRecipe(recipeId:number, message:string) {
     return this.http.patch(`${this.baseAdminRecipeUrl+"rejectRecipe?recipeId="+recipeId+"&message="+message}`, {});
@@ -138,8 +138,20 @@ export class ApiService {
   put(url:string,body:any){
     return this.http.put<any>(`http://localhost:8080/${url}`,body)
   }
+
+  put_header(url:string,body:any,headers:any){
+    return this.http.put<any>(`http://localhost:8080/${url}`,body,{headers})
+  }
   delete(url:string,id:number){
     return this.http.delete<any>(`http://localhost:8080/${url}/${id}`)
+  }
+
+  softDelete(url:string,id:number,params: {isDeleted:boolean}){
+    const httpParams = new HttpParams()
+      .set('isDeleted', params.isDeleted);
+
+    const options = { params: httpParams };
+    return this.http.delete<any>(`http://localhost:8080/${url}/${id}`,options)
   }
 
   getPaginationRecipes(url: string, params: {page: string; size: string;}) {
@@ -151,6 +163,29 @@ export class ApiService {
   const options = { params: httpParams };
 
   return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
+  }
+  getPaginationUserRecipes(url: string,id:number, params: {page: string; size: string;}) {
+
+    const httpParams = new HttpParams()
+      .set('pageSize', params.size)
+      .set('page', params.page);
+
+    const options = { params: httpParams };
+
+    return this.http.get<any[]>(`http://localhost:8080/${url}/${id}`,options);
+  }
+
+  findRecipesByNameAndCategory(url: string, params: {name: string; categoryId: string; page: string; size: string;}) {
+
+    const httpParams = new HttpParams()
+      .set('name', params.name)
+      .set('categoryId', params.categoryId)
+      .set('pageSize', params.size)
+      .set('page', params.page);
+
+    const options = { params: httpParams };
+
+    return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
   }
 
 }
