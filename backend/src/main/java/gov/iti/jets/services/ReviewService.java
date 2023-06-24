@@ -42,10 +42,9 @@ public class ReviewService {
         reviewRepository.deleteById(id);
     }
 
-    public void update(ReviewDTO reviewDto) {
-        Review review = requireOne(reviewDto.getId());
-        BeanUtils.copyProperties(reviewDto, review);
-        reviewRepository.save(review);
+    public void update(RecipeSetterDTO reviewDto , Integer newRate) {
+        Recipe recipe = mapper.map(reviewDto,Recipe.class);
+        reviewRepository.UpdateRecipeRate(recipe , newRate);
     }
 
     public List<ReviewResponseDTO> getReviewsByRecipeId(Integer recipeDto){

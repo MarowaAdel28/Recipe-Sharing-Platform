@@ -59,7 +59,13 @@ public class RecipeService {
         if (category == null) {
             return Utility.INVALID_CATEGORY;
         }
+        StringBuilder stepBuilder = new StringBuilder();
+        recipeDto.getSteps().forEach(step->{
+            stepBuilder.append(step);
+            stepBuilder.append('/');
+        });
         Recipe recipe = recipeMapper.toEntity(recipeDto);
+        recipe.setSteps(stepBuilder.toString());
         recipe.setUserId(user);
         recipe.setCategoryId(category);
         recipe = recipeRepository.save(recipe);

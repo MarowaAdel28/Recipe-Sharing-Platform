@@ -14,8 +14,8 @@ public class FavoriteRecipeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Integer id;
 
-    private Recipe recipeId;
+    private RecipeDTO recipeId;
    
-    private User userId;
+    private UserDTO userId;
 
 }
