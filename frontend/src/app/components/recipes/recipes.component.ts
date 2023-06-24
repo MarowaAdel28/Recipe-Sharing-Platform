@@ -18,6 +18,7 @@ export class RecipesComponent {
   ngOnInit() {
       this.recipeService.getTop3().subscribe((recipes) => {
         this.recipes = recipes;
+        console.log(this.recipes)
         for (const item of recipes) {
           for (const item2 of item.reviews) {
             console.log(item2.rate + "...eeeeeeee............");
