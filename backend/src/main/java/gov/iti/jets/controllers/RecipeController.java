@@ -3,6 +3,10 @@ package gov.iti.jets.controllers;
 import gov.iti.jets.models.dtos.RecipeDTO;
 import gov.iti.jets.models.dtos.response.RecipeResponseDTO;
 import gov.iti.jets.models.dtos.request.RecipeSetterDTO;
+import gov.iti.jets.models.dtos.RecipeResponseDTO;
+import gov.iti.jets.models.dtos.SearchResultDTO;
+import gov.iti.jets.models.dtos.recipeposter.RecipeSetterDTO;
+import gov.iti.jets.models.entities.Category;
 import gov.iti.jets.services.RecipeService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -14,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8060")
 @Validated
 @RestController
 @RequestMapping("/recipe")
@@ -55,11 +59,29 @@ public class RecipeController {
     }
     @GetMapping("/getRecipesByPageNo")
     public ResponseEntity<RecipeResponseDTO> getPaginationRecipes(@RequestParam(defaultValue = "0") int page,
-                                                                  @RequestParam(defaultValue = "10") int size) {
+                                                                  @RequestParam(defaultValue = "9") int size) {
         return recipeService.getPaginatedRecipes(page,size);
     }
-//    @GetMapping
-//    public Page<RecipeDTO> query(@Valid RecipeQueryVO recipeDto) {
-//        return recipeService.query(recipeDto);
+    @GetMapping("/findRecipesByNameAndCategory")
+    public ResponseEntity<SearchResultDTO> searchRecipesByNameAndCategory(
+            @RequestParam(value = "name", required = false) String keyword,
+            @RequestParam(value = "categoryId", required = false) Category categoryId,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "9") int size
+    ) {
+        PageRequest pageable = PageRequest.of(page, size);
+        return recipeService.searchRecipesByName(keyword, categoryId, pageable);
+    }
+
+//    @GetMapping("/findRecipesByName")
+//    public ResponseEntity<SearchResultDTO> searchRecipesByName(
+//            @RequestParam("keyword") String keyword,
+//            @RequestParam(value = "page", defaultValue = "0") int page,
+//            @RequestParam(value = "size", defaultValue = "9") int size
+//    )
+//    {
+//        PageRequest pageable = PageRequest.of(page, size);
+//        return recipeService.searchRecipesByName(keyword, pageable);
 //    }
+
 }

@@ -1,17 +1,20 @@
 <!-- recepie_area_start  -->
-<div class="row">
-  <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let recipe of recipes">
-    <div class="single_recepie text-center">
-      <div class="recepie_thumb">
-        <img src="assets/img/recepie/recpie_1.png" alt="">
+<div class="recepie_area plus_padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let recipe of recipes">
+        <div class="single_recepie text-center">
+          <div class="recepie_thumb">
+            <img src="assets/img/recepie/recpie_1.png" alt="">
+          </div>
+          <h3>Egg Manchurian{{recipe.id}}</h3>
+          <span>Appetizer</span>
+          <p>Time Needs: {{recipe.preparingTime}} Mins</p>
+          <a href="#" class="line_btn">View Full Recipe</a>
+        </div>
       </div>
-      <h3>Egg Manchurian{{recipe.id}}</h3>
-      <span>Appetizer</span>
-      <p>Time Needs: {{recipe.preparingTime}} Mins</p>
-      <a href="#" class="line_btn">View Full Recipe</a>
     </div>
   </div>
 </div>
-
 <!-- /recepie_area_start  -->
 <!--<li *ngFor="let recipe of recipes">{{recipe.id}} , {{recipe.steps}}</li>-->

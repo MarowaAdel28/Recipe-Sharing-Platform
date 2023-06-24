@@ -40,4 +40,7 @@ export class RecipeService {
   getPaginationRecipes(params: { page: string; size: string; }) {
     return this._apiService.getPaginationRecipes("recipe/getRecipesByPageNo", params)
   }
+  findRecipesByNameAndCategory(params: {name:string; categoryId: string; page: string; size: string; }) {
+   return this._apiService.findRecipesByNameAndCategory("recipe/findRecipesByNameAndCategory", params)
+ }
 }

@@ -56,8 +56,6 @@ import { RatingComponent } from './components/shared/rating/rating.component';
     RatingComponent
   ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,

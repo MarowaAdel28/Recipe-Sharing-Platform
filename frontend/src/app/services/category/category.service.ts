@@ -10,7 +10,7 @@ export class CategoryService {
   constructor(private _apiService:ApiService) { }
 
   getAll(){
-    return this._apiService.getAll("category")
+    return this._apiService.getAll("category/allCategories")
   }
   getTop3(){
     return this._apiService.getTop3("category")

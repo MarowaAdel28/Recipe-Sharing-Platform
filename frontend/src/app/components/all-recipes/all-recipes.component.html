@@ -17,9 +17,35 @@
   </div>
 </div>
 <!-- /bradcam_area  -->
+<div class="container pt-4">
+  <div class="receipe-post-search mb-80 d-flex justify-content-center">
+    <div class="container">
+      <form action="#" method="post">
+        <div class="row align-items-center">
+          <div class="col-12 col-lg-4">
+            <select class="form-control"  id="select1" [(ngModel)]="categoryId" name="category">
+              <option value="">All Recipes Categories</option>
+              <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+            </select>
+
+          </div>
+
+          <div class="col-12 col-lg-3">
+            <input type="search" name="search" placeholder="Search Recipes" #searchInput style="width:300px;">
+          </div>
+
+          <div class="col-12 col-lg-3 text-right">
+            <button type="submit" class="btn delicious-btn" (click)="findRecipesByNameAndCategory(searchInput.value,categoryId)">Search</button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <!-- recepie_area_start  -->
-<div class="recepie_area plus_padding">
+<div class="recepie_area plus_padding" style="padding-top: 30px;">
   <div class="container">
     <div class="row">
 
@@ -40,11 +66,12 @@
 </div>
 <!-- /recepie_area_start  -->
 
-<div class="pagination">
+<div class="pagination" *ngIf="totalItems > 9">
   <button (click)="previousPage()" [disabled]="currentPage == 0">Previous</button>
   <button *ngFor="let page of totalPagesArray" (click)="goToPage(page)" [class.active]="currentPage === page">{{ page+1 }}</button>
   <button (click)="nextPage()" [disabled]="currentPage === totalPages-1">Next</button>
 </div>
+
 <br><br>
 <!-- JS here -->
 <script src="js/vendor/modernizr-3.5.0.min.js"></script>

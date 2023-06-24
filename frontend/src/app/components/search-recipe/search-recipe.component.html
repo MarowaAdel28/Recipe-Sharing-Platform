@@ -1,0 +1,98 @@
+<!--<body>-->
+<!--&lt;!&ndash;[if lte IE 9]>-->
+<!--<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade-->
+<!--  your browser</a> to improve your experience and security.</p>-->
+<!--<![endif]&ndash;&gt;-->
+
+<!--&lt;!&ndash; bradcam_area  &ndash;&gt;-->
+<!--<div class="bradcam_area bradcam_bg_1">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+<!--      <div class="col-xl-12">-->
+<!--        <div class="bradcam_text text-center">-->
+<!--          <h3>Chicken Recipes</h3>-->
+<!--          <form class="mx-auto w-100 mb-3" style="max-width: 520px; width: 1%; margin-bottom: 30px">-->
+<!--            <div class="row g-2 w-100">-->
+<!--              <div class="col flex-grow">-->
+<!--                <div class="input-group">-->
+<!--                  <input type="text" placeholder="Food or Recipe name" class="form-control" #searchInput>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              &lt;!&ndash; col.// &ndash;&gt;-->
+<!--              <div class="col-auto">-->
+<!--&lt;!&ndash;                <button class="btn btn-warning" fdprocessedid="" (click)="searchRecipesByName(searchInput.value)"> Find&ndash;&gt;-->
+<!--                  Recipe-->
+<!--                </button>-->
+<!--              </div>-->
+<!--              &lt;!&ndash; col.// &ndash;&gt;-->
+<!--            </div>-->
+<!--            &lt;!&ndash; row.// &ndash;&gt;-->
+<!--          </form>-->
+<!--          <br>-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; /bradcam_area  &ndash;&gt;-->
+
+<!--&lt;!&ndash; recepie_area_start  &ndash;&gt;-->
+<!--<div class="recepie_area plus_padding">-->
+<!--  <div class="container">-->
+<!--    <div class="row">-->
+
+<!--      <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let recipe of paginatedList">-->
+<!--        <div class="single_recepie text-center">-->
+<!--          <div class="recepie_thumb">-->
+<!--            <img src="assets/img/recepie/recpie_1.png" alt="">-->
+<!--          </div>-->
+<!--          <h3>{{recipe.name}}</h3>-->
+<!--          <span>{{recipe.category.name}}</span>-->
+<!--          <p>Time Needs: {{recipe.preparingTime}}</p>-->
+<!--          <a routerLink="/view-recipe/details/{{recipe.id}}" class="line_btn">View Full Recipe</a>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+<!--&lt;!&ndash; /recepie_area_start  &ndash;&gt;-->
+
+<!--<div class="pagination">-->
+<!--  <button (click)="previousPage()" [disabled]="currentPage == 0">Previous</button>-->
+<!--  <button *ngFor="let page of totalPagesArray" (click)="goToPage(page)" [class.active]="currentPage === page">{{ page+1-->
+<!--    }}-->
+<!--  </button>-->
+<!--  <button (click)="nextPage()" [disabled]="currentPage === totalPages-1">Next</button>-->
+<!--</div>-->
+<!--<br><br>-->
+<!--&lt;!&ndash; JS here &ndash;&gt;-->
+<!--<script src="js/vendor/modernizr-3.5.0.min.js"></script>-->
+<!--<script src="js/vendor/jquery-1.12.4.min.js"></script>-->
+<!--<script src="js/popper.min.js"></script>-->
+<!--<script src="js/bootstrap.min.js"></script>-->
+<!--<script src="js/owl.carousel.min.js"></script>-->
+<!--<script src="js/isotope.pkgd.min.js"></script>-->
+<!--<script src="js/ajax-form.js"></script>-->
+<!--<script src="js/waypoints.min.js"></script>-->
+<!--<script src="js/jquery.counterup.min.js"></script>-->
+<!--<script src="js/imagesloaded.pkgd.min.js"></script>-->
+<!--<script src="js/scrollIt.js"></script>-->
+<!--<script src="js/jquery.scrollUp.min.js"></script>-->
+<!--<script src="js/wow.min.js"></script>-->
+<!--<script src="js/nice-select.min.js"></script>-->
+<!--<script src="js/jquery.slicknav.min.js"></script>-->
+<!--<script src="js/jquery.magnific-popup.min.js"></script>-->
+<!--<script src="js/plugins.js"></script>-->
+<!--<script src="js/gijgo.min.js"></script>-->
+
+<!--&lt;!&ndash;contact js&ndash;&gt;-->
+<!--<script src="js/contact.js"></script>-->
+<!--<script src="js/jquery.ajaxchimp.min.js"></script>-->
+<!--<script src="js/jquery.form.js"></script>-->
+<!--<script src="js/jquery.validate.min.js"></script>-->
+<!--<script src="js/mail-script.js"></script>-->
+
+<!--<script src="js/main.js"></script>-->
+<!--</body>-->
