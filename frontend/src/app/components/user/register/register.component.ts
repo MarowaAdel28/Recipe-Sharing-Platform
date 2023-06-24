@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
        repeatPassword:['',[Validators.required, Validators.minLength(6), Validators.maxLength(6), this.matchPasswords.bind(this)]],
       // , this.matchPasswords.bind(this)
       age: ['', [Validators.required, Validators.min(12)]],
-      gender: ['', Validators.required]
+      gender: ['f', Validators.required]
     },);
   }
 

@@ -4,12 +4,13 @@
 .card {
   box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
   width: fit-content;
+  height: fit-content;
 }
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: fit-content;
 }
 
 .form {

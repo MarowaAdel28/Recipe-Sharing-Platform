@@ -42,7 +42,7 @@ const routes: Routes = [
   {path: 'profile/user-recipes',component:UserRecipesComponent},
   {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
   {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent},
-  {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent},
+  // {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent},
   {path:'**',component:HomeComponent},
   {path:'',component:HomeComponent},
 

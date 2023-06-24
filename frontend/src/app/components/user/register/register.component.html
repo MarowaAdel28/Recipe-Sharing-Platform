@@ -1,3 +1,4 @@
+<body style="background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/img/profile-icons/background.jpg) no-repeat center center/cover; padding-top: 0px;">
 <div class="image"  >
 
 <div class="inner">
@@ -32,7 +33,8 @@
           <br><br>
           <div class="form-holder">
 <!--            <i style="font-style: normal; font-size: 15px;">@</i>-->
-            <input [class.is-valid]="!registrationForm.controls['email'].errors" formControlName="email" type="text" class="form-control">
+            <input [class.is-valid]="!registrationForm.controls['email'].errors" formControlName="email" type="text"
+                   class="form-control" placeholder="Enter Your Email">
             <div *ngIf="registrationForm.controls['email'].errors && (registrationForm.controls['email'].touched || registrationForm.controls['email'].dirty )">
               <small *ngIf="registrationForm.controls['email'].errors?.['required']"  class="form-text text-danger">
                 <span style="color: red; font-size:10px">Email is Required</span>
@@ -100,7 +102,8 @@
           <span  style=" color: black; font-size:15px  " >Age:</span>
           <br><br>
           <div class="form-holder">
-            <input [class.is-valid]="!registrationForm.controls['age'].errors" formControlName="age" type="number" class="form-control">
+            <input [class.is-valid]="!registrationForm.controls['age'].errors" formControlName="age"
+                   type="number" class="form-control" placeholder="Enter Your Age">
             <div *ngIf="registrationForm.controls['age'].errors && (registrationForm.controls['age'].touched || registrationForm.controls['age'].dirty )">
               <small *ngIf="registrationForm.controls['age'].errors?.['required']"  class="form-text text-danger">
                  <span style="color: red;font-size:10px ">Age is Required</span>
