@@ -35,11 +35,6 @@ public class ReviewController {
         reviewService.delete(id);
     }
 
-    @PutMapping
-    public void update(@Valid @RequestBody RecipeSetterDTO recipeSetterDTO, Integer newRate) {
-        System.out.println("newRate = " + newRate);
-        reviewService.update(recipeSetterDTO , newRate);
-    }
 
     @GetMapping("/{id}")
     public ReviewResponseDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {

@@ -42,10 +42,6 @@ public class ReviewService {
         reviewRepository.deleteById(id);
     }
 
-    public void update(RecipeSetterDTO reviewDto , Integer newRate) {
-        Recipe recipe = mapper.map(reviewDto,Recipe.class);
-        reviewRepository.UpdateRecipeRate(recipe , newRate);
-    }
 
     public List<ReviewResponseDTO> getReviewsByRecipeId(Integer recipeDto){
         Recipe recipe = recipeRepository.findById(recipeDto).get();

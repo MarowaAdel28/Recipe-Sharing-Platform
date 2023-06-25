@@ -19,8 +19,5 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findReviewByRecipeIdOrderByDateDesc(Recipe recipeId);
 
-    @Modifying
-    @Transactional
-    @Query("update Review r set r.rate = :newRate where r.recipeId = :recipe ")
-    void UpdateRecipeRate(@Param("recipe") Recipe recipeId , @Param("newRate") Integer newRate);
+
 }

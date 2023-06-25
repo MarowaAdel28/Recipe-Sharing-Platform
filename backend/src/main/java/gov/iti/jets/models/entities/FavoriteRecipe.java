@@ -16,12 +16,14 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 
 /**
  *
  * @author dell
  */
 @Entity
+@AllArgsConstructor
 @Table(name = "favorite_recipe")
 public class FavoriteRecipe implements Serializable {
 
@@ -43,6 +45,11 @@ public class FavoriteRecipe implements Serializable {
 
     public FavoriteRecipe(Integer id) {
         this.id = id;
+    }
+
+    public FavoriteRecipe(User user, Recipe recipe) {
+        setUserId(user);
+        setRecipeId(recipe);
     }
 
     public Integer getId() {
@@ -91,7 +98,10 @@ public class FavoriteRecipe implements Serializable {
 
     @Override
     public String toString() {
-        return "gov.iti.jets.models.entities.FavoriteRecipe[ id=" + id + " ]";
+        return "FavoriteRecipe{" +
+                "id=" + id +
+                ", recipeId=" + recipeId +
+                ", userId=" + userId +
+                '}';
     }
-    
 }

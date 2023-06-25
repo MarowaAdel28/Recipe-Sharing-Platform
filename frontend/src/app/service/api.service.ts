@@ -133,6 +133,10 @@ export class ApiService {
     return this.http.get<any>(this.baseUserUrl+url+`/`+id)
   }
 
+  get(url:string){
+    return this.http.get<any>(this.baseUserUrl+url)
+  }
+
   post(url:string,body:any,headers:any){
     return this.http.post<any>(this.baseUserUrl+url,body,{headers})
   }

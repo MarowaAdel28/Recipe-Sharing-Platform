@@ -11,10 +11,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
+@CrossOrigin(origins = "http://localhost:8080")
 @Validated
 @RestController
 @RequestMapping("/favoriteRecipe")
-@CrossOrigin(origins = "http://localhost:8080")
 public class FavoriteRecipeController {
 
     @Autowired
@@ -22,6 +24,7 @@ public class FavoriteRecipeController {
 
     @PostMapping
     public String save(@Valid @RequestBody FavouriteSetterDTO vO) {
+        System.out.println("Martinaaaaaaaaaaaaaaaaaaaaaaaaaaa");
         return favoriteRecipeService.save(vO).toString();
     }
 
@@ -50,6 +53,12 @@ public class FavoriteRecipeController {
     @PostMapping("/deletefav")
     public void deleteFavouriteByRecipeIdAndUserId(@Valid @RequestBody FavouriteResponseDTO favoriteRecipeDTO){
         favoriteRecipeService.delete(favoriteRecipeDTO);
+    }
+
+    @GetMapping
+    public Optional<FavouriteResponseDTO> getByIds(@RequestParam int userId,
+                                                  @RequestParam int recipeId){
+        return favoriteRecipeService.getByUserAndRecipeId(userId,recipeId);
     }
 //    @GetMapping
 //    public Page<FavoriteRecipeDTO> query(@Valid FavoriteRecipeQueryVO vO) {
