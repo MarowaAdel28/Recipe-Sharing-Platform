@@ -3,6 +3,7 @@ import {UserRecipeService} from "../../../service/user-recipe/user-recipe.servic
 import {NotificationService} from "../../../service/notifications/notification.service";
 import {ReviewService} from "../../../service/review/review.service";
 import {RateModel} from "../../../models/rate-model";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-user-favorite-recipes',
@@ -18,7 +19,8 @@ export class UserFavoriteRecipesComponent implements OnInit{
   totalPagesArray: number[] = [];
 
 
-  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService, private reviewService:ReviewService ) {}
+  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService,
+              private reviewService:ReviewService, private authService:AuthService) {}
 
   ngOnInit() {
     this.getPaginatedData();
@@ -30,7 +32,7 @@ export class UserFavoriteRecipesComponent implements OnInit{
       size: this.pageSize.toString()
     };
 
-    this.userRecipeService.getPaginationUserRecipesFavorite(1,params).subscribe((response: any) => {
+    this.userRecipeService.getPaginationUserRecipesFavorite(this.authService.GetIDByToken(this.authService.getToken()),params).subscribe((response: any) => {
       this.paginatedList = response.data;
       this.totalItems = response.totalItems;
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);

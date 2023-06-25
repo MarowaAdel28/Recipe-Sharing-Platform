@@ -29,6 +29,8 @@ import java.util.List;
 @Repository
 @EnableJpaRepositories
 public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
+    List<Recipe> findByIsDeletedAndStatusIgnoreCase(Boolean isDeleted, String status);
+    Page<Recipe> findByIsDeletedAndStatusIgnoreCase(Boolean isDeleted, String status,Pageable pageable);
     //    @Query("SELECT r FROM Recipe r WHERE LOWER(r.recipeName) LIKE LOWER(CONCAT('%', :keyword, '%'))")
 //    List<Recipe> findByNameContainingIgnoreCase(@Param("keyword") String keyword);
 //    @Query("SELECT r FROM Recipe r WHERE LOWER(r.recipeName) LIKE LOWER(CONCAT('%', :keyword, '%'))")
@@ -38,7 +40,8 @@ public interface RecipeRepository extends JpaRepository<Recipe, Integer> {
 //    );
 
     @Query("SELECT r FROM Recipe r WHERE (:name is null or LOWER(r.recipeName) LIKE LOWER(concat('%', :name, '%'))) " +
-            "AND (:categoryId is null or r.categoryId = :categoryId)")
+            "AND (:categoryId is null or r.categoryId = :categoryId)"
+    +"And r.isDeleted=false And r.status='accepted'")
     List<Recipe> searchByNameAndCategoryIgnoreCase(@Param("name") String name, @Param("categoryId") Category category);
 
     Page<Recipe> findAllByUserIdAndIsDeletedFalse(User userId, Pageable pageable);

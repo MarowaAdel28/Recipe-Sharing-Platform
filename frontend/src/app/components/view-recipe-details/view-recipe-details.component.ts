@@ -9,6 +9,7 @@ import {FavouriteResponseModel} from "../../models/favourite-response-model";
 import {UserModel} from "../../models/user-model";
 import {RecipeService} from "../../service/recipe/recipe.service";
 import {ReviewService} from "../../service/review/review.service";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-view-recipe-details',
@@ -29,7 +30,8 @@ export class ViewRecipeDetailsComponent implements OnInit{
   constructor(private _activatedRoute:ActivatedRoute
               ,private recipeService: RecipeService
               ,private _reviewService:ReviewService
-              ,private _favouriteService:FavouriteService) {
+              ,private _favouriteService:FavouriteService
+              ,private authService:AuthService) {
 
   }
 
@@ -52,7 +54,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
           }
         )
     })
-    let user = new UserModel(10)
+    let user = new UserModel(this.authService.GetIDByToken(this.authService.getToken()))
     this.favouritRequestModel = new FavouriteRequestModel(this.recipeId,10)
               console.log(this.favouritRequestModel)
   }
@@ -61,7 +63,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
   postComment(comment:any):void{
     let reviewModel = new ReviewModelRequest()
     reviewModel.comment = comment;
-    reviewModel.userId= 10
+    reviewModel.userId= this.authService.GetIDByToken(this.authService.getToken());
     reviewModel.recipeId = this.recipeId
     console.log(JSON.stringify(reviewModel))
     this._reviewService.post(reviewModel).subscribe(
@@ -75,7 +77,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
     this.recipeRate = rate;
     const httpParams = {
       'recipeId': this.recipeId,
-      'userId': 2,
+      'userId': this.authService.GetIDByToken(this.authService.getToken()),
       'rate': this.recipeRate
     };
     console.log(this.recipeRate)

@@ -3,6 +3,7 @@ import {UserRecipeService} from "../../../service/user-recipe/user-recipe.servic
 import {NotificationService} from "../../../service/notifications/notification.service";
 import {RateModel} from "../../../models/rate-model";
 import {ReviewService} from "../../../service/review/review.service";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-archive-recipes',
@@ -19,7 +20,8 @@ export class ArchiveRecipesComponent {
   totalPagesArray: number[] = [];
 
 
-  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService, private reviewService:ReviewService) {}
+  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService,
+              private reviewService:ReviewService,private authService:AuthService) {}
 
   ngOnInit() {
     this.getPaginatedData();
@@ -40,8 +42,8 @@ export class ArchiveRecipesComponent {
       page: this.currentPage.toString(),
       size: this.pageSize.toString()
     };
-
-    this.userRecipeService.getPaginationUserRecipesArchive(1,params).subscribe((response: any) => {
+    let userId=this.authService.GetIDByToken(this.authService.getToken());
+    this.userRecipeService.getPaginationUserRecipesArchive(userId,params).subscribe((response: any) => {
       this.paginatedList = response.data;
       this.totalItems = response.totalItems;
       this.totalPages = Math.ceil(this.totalItems / this.pageSize);

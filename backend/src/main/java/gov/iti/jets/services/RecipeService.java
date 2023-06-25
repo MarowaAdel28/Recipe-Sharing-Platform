@@ -10,6 +10,7 @@ import gov.iti.jets.models.dtos.profile.UserRecipeResponseDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.repositories.FavoriteRecipeRepository;
 import gov.iti.jets.repositories.RecipeRepository;
+import gov.iti.jets.util.RecipeStatus;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -137,7 +138,8 @@ public class RecipeService {
 
     public List<RecipeDTO> getTop3() {
         Pageable pageable = PageRequest.of(0, 3); // Limit the results to 3
-        List<Recipe> categories = recipeRepository.findAll(pageable).getContent();
+        List<Recipe> categories = recipeRepository.findByIsDeletedAndStatusIgnoreCase(false,RecipeStatus.ACCEPTED.name(),pageable)
+                .getContent();
         List<RecipeDTO> recipeDTOS = new ArrayList<>();
         for (Recipe recipe : categories)
             recipeDTOS.add(toDTO(recipe));
@@ -145,7 +147,8 @@ public class RecipeService {
     }
 
     public List<RecipeDTO> getAllRecipes() {
-        List<Recipe> recipes = recipeRepository.findAll();
+        List<Recipe> recipes = recipeRepository.findByIsDeletedAndStatusIgnoreCase(false, RecipeStatus.ACCEPTED.toString());
+//                recipeRepository.findAll();
         return recipes.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
@@ -160,10 +163,11 @@ public class RecipeService {
     public ResponseEntity<RecipeResponseDTO> getPaginatedRecipes(int page, int pageSize) {
         Pageable pageable = PageRequest.of(page, pageSize);
         RecipeResponseDTO recipeResponseDTO = new RecipeResponseDTO();
-        recipeResponseDTO.setData(recipeRepository.findAll(pageable).stream()
+        recipeResponseDTO.setData(recipeRepository.findByIsDeletedAndStatusIgnoreCase(false,RecipeStatus.ACCEPTED.name(),pageable)
+                .stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList()));
-        recipeResponseDTO.setTotalItems(getRecipesCount());
+        recipeResponseDTO.setTotalItems(recipeRepository.findByIsDeletedAndStatusIgnoreCase(false,RecipeStatus.ACCEPTED.name()).size());
         return ResponseEntity.ok(recipeResponseDTO);
     }
     public ResponseEntity<UserRecipeResponseDTO> getAllRecipesForUser(int userId, int page, int pageSize) {

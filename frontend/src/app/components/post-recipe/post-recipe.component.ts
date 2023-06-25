@@ -5,6 +5,7 @@ import {CategoryModel} from '../../models/category-model';
 import {RecipeService} from "../../service/recipe/recipe.service";
 import {NotificationService} from "../../service/notifications/notification.service";
 import {Router} from "@angular/router";
+import {AuthService} from "../../service/auth.service";
 
 interface Step {
   stepDescription: string;
@@ -21,7 +22,8 @@ export class PostRecipeComponent implements OnInit {
   categoryModel: CategoryModel[];
 
   constructor(private formBuilder: FormBuilder, private categoryService:CategoryService,
-              private recipeService:RecipeService, private notificationService:NotificationService,private router: Router ) { }
+              private recipeService:RecipeService, private notificationService:NotificationService,private router: Router,
+              private authService:AuthService) { }
 
   ngOnInit() {
 
@@ -131,7 +133,7 @@ export class PostRecipeComponent implements OnInit {
       const recipe = this.recipeForm.value;
       // console.log(recipe); // You can customize this logic to save the recipe data to your backend or perform any other actions
       recipe.steps=this.adaptSteps(recipe);
-      recipe.user=10;
+      recipe.user=this.authService.GetIDByToken(this.authService.getToken());
       console.log(JSON.stringify(recipe))
       this.postData(recipe);
     } else {

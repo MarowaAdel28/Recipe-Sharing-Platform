@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 import {NotificationService} from "../../../service/notifications/notification.service";
 import {UserProfile} from "../../../models/user-profile";
 import {UserService} from "../../../service/user/user.service";
+import {AuthService} from "../../../service/auth.service";
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit{
 
   userForm: FormGroup;
 
-  constructor(private _formBuilder:FormBuilder, private userService:UserService, private notificationService:NotificationService){}
+  constructor(private _formBuilder:FormBuilder, private userService:UserService,
+              private notificationService:NotificationService, private authService:AuthService){}
   ngOnInit(): void {
 
     this.fetchData();
@@ -44,7 +46,7 @@ export class ProfileComponent implements OnInit{
 
     editUserName() {
       let body = {
-        user: '5',
+        user: this.authService.GetIDByToken(this.authService.getToken()),
         userName: this.user.userName,
       };
       console.log(body)
@@ -55,7 +57,7 @@ export class ProfileComponent implements OnInit{
       });
     }
   fetchData(){
-    this.userService.getUserById(5).subscribe((response:any) => {
+    this.userService.getUserById(this.authService.GetIDByToken(this.authService.getToken())).subscribe((response:any) => {
         console.log(response); // Do whatever you want with the data
         this.user=new UserProfile(response.userName,response.age,response.email,response.gender);
         console.log(this.user)
