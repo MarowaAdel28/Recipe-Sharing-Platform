@@ -1,9 +1,10 @@
-package gov.iti.jets.models.dtos;
+package gov.iti.jets.models.dtos.adminrecipes;
 
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import gov.iti.jets.models.entities.Recipe;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class RejectedRecipeDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    private Integer id;
+    private Integer recipeId;
     
     private String message;
 

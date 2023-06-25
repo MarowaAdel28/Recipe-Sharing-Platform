@@ -24,13 +24,20 @@ export class ApiService {
 
 
   rejectRecipe(recipeId:number, message:string) {
+    const headers = {
+      "Content-Type": "application/json",
+    }
+    const body={
+      "recipeId":recipeId,
+        "message":message
+    }
 
-    return this.http.patch(`${this.baseAdminRecipeUrl+"rejectRecipe?recipeId="+recipeId+"&message="+message}`, {});
+    return this.http.post(`${this.baseAdminRecipeUrl+"rejectRecipe"}`, body, {headers});
 
   }
 
   acceptRecipe(recipeId:number) {
-    return this.http.patch(`${this.baseAdminRecipeUrl+ "acceptRecipe/"+ recipeId}`,{});
+    return this.http.post(`${this.baseAdminRecipeUrl+ "acceptRecipe/"+ recipeId}`,{});
   }
 
   getِAcceptedRecipesData(page: number){

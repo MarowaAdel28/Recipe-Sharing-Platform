@@ -3,6 +3,7 @@ package gov.iti.jets.filter;
 import gov.iti.jets.services.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ import java.util.*;
 
 @Component
 @RequiredArgsConstructor
+//@MultipartConfig
 public class JwtAuthFilter extends OncePerRequestFilter{
 	    private final List<String> allowedOrigins = Arrays.asList("http://localhost:4200");
 
