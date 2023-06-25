@@ -27,7 +27,7 @@ import { SuperRoleGuard } from './service/super-role.guard';
 
 
 const routes: Routes = [
-  
+
   {path: 'dashboardSchema', component:DashboardSchemaComponent, canActivate:[AdminRoleGuard]},
   {path: 'dashboard', component:DashboardComponent, canActivate:[AdminRoleGuard]},
   {path: 'usersStat', component:UsersListComponent, canActivate:[AdminRoleGuard]},

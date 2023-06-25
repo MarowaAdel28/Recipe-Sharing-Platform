@@ -23,4 +23,6 @@ public class UserRecipeDTO implements Serializable {
     private String status;
 
     private CategoryDTO category;
+
+    private List<RateDto> rateList;
 }

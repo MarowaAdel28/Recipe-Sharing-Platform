@@ -71,6 +71,9 @@ public class Recipe implements Serializable {
     private List<FavoriteRecipe> favoriteRecipeList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipeId")
     private List<Review> reviewList;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
+    private List<Rate> rateList;
     @JoinColumn(name = "category_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Category categoryId;
@@ -255,6 +258,14 @@ public class Recipe implements Serializable {
     @Override
     public String toString() {
         return "gov.iti.jets.models.entities.Recipe[ id=" + id + " ]";
+    }
+
+    public List<Rate> getRateList() {
+        return rateList;
+    }
+
+    public void setRateList(List<Rate> rateList) {
+        this.rateList = rateList;
     }
     
 }

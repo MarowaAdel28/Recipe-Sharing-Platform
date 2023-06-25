@@ -3,6 +3,7 @@ import {RecipeService} from "../../service/recipe/recipe.service";
 import {CategoryModel} from "../../models/category-model";
 import {CategoryService} from "../../service/category/category.service";
 import {ReviewModel} from "../../models/review-model";
+import {RateModel} from "../../models/rate-model";
 
 @Component({
   selector: 'app-all-recipes',
@@ -29,10 +30,10 @@ export class AllRecipesComponent implements OnInit {
     this.getAllCategories();
   }
 
-  getRate(reviews: ReviewModel[]): number {
+  getRate(rates: RateModel[]): number {
 
-    const sum = reviews.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
-    const count = reviews.length;
+    const sum = rates.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
+    const count = rates.length;
     if (count === 0) {
       return 0;
     }
@@ -53,24 +54,40 @@ export class AllRecipesComponent implements OnInit {
     });
   }
 
-  goToPage(pageNumber: number) {
+  goToPage(pageNumber: number, recipeName: string, recipeCategoryId: string) {
     if (pageNumber >= 0 && pageNumber < this.totalPages) {
       this.currentPage = pageNumber;
-      this.getPaginatedData();
+      if(recipeCategoryId==='' && recipeName==='') {
+        console.log("next")
+        this.getPaginatedData();
+      } else {
+        console.log("search next")
+        this.findRecipesByNameAndCategory(recipeName,recipeCategoryId,this.currentPage.toString())
+      }
     }
   }
 
-  nextPage() {
+  nextPage(recipeName: string, recipeCategoryId: string) {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.getPaginatedData();
+      if(recipeCategoryId==='' && recipeName==='') {
+        console.log("next")
+        this.getPaginatedData();
+      } else {
+        console.log("search next")
+        this.findRecipesByNameAndCategory(recipeName,recipeCategoryId,this.currentPage.toString())
+      }
     }
   }
 
-  previousPage() {
+  previousPage(recipeName: string, recipeCategoryId: string) {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.getPaginatedData();
+      if(recipeCategoryId==='' && recipeName==='') {
+        this.getPaginatedData();
+      } else {
+        this.findRecipesByNameAndCategory(recipeName,recipeCategoryId,this.currentPage.toString())
+      }
     }
   }
 
@@ -86,13 +103,23 @@ export class AllRecipesComponent implements OnInit {
     );
   }
 
-  findRecipesByNameAndCategory(recipeName: string, recipeCategoryId: string) {
+  findRecipesByNameAndCategory(recipeName: string, recipeCategoryId: string,page:string) {
     const params = {
       name: recipeName,
       categoryId: recipeCategoryId,
-      page: this.currentPage.toString(),
+      // page: this.currentPage.toString(),
+      page:page,
       size: this.pageSize.toString()
     };
+
+    console.log(params)
+
+    this.recipeService.findRecipesByNameAndCategory(params).subscribe((response: any) => {
+      this.paginatedList = response.data;
+      this.totalItems = response.totalItems;
+      this.totalPages = Math.ceil(this.totalItems / this.pageSize);
+      this.totalPagesArray = Array.from({ length: this.totalPages }, (_, i) => i );
+    });
   }
   protected readonly requestIdleCallback = requestIdleCallback;
 

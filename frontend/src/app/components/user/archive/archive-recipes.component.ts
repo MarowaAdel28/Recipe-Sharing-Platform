@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {UserRecipeService} from "../../../service/user-recipe/user-recipe.service";
 import {NotificationService} from "../../../service/notifications/notification.service";
+import {RateModel} from "../../../models/rate-model";
+import {ReviewService} from "../../../service/review/review.service";
 
 @Component({
   selector: 'app-archive-recipes',
@@ -17,7 +19,7 @@ export class ArchiveRecipesComponent {
   totalPagesArray: number[] = [];
 
 
-  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService) {}
+  constructor(private userRecipeService: UserRecipeService, private notificationService:NotificationService, private reviewService:ReviewService) {}
 
   ngOnInit() {
     this.getPaginatedData();
@@ -68,5 +70,8 @@ export class ArchiveRecipesComponent {
       this.currentPage--;
       this.getPaginatedData();
     }
+  }
+  getRate(rateList: RateModel[]):number {
+    return this.reviewService.getRate(rateList)
   }
 }

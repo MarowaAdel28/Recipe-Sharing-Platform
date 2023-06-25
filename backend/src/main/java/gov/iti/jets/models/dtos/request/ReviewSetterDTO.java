@@ -23,8 +23,6 @@ public class ReviewSetterDTO implements Serializable {
 
     private String comment;
 
-    private Integer rate;
-
     private Date date;
 
     private Integer recipeId;

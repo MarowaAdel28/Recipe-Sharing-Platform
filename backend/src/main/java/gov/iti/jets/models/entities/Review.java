@@ -27,8 +27,8 @@ public class Review implements Serializable {
     private Integer id;
     @Column(name = "comment")
     private String comment;
-    @Column(name = "rate")
-    private Integer rate;
+//    @Column(name = "rate")
+//    private Integer rate;
     @Basic(optional = false)
     @Column(name = "date")
     @Temporal(TemporalType.TIMESTAMP)
@@ -68,13 +68,13 @@ public class Review implements Serializable {
         this.comment = comment;
     }
 
-    public Integer getRate() {
-        return rate;
-    }
-
-    public void setRate(Integer rate) {
-        this.rate = rate;
-    }
+//    public Integer getRate() {
+//        return rate;
+//    }
+//
+//    public void setRate(Integer rate) {
+//        this.rate = rate;
+//    }
 
     public Date getDate() {
         return date;

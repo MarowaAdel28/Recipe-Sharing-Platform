@@ -108,6 +108,8 @@ import { ApiService } from './service/api.service';
     ArchiveRecipesComponent,
     EditingRecipeComponent,
     AppRateComponent,
+    RatingComponent,
+
   ],
   imports: [
     MatExpansionModule,

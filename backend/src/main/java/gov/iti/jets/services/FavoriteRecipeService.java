@@ -1,8 +1,11 @@
 package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.FavoriteRecipeDTO;
+import gov.iti.jets.models.dtos.request.FavouriteSetterDTO;
+import gov.iti.jets.models.dtos.response.FavouriteResponseDTO;
 import gov.iti.jets.models.entities.FavoriteRecipe;
 import gov.iti.jets.repositories.FavoriteRecipeRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,15 +18,19 @@ public class FavoriteRecipeService {
     @Autowired
     private FavoriteRecipeRepository favoriteRecipeRepository;
 
-    public Integer save(FavoriteRecipeDTO favoriteRecipeDto) {
-        FavoriteRecipe bean = new FavoriteRecipe();
-        BeanUtils.copyProperties(favoriteRecipeDto, bean);
-        bean = favoriteRecipeRepository.save(bean);
-        return bean.getId();
+    ModelMapper mapper = new ModelMapper();
+
+    public Integer save(FavouriteSetterDTO favoriteRecipeDto) {
+        System.out.println("favoriteRecipeDto = " + favoriteRecipeDto);
+        FavoriteRecipe favoriteRecipe = mapper.map(favoriteRecipeDto,FavoriteRecipe.class);
+        favoriteRecipe = favoriteRecipeRepository.save(favoriteRecipe);
+        return favoriteRecipe.getId();
     }
 
-    public void delete(Integer id) {
-        favoriteRecipeRepository.deleteById(id);
+    public void delete(FavouriteResponseDTO favoriteRecipeDTO) {
+        System.out.println("favoriteRecipeDTO from deleted = " + favoriteRecipeDTO);
+        FavoriteRecipe favoriteRecipe = mapper.map(favoriteRecipeDTO , FavoriteRecipe.class);
+        favoriteRecipeRepository.deleteFavoriteRecipeByRecipeIdAndUserId(favoriteRecipe.getRecipeId(), favoriteRecipe.getUserId());
     }
 
     public void update(FavoriteRecipeDTO favoriteRecipeDto) {
@@ -32,16 +39,15 @@ public class FavoriteRecipeService {
         favoriteRecipeRepository.save(favoriteRecipe);
     }
 
-    public FavoriteRecipeDTO getById(Integer id) {
-        FavoriteRecipe original = requireOne(id);
-        return toDTO(original);
+    public FavouriteResponseDTO getById(FavouriteResponseDTO favoriteRecipeDTO) {
+        FavoriteRecipe favoriteRecipe = mapper.map(favoriteRecipeDTO , FavoriteRecipe.class);
+        favoriteRecipeRepository.findDistinctByRecipeIdAndUserId(favoriteRecipe.getRecipeId(),favoriteRecipe.getUserId());
+        return toDTO(favoriteRecipe);
     }
 
 
-    private FavoriteRecipeDTO toDTO(FavoriteRecipe original) {
-        FavoriteRecipeDTO bean = new FavoriteRecipeDTO();
-        BeanUtils.copyProperties(original, bean);
-        return bean;
+    private FavouriteResponseDTO toDTO(FavoriteRecipe original) {
+        return mapper.map(original,FavouriteResponseDTO.class);
     }
 
     private FavoriteRecipe requireOne(Integer id) {

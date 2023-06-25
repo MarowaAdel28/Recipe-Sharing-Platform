@@ -1,6 +1,10 @@
-export class UserModel {
-  username: string;
-  email: string;
-  id: number;
-}
+export class UserModel{
+  id:number;
+  userName:string;
+  email:string;
+  gender:string;
 
+  constructor(id:number) {
+    this.id = id;
+  }
+}

@@ -192,6 +192,8 @@ body, html {
 .bg-image {
   /* The image used */
   background-image: url("images/food.jpg");
+  --bs-backdrop-opacity: rgba(0, 0, 0, 0.5);
+  /*linear-gradient(rgba(0, 0, 0, 0.5);*/
 
   /* Add the blur effect */
   filter: blur(8px);

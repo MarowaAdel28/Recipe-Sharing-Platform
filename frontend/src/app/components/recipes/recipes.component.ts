@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {RecipeModel} from "../../models/recipe-model";
 import {ReviewModel} from "../../models/review-model";
 import {RecipeService} from "../../service/recipe/recipe.service";
+import {RateModel} from "../../models/rate-model";
 
 @Component({
   selector: 'app-recipes',
@@ -27,10 +28,10 @@ export class RecipesComponent {
         });
     }
 
-    getRate(reviews: ReviewModel[]): number{
+    getRate(rates: RateModel[]): number{
 
-      const sum = reviews.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
-      const count = reviews.length;
+      const sum = rates.reduce((accumulator, currentValue) => accumulator + currentValue.rate, 0);
+      const count = rates.length;
       if (count === 0) {
         return 0;
       }

@@ -15,8 +15,6 @@ public class ReviewDTO implements Serializable {
 
     private String comment;
 
-    private Integer rate;
-
     private LocalDateTime date;
 
 //    private RecipeDTO recipeId;

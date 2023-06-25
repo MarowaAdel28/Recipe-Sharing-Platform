@@ -30,7 +30,10 @@ public class AdminRecipeController {
 
     @GetMapping("/getRejectedRecipes/{page}")
     public List<AdminRecipeDTO> getRejectedRecipes(@PathVariable int page) {
-        return adminRecipesService.getRejectedRecipes(PageRequest.of(page, 10));
+//        System.out.println("page = " + page);
+        List<AdminRecipeDTO> adminRecipeDTOList = adminRecipesService.getRejectedRecipes(PageRequest.of(page, 10));
+        System.out.println("adminRecipeDTOList = " + adminRecipeDTOList);
+        return adminRecipeDTOList;
     }
 
     @GetMapping("/getRejectedCount")
@@ -54,8 +57,9 @@ public class AdminRecipeController {
         return adminRecipesService.acceptRecipe(recipeId);
     }
 
-    @PatchMapping("/rejectRecipe")
+    @PostMapping("/rejectRecipe")
     public Integer rejectRecipe(@RequestParam("recipeId")Integer recipeId, @RequestParam("message")String message) {
+        System.out.println("recipeId = " + recipeId);
         return adminRecipesService.rejectRecipe(recipeId, message);
     }
     

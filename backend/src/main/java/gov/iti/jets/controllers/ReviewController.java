@@ -36,8 +36,9 @@ public class ReviewController {
     }
 
     @PutMapping
-    public void update(@Valid @RequestBody ReviewDTO reviewDto) {
-        reviewService.update(reviewDto);
+    public void update(@Valid @RequestBody RecipeSetterDTO recipeSetterDTO, Integer newRate) {
+        System.out.println("newRate = " + newRate);
+        reviewService.update(recipeSetterDTO , newRate);
     }
 
     @GetMapping("/{id}")

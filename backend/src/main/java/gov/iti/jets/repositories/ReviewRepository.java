@@ -1,16 +1,15 @@
 package gov.iti.jets.repositories;
 
-import gov.iti.jets.models.dtos.request.RecipeSetterDTO;
 import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.models.entities.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
 public interface ReviewRepository extends JpaRepository<Review, Integer> {
@@ -20,5 +19,8 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
 
     List<Review> findReviewByRecipeIdOrderByDateDesc(Recipe recipeId);
 
-//    Review updateByRecipeId(Recipe recipeId);
+    @Modifying
+    @Transactional
+    @Query("update Review r set r.rate = :newRate where r.recipeId = :recipe ")
+    void UpdateRecipeRate(@Param("recipe") Recipe recipeId , @Param("newRate") Integer newRate);
 }

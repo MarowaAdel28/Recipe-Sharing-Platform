@@ -1,5 +1,6 @@
 package gov.iti.jets.models.dtos.request;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import gov.iti.jets.annotations.CategoryValidator;
 import gov.iti.jets.models.dtos.request.RecipeIngredientsDTO;
@@ -18,6 +19,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RecipeSetterDTO implements Serializable {
+
+    Integer id;
 
     @NotNull
     private String recipeName;

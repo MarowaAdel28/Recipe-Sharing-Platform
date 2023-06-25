@@ -4,6 +4,7 @@ import {FormBuilder, FormGroup, Validators, FormArray, ValidatorFn, AbstractCont
 import {CategoryModel} from '../../models/category-model';
 import {RecipeService} from "../../service/recipe/recipe.service";
 import {NotificationService} from "../../service/notifications/notification.service";
+import {Router} from "@angular/router";
 
 interface Step {
   stepDescription: string;
@@ -20,7 +21,7 @@ export class PostRecipeComponent implements OnInit {
   categoryModel: CategoryModel[];
 
   constructor(private formBuilder: FormBuilder, private categoryService:CategoryService,
-              private recipeService:RecipeService, private notificationService:NotificationService) { }
+              private recipeService:RecipeService, private notificationService:NotificationService,private router: Router ) { }
 
   ngOnInit() {
 
@@ -36,7 +37,7 @@ export class PostRecipeComponent implements OnInit {
   }
   notAllowedSpecialCharacters(): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const specialCharactersRegex = /[!@#$%^&*()_+\-=\[\]{};:"\\|<>\/?]/;
+      const specialCharactersRegex = /[\\/]/;
 
       if (specialCharactersRegex.test(control.value)) {
         return { notallowed: true }; // Validation failed
@@ -66,9 +67,7 @@ export class PostRecipeComponent implements OnInit {
         response => {
           console.log(response); // Do whatever you want with the data
           this.notificationService.showNotification("Adding new Recipe successfully!!");
-          // this.showNotification();
-
-          // this.openDialog();
+          this.router.navigate(['/view-recipe/details',response]);
         },
         error => {
           console.error(error);
@@ -97,8 +96,8 @@ export class PostRecipeComponent implements OnInit {
   createIngredient(): FormGroup {
     console.log("create ingredient")
     return this.formBuilder.group({
-      ingredientName: ['', [Validators.required,this.notAllowedSpecialCharacters()]],
-      ingredientQuantity:['', [Validators.required,this.notAllowedSpecialCharacters()]]
+      ingredientName: ['', [Validators.required]],
+      ingredientQuantity:['', [Validators.required]]
     });
   }
 
@@ -132,7 +131,7 @@ export class PostRecipeComponent implements OnInit {
       const recipe = this.recipeForm.value;
       // console.log(recipe); // You can customize this logic to save the recipe data to your backend or perform any other actions
       recipe.steps=this.adaptSteps(recipe);
-      recipe.user=1;
+      recipe.user=9;
       console.log(JSON.stringify(recipe))
       this.postData(recipe);
     } else {

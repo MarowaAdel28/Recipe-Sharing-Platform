@@ -20,10 +20,11 @@ export class ApiService {
 
   private baseDashboardUrl = 'http://127.0.0.1:8080/dashboard/'
   private baseAdminRecipeUrl = 'http://127.0.0.1:8080/adminRecipe/'
-
+  private baseUserUrl = 'http://localhost:8080/'
 
 
   rejectRecipe(recipeId:number, message:string) {
+
     return this.http.patch(`${this.baseAdminRecipeUrl+"rejectRecipe?recipeId="+recipeId+"&message="+message}`, {});
 
   }
@@ -123,27 +124,27 @@ export class ApiService {
 
 
   getAll(url:string){
-    return this.http.get<any[]>(`http://localhost:8080/${url}`)
+    return this.http.get<any[]>(this.baseUserUrl+url)
   }
   getTop3(url:string){
-    return this.http.get<any[]>(`http://localhost:8080/${url}/top3`)
+    return this.http.get<any[]>(this.baseUserUrl+url+`/top3`)
   }
   getById(url:string,id:number){
-    return this.http.get<any>(`http://localhost:8080/${url}/${id}`)
+    return this.http.get<any>(this.baseUserUrl+url+`/`+id)
   }
 
   post(url:string,body:any,headers:any){
-    return this.http.post<any>(`http://localhost:8080/${url}`,body,{headers})
+    return this.http.post<any>(this.baseUserUrl+url,body,{headers})
   }
   put(url:string,body:any){
-    return this.http.put<any>(`http://localhost:8080/${url}`,body)
+    return this.http.put<any>(this.baseUserUrl+url,body)
   }
 
   put_header(url:string,body:any,headers:any){
-    return this.http.put<any>(`http://localhost:8080/${url}`,body,{headers})
+    return this.http.put<any>(this.baseUserUrl+url,body,{headers})
   }
   delete(url:string,id:number){
-    return this.http.delete<any>(`http://localhost:8080/${url}/${id}`)
+    return this.http.delete<any>(this.baseUserUrl+url+`/`+id)
   }
 
   softDelete(url:string,id:number,params: {isDeleted:boolean}){
@@ -151,7 +152,7 @@ export class ApiService {
       .set('isDeleted', params.isDeleted);
 
     const options = { params: httpParams };
-    return this.http.delete<any>(`http://localhost:8080/${url}/${id}`,options)
+    return this.http.delete<any>(this.baseUserUrl+url+`/`+id,options)
   }
 
   getPaginationRecipes(url: string, params: {page: string; size: string;}) {
@@ -162,7 +163,7 @@ export class ApiService {
 
   const options = { params: httpParams };
 
-  return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
+  return this.http.get<any[]>(this.baseUserUrl+url,options);
   }
   getPaginationUserRecipes(url: string,id:number, params: {page: string; size: string;}) {
 
@@ -172,7 +173,7 @@ export class ApiService {
 
     const options = { params: httpParams };
 
-    return this.http.get<any[]>(`http://localhost:8080/${url}/${id}`,options);
+    return this.http.get<any[]>(this.baseUserUrl+url+`/`+id,options);
   }
 
   findRecipesByNameAndCategory(url: string, params: {name: string; categoryId: string; page: string; size: string;}) {
@@ -185,7 +186,32 @@ export class ApiService {
 
     const options = { params: httpParams };
 
-    return this.http.get<any[]>(`http://localhost:8080/${url}`,options);
+    return this.http.get<any[]>(this.baseUserUrl+url,options);
   }
 
+  addRating(url:string,params:{recipeId:number|any,UserId:number,rating:number}){
+    const httpParams = new HttpParams()
+      .set('UserId', params.UserId)
+      .set('recipeId', params.recipeId)
+      .set('rating', params.rating);
+
+    const options = { params: httpParams };
+    return this.http.post(this.baseUserUrl+url,"",options)
+  }
+  getByTwoIds(url:string , body:any){
+    return this.http.get<any>(this.baseUserUrl+url,body)
+  }
+
+  deleteFromFavourite(url:string , body:any){
+    return this.http.post<any>(this.baseUserUrl+url,body)
+  }
+
+  uploadImage(uri:string,params:{image:string,recipeId:number}) {
+    const httpParams = new HttpParams()
+      .set("image",params.image)
+      .set('recipeId', params.recipeId);
+
+    const options = { params: httpParams };
+    return this.http.post(this.baseUserUrl+uri,"",options)
+  }
 }

@@ -38,8 +38,11 @@ public class RecipeDTO implements Serializable {
 
 //    @JsonIgnore
 //    private List<FavoriteRecipeDTO> favoriteRecipeList;
+
 //
-//    private List<ReviewDTO> reviewList;
+    private List<RateDto> rateList;
+
+    private List<ReviewDTO> reviewList;
 
     private CategoryDTO category;
 
