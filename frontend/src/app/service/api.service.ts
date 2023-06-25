@@ -61,7 +61,7 @@ export class ApiService {
   barChartDataGender() {
     const url = `${this.baseDashboardUrl + "getGenderStat"}`;
     return this.http
-      .get(url, httpOptions)
+      .get(url)
       .toPromise()
       .then((data) => {
         return data;
@@ -72,7 +72,7 @@ export class ApiService {
   barChartDataAge() {
     const url = `${this.baseDashboardUrl + "getAgeStat"}`;
     return this.http
-      .get(url, httpOptions)
+      .get(url)
       .toPromise()
       .then((data) => {
         return data;
@@ -82,7 +82,7 @@ export class ApiService {
   lineChartData() {
     const url = `${this.baseDashboardUrl + "getRegisterDateStat"}`;
     return this.http
-      .get(url, httpOptions)
+      .get(url)
       .toPromise()
       .then((data) => {
         return data;
@@ -92,7 +92,7 @@ export class ApiService {
   pieChartData() {
     const url = `${this.baseDashboardUrl + "getRecipeStatusStat"}`;
     return this.http
-      .get(url, httpOptions)
+      .get(url)
       .toPromise()
       .then((data) => {
         return data;
@@ -103,7 +103,7 @@ export class ApiService {
   getUsersData(page: number) {
     const url = `${this.baseDashboardUrl + "getUsersStat/" + page}`;
     return this.http
-      .get(url, httpOptions)
+      .get(url)
       .toPromise()
       .then((data) => {
         return data;
@@ -113,7 +113,7 @@ export class ApiService {
   getUsersCount() {
     const url = `${this.baseDashboardUrl + "getUsersCount"}`;
     return this.http
-      .get(url, httpOptions)
+      .get(url)
       .toPromise()
       .then((data) => {
         return data;

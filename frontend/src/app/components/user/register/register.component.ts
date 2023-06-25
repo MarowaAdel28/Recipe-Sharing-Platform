@@ -4,6 +4,7 @@ import {UserService} from "../../../service/user/user.service";
 
 import Swal from 'sweetalert2';
 import {NotificationService} from "../../../service/notifications/notification.service";
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,14 +14,14 @@ export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder,private userService: UserService, private notificationService:NotificationService) {
+  constructor(private formBuilder: FormBuilder,private router: Router,private userService: UserService, private notificationService:NotificationService) {
 
   }
 
   ngOnInit() {
 
     this.registrationForm = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
+      userName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(25)]],
       email: ['', [Validators.required, Validators.pattern('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$')]],
       password: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
        repeatPassword:['',[Validators.required, Validators.minLength(6), Validators.maxLength(6), this.matchPasswords.bind(this)]],
@@ -45,11 +46,14 @@ export class RegisterComponent implements OnInit {
   }
 
     postData(user:any): void {
-      this.userService.post(user)
+      this.userService.register(user)
         .subscribe(
           (response: any) => {
             console.log(response); // Do whatever you want with the data
-            this.notificationService.showNotification("Register Successfully!")
+            // this.notificationService.showNotification("Register Successfully!")
+            localStorage.setItem('token', response.access_token);
+            this.router.navigateByUrl('home');
+
           },
           (error: any) => {
             console.error(error);

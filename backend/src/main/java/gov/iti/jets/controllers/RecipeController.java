@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8060")
+//@CrossOrigin(origins = "http://localhost:4200")
 @Validated
 @RestController
 @RequestMapping("/recipe")
@@ -56,7 +56,7 @@ public class RecipeController {
     public List<RecipeDTO> getAllRecipes() {
         return recipeService.getAllRecipes();
     }
-    @GetMapping("top3")
+    @GetMapping("/top3")
     public List<RecipeDTO> getTop3CRecipes() {
         return recipeService.getTop3();
     }

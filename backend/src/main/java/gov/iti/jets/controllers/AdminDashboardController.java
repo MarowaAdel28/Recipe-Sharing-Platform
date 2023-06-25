@@ -12,7 +12,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/dashboard")
-@CrossOrigin(origins = "http://localhost:8080")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class AdminDashboardController {
 
     private StatisticsService statisticsService;

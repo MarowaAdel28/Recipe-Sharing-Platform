@@ -30,10 +30,13 @@
                 </ul>
               </li>
               <li><a routerLink="/about">About</a></li>
-              <a style="color: green;" routerLink="/signin">Login</a> /
-              <a style="color: green;" routerLink="/register">Register</a>
+              <li  style="position: absolute;  right: -47%; font-size: 20px;"><a  *ngIf="isLogedIn" style="color: green;" (click) = "logout()">Logout</a> </li>
+             <li style="position: absolute;  right: -35%; font-size: 20px;"> <a *ngIf="!isLogedIn" style="color: green;" routerLink="/login">Login</a></li>
+             <li style="position: absolute;  right: -47%; font-size: 20px;"> <a *ngIf="!isLogedIn"  style="color: green;" routerLink="/register">Register</a></li>
+              
             </ul>
           </nav>
+          <b style="position: absolute; top: 50%; right: -30%; font-size: 20px;" *ngIf="username!=''"> Hello, {{username}}</b>
         </div>
 <!--        <div class="col-lg-2 col-md-1 col-6 order-md-3 order-2">-->
 <!--          <div class="header__search">-->

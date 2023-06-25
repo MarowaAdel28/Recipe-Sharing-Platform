@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Subject, throwError } from 'rxjs';
+import jwt_decode from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
@@ -10,49 +11,51 @@ export class AuthService {
   constructor(private http: HttpClient) { }
 
   tokenResp: any;
-  private _updatedMenu = new Subject<void>();
-  get updatedMenu() {
-    return this._updatedMenu;
+ 
+isTokenValid() {
+  const tokenData:any = jwt_decode(this.getToken());
+  const expirationDate = new Date(tokenData.exp * 1000); 
+  const currentDate = new Date();
+
+  if (currentDate > expirationDate) {
+    return false
+  } return true;
+}
+
+  deleteToken() {
+    localStorage.setItem('token','');
   }
 
-  proceedLogin(usercred: any) {
-    return this.http.post("http://127.0.0.1:8000/Home/login/", usercred)
-  }
-  proceedLoginCatchError(usercred: any) {
-    return this.http.post("http://127.0.0.1:8000/Home/login/", usercred)
-      .pipe(
-        catchError((err) => {
-          console.log('error caught in service');
-          console.error(err);
-          return throwError(err);
-        })
-      )
-  }
   isLoggedIn() {
-    return localStorage.getItem('token') != null;
+    return localStorage.getItem('token') != "";
   }
   getToken() {
     return localStorage.getItem('token') || '';
   }
-  /* haveAccess() {
-     var logginToken = localStorage.getItem('token') || '';
-     var _exractedToken = logginToken.split('.')[1];
-     var _atobdata = atob(_exractedToken);
-     var _finaldata = JSON.parse(_atobdata);
-     if (_finaldata.role == 'admin') {
-       return true;
-     }
-     alert('Yo do not have access');
-     return false;
-   }*/
+
   GetRoleByToken(token: any) {
-    let _token = token.split('.')[1];
-    this.tokenResp = JSON.parse(atob(_token))
-    return (this.tokenResp.role);
+    const decodedToken: any = jwt_decode(token);
+
+    return decodedToken.role;
   }
   GetIDByToken(token: any) {
-    let _token = token.split('.')[1];
-    this.tokenResp = JSON.parse(atob(_token))
-    return (this.tokenResp.id);
+    const decodedToken: any = jwt_decode(token);
+
+    return decodedToken.id;
+  }
+  GetNameByToken(token: any) {
+    const decodedToken: any = jwt_decode(token);
+
+    return decodedToken.name;
+  }
+  GetEmailByToken(token: any) {
+    const decodedToken: any = jwt_decode(token);
+
+    return decodedToken.sub;
+  }
+  GetGenderByToken(token: any) {
+    const decodedToken: any = jwt_decode(token);
+
+    return decodedToken.gender;
   }
 }

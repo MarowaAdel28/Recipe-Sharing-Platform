@@ -14,7 +14,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/category")
-@CrossOrigin(origins = "http://localhost:8060")
+//@CrossOrigin(origins = "http://localhost:4200")
 
 public class CategoryController {
 
@@ -26,12 +26,12 @@ public class CategoryController {
         return categoryService.getAll();
     }
 
-    @GetMapping("top3")
+    @GetMapping("/top3")
     public List<CategoryDTO> getTop3Categories() {
         return categoryService.getTop3();
     }
 
-    @GetMapping("allCategories")
+    @GetMapping("/allCategories")
     public List<CategoryDTO> getAll() {
         return categoryService.getAll();
     }

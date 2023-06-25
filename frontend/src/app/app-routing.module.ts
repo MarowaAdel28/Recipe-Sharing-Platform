@@ -19,11 +19,18 @@ import {UserFavoriteRecipesComponent} from "./components/user/user-favorite-reci
 // import { SearchRecipeComponent } from './components/search-recipe/search-recipe.component';
 import {ArchiveRecipesComponent} from "./components/user/archive/archive-recipes.component";
 import {EditingRecipeComponent} from "./components/user/editing-user-recipe/editing-recipe.component";
+import { DashboardComponent } from './admin-dashboard/components/dashboard/dashboard.component';
+import {AdminRoleGuard} from './service/admin-role.guard';
+import {UserRoleGuard} from './service/user-role.guard';
+
+
 
 const routes: Routes = [
-  {path: 'dashboard', component:DashboardSchemaComponent},
-  {path: 'usersStat', component:UsersListComponent},
-  {path: 'recipesStat', component:RecipesListComponent},
+  
+  {path: 'dashboardSchema', component:DashboardSchemaComponent, canActivate:[AdminRoleGuard]},
+  {path: 'dashboard', component:DashboardComponent, canActivate:[AdminRoleGuard]},
+  {path: 'usersStat', component:UsersListComponent, canActivate:[AdminRoleGuard]},
+  {path: 'recipesStat', component:RecipesListComponent, canActivate:[AdminRoleGuard]},
 
   {path:'home',component:HomeComponent},
   {path:'register',component:RegisterComponent},
@@ -34,15 +41,15 @@ const routes: Routes = [
   {path:'recipes' , component:RecipesComponent},
   {path:'dish_area' , component:DishAreaComponent},
   {path:'all-recipes' , component:AllRecipesComponent},
-  {path:'post-recipe' , component:PostRecipeComponent},
-  {path:'profile' , component:ProfileComponent},
+  {path:'post-recipe' , component:PostRecipeComponent, canActivate:[UserRoleGuard]},
+  {path:'profile' , component:ProfileComponent , canActivate:[UserRoleGuard]},
   // {path:'profile/edit', component:EditingPofileComponent},
   // {path:'profile/user-recipes',component:UserRecipesComponent},
   // {path:'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
-  {path: 'profile/user-recipes',component:UserRecipesComponent},
-  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
-  {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent},
-  {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent},
+  {path: 'profile/user-recipes',component:UserRecipesComponent, canActivate:[UserRoleGuard]},
+  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent, canActivate:[UserRoleGuard]},
+  {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent, canActivate:[UserRoleGuard]},
+  {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent, canActivate:[UserRoleGuard]},
   {path:'**',component:HomeComponent},
   {path:'',component:HomeComponent},
 

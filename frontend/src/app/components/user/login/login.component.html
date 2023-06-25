@@ -41,7 +41,7 @@
     <div class="form-end">
       <br>
       <br>
-      <button [disabled]="loginForm.invalid" (click)=" onSubmit()" type="button" class="btn btn-primary">login</button>
+      <button [disabled]="loginForm.invalid" (click)=" login()" type="button" class="btn btn-primary">login</button>
       <!--
          <div *ngIf="loginForm.controls['email'].errors && (loginForm.controls['email'].touched || loginForm.controls['email'].dirty )">
             <small *ngIf="loginForm.controls['email'].errors?.['required']"  class="form-text text-danger">Email is Required</small>

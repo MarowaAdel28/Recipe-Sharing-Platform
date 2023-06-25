@@ -32,7 +32,13 @@ public class SecurityConfig {
         http
                 .csrf(cs-> cs.disable())
                 .authorizeHttpRequests(auth -> auth.requestMatchers(
-                                "/authenticate/**",
+                                "/user/**",
+                                "category/**",
+                                "recipe/getAll",
+                                "recipe/top3",
+                                "recipe/{id}",
+                                "recipe/getRecipesByPageNo",
+                                "recipe/findRecipesByNameAndCategory",
                                 "/swagger-resources",
                                 "/swagger-resources/**",
                                 "/configuration/ui",

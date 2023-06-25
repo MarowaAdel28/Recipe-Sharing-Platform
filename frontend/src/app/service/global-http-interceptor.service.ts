@@ -15,7 +15,6 @@ export class GlobalHttpInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(
       catchError((error) => {
-        console.log('error in intercept')
         console.error(error);
         return throwError(error.message);
       })
@@ -29,7 +28,6 @@ intercept2(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
 
   return next.handle(req).pipe(
     catchError((error) => {
-      console.log('error in intercept')
       console.error(error);
       return throwError(error.message);
     })
@@ -37,7 +35,6 @@ intercept2(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
 }
 
 intercept3(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
   const token: string = 'invald token';
   req = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + token) });
 
@@ -48,18 +45,14 @@ intercept3(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
       console.error(error);
       if (error instanceof HttpErrorResponse) {
         if (error.error instanceof ErrorEvent) {
-          console.error("Error Event");
         } else {
-          console.log(`error status : ${error.status} ${error.statusText}`);
           switch (error.status) {
             case 401:      //login
-              this.router.navigateByUrl("/login");
-              console.log(`redirect to login`);
+            this.router.navigateByUrl("/login");
               handled = true;
               break;
             case 403:     //forbidden
-              this.router.navigateByUrl("/login");
-              console.log(`redirect to login`);
+            this.router.navigateByUrl("/login");
               handled = true;
               break;
           }
@@ -70,7 +63,7 @@ intercept3(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>
       }
 
       if (handled) {
-        console.log('return back ');
+        console.log('return back');
         return of(error);
       } else {
         console.log('throw error back to to the subscriber');

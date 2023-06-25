@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @Validated
 @RestController
 @RequestMapping("/favoriteRecipe")
-@CrossOrigin(origins = "http://localhost:8060")
+//@CrossOrigin(origins = "http://localhost:4200")
 public class FavoriteRecipeController {
 
     @Autowired

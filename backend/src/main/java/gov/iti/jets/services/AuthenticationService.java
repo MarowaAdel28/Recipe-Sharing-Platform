@@ -33,7 +33,9 @@ public class AuthenticationService {
         var savedUser = repository.save(user);
         Map<String, Object> claims = new HashMap<>();
         claims.put("role","user" );
+        claims.put("id", savedUser.getId());
         claims.put("name", savedUser.getUserName());
+        claims.put("gender", savedUser.getGender());
         var jwtToken = jwtService.generateToken(claims, savedUser);
         return AuthenticationResponseDTO.builder()
                 .accessToken(jwtToken)
@@ -56,7 +58,9 @@ public class AuthenticationService {
         else {
             claims.put("role","user" );
         }
+        claims.put("id", user.getId());
         claims.put("name", user.getUserName());
+        claims.put("gender", user.getGender());
         var jwtToken = jwtService.generateToken(claims, user);
         return AuthenticationResponseDTO.builder()
                 .accessToken(jwtToken)
