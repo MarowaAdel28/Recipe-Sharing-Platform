@@ -29,6 +29,10 @@ public class UserController {
         userService.delete(id);
     }
 
+    @PostMapping("/edit")
+    public void edit(@Valid @RequestBody UserProfile userDto) {
+        userService.update(userDto);
+    }
     @PutMapping
     public void update(@Valid @RequestBody UserProfile userDto) {
         userService.update(userDto);

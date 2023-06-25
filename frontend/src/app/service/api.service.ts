@@ -152,7 +152,8 @@ export class ApiService {
   }
 
   put_header(url:string,body:any,headers:any){
-    return this.http.put<any>(this.baseUserUrl+url,body,{headers})
+    console.log("put")
+    return this.http.post<any>(this.baseUserUrl+url,body, {headers})
   }
   delete(url:string,id:number){
     return this.http.delete<any>(this.baseUserUrl+url+`/`+id)
