@@ -6,9 +6,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class StepsPipe implements PipeTransform {
 
     transform(value: string): any {
-      value = value.replace(/\[|\]/g,"");
-     return value.split(",");
-    }
+      let arr = value.split("/");
+      arr .pop();
+       return arr;
+      }
   }
 
 
