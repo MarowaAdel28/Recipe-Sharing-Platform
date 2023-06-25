@@ -153,6 +153,7 @@
               </div>
 
               <div class="col ml-3 my-3 con-like" style="">
+                <app-favourite-recipe [favouritModel]="favouritModel"/>
                 <input title="like" type="checkbox" #favIconCheckBox [(ngModel)]="isFav" (change)="loadStatus()" class="like">
                 <div class="checkmark">
                   <svg viewBox="0 0 24 24" class="outline" xmlns="http://www.w3.org/2000/svg">

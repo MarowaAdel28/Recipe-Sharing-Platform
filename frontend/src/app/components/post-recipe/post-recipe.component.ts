@@ -132,7 +132,7 @@ export class PostRecipeComponent implements OnInit {
       const recipe = this.recipeForm.value;
       // console.log(recipe); // You can customize this logic to save the recipe data to your backend or perform any other actions
       recipe.steps=this.adaptSteps(recipe);
-      recipe.user=9;
+      recipe.user=10;
       console.log(JSON.stringify(recipe))
       this.postData(recipe);
     } else {

@@ -48,7 +48,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
               // alert(response)
               // console.log(response)
               console.log(this.favouritModel)
-              this.loadFavStatus()
+
             }
           }
         )
@@ -72,7 +72,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
   postComment(comment:any):void{
     let reviewModel = new ReviewModelRequest()
     reviewModel.comment = comment;
-    reviewModel.userId= 9
+    reviewModel.userId= 10
     reviewModel.recipeId = this.recipeId
     console.log(JSON.stringify(reviewModel))
     this._reviewService.post(reviewModel).subscribe(
@@ -121,7 +121,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
 
   addToFavourites(status:boolean){
 
-    let favModel = new FavouriteRequestModel(this.recipeModel.id,9)
+    let favModel = new FavouriteRequestModel(this.recipeModel.id,10)
     console.log(favModel);
     this._favouriteService.post(favModel).subscribe(
       (response:any) => {
@@ -131,7 +131,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
   }
 
   removeFromFavourites(){
-    let user = new UserModel(9) //dumy user
+    let user = new UserModel(10) //dumy user
     let favModel = new FavouriteResponseModel(this.recipeModel,user)
       this._favouriteService.delete(favModel).subscribe(
         (response:any) => {
