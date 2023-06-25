@@ -197,4 +197,11 @@ export class ApiService {
     const options = { params: httpParams };
     return this.http.post(this.baseUserUrl+url,"",options)
   }
+  getByTwoIds(url:string , body:any){
+    return this.http.get<any>(this.baseUserUrl+url,body)
+  }
+
+  deleteFromFavourite(url:string , body:any){
+    return this.http.post<any>(this.baseUserUrl+url,body)
+  }
 }

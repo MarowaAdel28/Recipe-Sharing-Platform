@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {RecipeService} from "../../services/recipe/recipe.service";
 import {RecipeModel} from "../../models/recipe-model";
-import {ReviewService} from "../../services/review/review.service";
 import {ReviewModelRequest} from "../../models/review-model-request";
 import {ReviewModelResponse} from "../../models/review-model-response";
-import {FavouriteService} from "../../services/favourite/favourite.service";
+import {FavouriteService} from "../../service/favourite/favourite.service";
 import {FavouriteRequestModel} from "../../models/favourite-request-model";
 import {FavouriteResponseModel} from "../../models/favourite-response-model";
 import {UserModel} from "../../models/user-model";
+import {RecipeService} from "../../service/recipe/recipe.service";
+import {ReviewService} from "../../service/review/review.service";
 
 @Component({
   selector: 'app-view-recipe-details',
@@ -45,6 +45,8 @@ export class ViewRecipeDetailsComponent implements OnInit{
               this.steps.splice(this.steps.length-1,1)
               let user = new UserModel(9)
               this.favouritModel = new FavouriteResponseModel(this.recipeModel,user)
+              // alert(response)
+              // console.log(response)
               console.log(this.favouritModel)
               this.loadFavStatus()
             }
@@ -56,7 +58,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
   loadFavStatus(){
     this._favouriteService.findByRecipeAndUserIds(this.favouritModel).subscribe(
       {
-        next:response => {
+        next:(response:any) => {
           console.log(response)
           this.isFav = response != null;
           console.log(this.isFav)
@@ -82,12 +84,17 @@ export class ViewRecipeDetailsComponent implements OnInit{
 
   onRateChange(rate:number){
     this.recipeRate = rate;
+    const httpParams = {
+      'recipeId': this.recipeId,
+      'userId': 2,
+      'rate': this.recipeRate
+    };
     console.log(this.recipeRate)
-    this._reviewService.update(this.recipeModel,this.recipeRate).subscribe(
-      response => {
-        alert("Updated")
-      }
-    )
+    this._reviewService.postRate(httpParams).subscribe((response:any)=>{
+      console.log("rate done")
+    },(error:any)=>{
+      console.log("faild to rate")
+    })
   }
 
   loadComment(){
@@ -117,7 +124,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
     let favModel = new FavouriteRequestModel(this.recipeModel.id,9)
     console.log(favModel);
     this._favouriteService.post(favModel).subscribe(
-      response => {
+      (response:any) => {
         console.log("Fav inserted <3")
       }
     )
@@ -127,7 +134,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
     let user = new UserModel(9) //dumy user
     let favModel = new FavouriteResponseModel(this.recipeModel,user)
       this._favouriteService.delete(favModel).subscribe(
-        response => {
+        (response:any) => {
           console.log("Fav Deleted")
         }
       )

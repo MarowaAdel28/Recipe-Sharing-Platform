@@ -1,7 +1,8 @@
 export class UserModel{
   id:number;
-  username:string;
+  userName:string;
   email:string;
+  gender:string;
 
   constructor(id:number) {
     this.id = id;

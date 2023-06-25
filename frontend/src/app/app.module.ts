@@ -68,7 +68,6 @@ import { ArchiveRecipesComponent } from './components/user/archive/archive-recip
 import { EditingRecipeComponent } from './components/user/editing-user-recipe/editing-recipe.component';
 import { AppRateComponent } from './components/app-rate/app-rate.component';
 import { ApiService } from './service/api.service';
-import { FavouriteRecipeComponent } from './components/favourite-recipe/favourite-recipe.component';
 
 
 
@@ -109,9 +108,8 @@ import { FavouriteRecipeComponent } from './components/favourite-recipe/favourit
     ArchiveRecipesComponent,
     EditingRecipeComponent,
     AppRateComponent,
-    EditingPofileComponent,
     RatingComponent,
-    FavouriteRecipeComponent
+
   ],
   imports: [
     MatExpansionModule,

@@ -149,7 +149,7 @@
             <div class="row-cols-2">
               <div class="col">
                 <span>{{recipeModel.date}}</span>
-                <h2>{{recipeModel.name}}</h2>
+                <h2>{{recipeModel.recipeName}}</h2>
               </div>
 
               <div class="col ml-3 my-3 con-like" style="">
@@ -212,7 +212,9 @@
             <!-- Custom Checkbox -->
             <div class="custom-control custom-checkbox" *ngFor="let item of recipeModel.recipeHasIngredientsList">
               <input type="checkbox" class="custom-control-input" id="customCheck1">
-              <label class="custom-control-label" for="customCheck1">{{item.name}}</label>
+              <label class="custom-control-label" for="customCheck1">{{item.quantity}}</label>
+              <label class="custom-control-label" for="customCheck1">&#160;</label>
+              <label class="custom-control-label" for="customCheck1">{{item.ingredientsId.name}}</label>
             </div>
           </div>
         </div>
@@ -237,11 +239,11 @@
         <div class="row">
           <div class="col-md-8">
             <div class="media g-mb-30 media-comment karem" [hidden]="!isChecked" *ngFor="let item of comments">
-              <img class="d-flex g-width-50 g-height-50 rounded-circle g-mt-3 g-mr-15"
-                   src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Image Description">
+              <img class="img-account-profile rounded-circle mb-2" style="width:50px;height: 50px; margin-right: 10px"
+                   [src]="item.userId.gender === 'm' ? 'assets/img/profile-icons/boy.jpeg' : 'assets/img/profile-icons/girl.jpeg'" alt="">
               <div class="media-body u-shadow-v18 g-bg-secondary g-pa-30">
                 <div class="g-mb-15">
-                  <h3 class="h5 g-color-gray-dark-v1 mb-5">{{item.userId.username}}</h3>
+                  <h3 class="h5 g-color-gray-dark-v1 mb-5">{{item.userId.userName}}</h3>
                   <span class="g-color-gray-dark-v4 mb-5 g-font-size-12 ">{{item.date}}</span>
                 </div>
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ApiService} from "../api.service";
+import {ApiService} from "../../service/api.service";
 import {FavouriteResponseModel} from "../../models/favourite-response-model";
 
 

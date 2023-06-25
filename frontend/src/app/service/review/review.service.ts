@@ -24,7 +24,7 @@ post(reviewModel:ReviewModelRequest){
     return this._apiService.getAll(`review/recipe/${recipeId}`)
   }
   update(recipeModel:RecipeModel , newRate:number){
-    return this._apiService.put("review",recipeModel,newRate)
+    return this._apiService.put("review",recipeModel)
   }
 
   postRate(rateData:any) {
