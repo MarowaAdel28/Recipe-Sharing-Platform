@@ -25,7 +25,7 @@ isTokenValid() {
 }
 
   isAdmin() {
-    if(this.auth.getToken()==="" || this.auth.GetRoleByToken(this.auth.getToken())==="user"){
+    if(this.auth.getToken()=== "" || this.auth.GetRoleByToken(this.auth.getToken())==="user"){
       return false;
     }    
       return true;

@@ -51,7 +51,6 @@ export class LoginComponent implements OnInit {
 
 
 login(): void {
-  console.log("ashaaaf")
 
   console.log(JSON.stringify(this.loginForm.value))
   if (this.loginForm.valid) {

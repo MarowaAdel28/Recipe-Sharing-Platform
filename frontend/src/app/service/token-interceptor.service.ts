@@ -9,7 +9,10 @@ import { AuthService } from './auth.service';
 export class TokenInterceptorService implements HttpInterceptor{
 
   constructor(private inject:Injector) { }
+
+
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if(!req.url.includes('user/login') && !req.url.includes('user/register')){
     let authservice=this.inject.get(AuthService);
     const modifiedRequest = req.clone({
       setHeaders: {
@@ -17,10 +20,10 @@ export class TokenInterceptorService implements HttpInterceptor{
         "Content-Type": "Application/json"
       }
     });
-   
-
     return next.handle(modifiedRequest);
   }
+  return next.handle(req)
+}
 }
 
    

@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/service/auth.service';
 import { OnInit } from '@angular/core';
 // @ts-ignore
 import { Component } from '@angular/core';
@@ -18,16 +19,20 @@ export class HeaderComponent implements OnInit {
 
   username: string = "";
 
-  constructor(private userservice: UserService) { }
+  constructor(private userservice: UserService, private auth: AuthService) { }
 
   ngOnInit() {
-    this.userservice.username$.subscribe((newValue: any) => {
+        this.userservice.username$.subscribe((newValue: any) => {
       this.username = newValue;
     });
 
     this.userservice.isLogedIn$.subscribe((newValue: any) => {
       this.isLogedIn = newValue;
     });
+    
+    
+    this.username = this.auth.GetNameByToken(this.auth.getToken())
+      this.isLogedIn = this.auth.isLoggedIn()
   }
 
 

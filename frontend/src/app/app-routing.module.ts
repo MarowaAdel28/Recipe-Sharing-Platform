@@ -22,6 +22,7 @@ import {EditingRecipeComponent} from "./components/user/editing-user-recipe/edit
 import { DashboardComponent } from './admin-dashboard/components/dashboard/dashboard.component';
 import {AdminRoleGuard} from './service/admin-role.guard';
 import {UserRoleGuard} from './service/user-role.guard';
+import { SuperRoleGuard } from './service/super-role.guard';
 
 
 
@@ -41,15 +42,15 @@ const routes: Routes = [
   {path:'recipes' , component:RecipesComponent},
   {path:'dish_area' , component:DishAreaComponent},
   {path:'all-recipes' , component:AllRecipesComponent},
-  {path:'post-recipe' , component:PostRecipeComponent, canActivate:[UserRoleGuard]},
-  {path:'profile' , component:ProfileComponent , canActivate:[UserRoleGuard]},
+  {path:'post-recipe' , component:PostRecipeComponent, canActivate:[SuperRoleGuard]},
+  {path:'profile' , component:ProfileComponent , canActivate:[SuperRoleGuard]},
   // {path:'profile/edit', component:EditingPofileComponent},
   // {path:'profile/user-recipes',component:UserRecipesComponent},
   // {path:'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent},
-  {path: 'profile/user-recipes',component:UserRecipesComponent, canActivate:[UserRoleGuard]},
-  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent, canActivate:[UserRoleGuard]},
-  {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent, canActivate:[UserRoleGuard]},
-  {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent, canActivate:[UserRoleGuard]},
+  {path: 'profile/user-recipes',component:UserRecipesComponent, canActivate:[SuperRoleGuard]},
+  {path: 'profile/user-favorite-recipes',component:UserFavoriteRecipesComponent, canActivate:[SuperRoleGuard]},
+  {path: 'profile/user-archive-recipes',component:ArchiveRecipesComponent, canActivate:[SuperRoleGuard]},
+  {path: 'profile/user-recipes/:id/edit',component:EditingRecipeComponent, canActivate:[SuperRoleGuard]},
   {path:'**',component:HomeComponent},
   {path:'',component:HomeComponent},
 

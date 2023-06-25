@@ -54,7 +54,8 @@ export class UserService {
   isLogedIn$ = this.isLogedIn.asObservable();
 
   setLogged(isLogedIn: boolean) {
-    this.isLogedIn.next(isLogedIn);  }
+    this.isLogedIn.next(isLogedIn); 
+   }
 
 
     logout() {

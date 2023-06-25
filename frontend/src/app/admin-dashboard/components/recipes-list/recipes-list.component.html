@@ -40,7 +40,7 @@
       <mat-accordion *ngFor="let recipe of recipes">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>{{recipe.name}}</mat-panel-title>
+            <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
            <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
             <mat-panel-description> {{recipe.date}} </mat-panel-description>
             </mat-expansion-panel-header>
@@ -71,7 +71,7 @@
     <mat-tab label="Waiting"> <mat-accordion *ngFor="let recipe of recipes">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>{{recipe.name}}</mat-panel-title>
+          <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
          <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
           <mat-panel-description> {{recipe.date}} </mat-panel-description>
 

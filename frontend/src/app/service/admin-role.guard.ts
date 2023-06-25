@@ -17,10 +17,9 @@ export class AdminRoleGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if (this.service.isLoggedIn()) {
       this.currentRole = this.service.GetRoleByToken(this.service.getToken());
-      if (this.currentRole == "admin" || this.currentRole == "user") {
+      if (this.currentRole == "admin") {
         return true;
       } else {
-        alert('you are not authorized to access this menu');
         this.router.navigate(['']);
         this.notification.showErrorNotification("Not Autherized...plz, login!")
 
