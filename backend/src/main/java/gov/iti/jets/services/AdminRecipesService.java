@@ -48,6 +48,7 @@ public class AdminRecipesService {
 
     public Integer rejectRecipe(Integer recipeId, String message) {
         int result = adminRecipesRepository.updateStatusById(recipeId, Utility.REJECTED_STATUS);
+        System.out.println("change status done");
         if(result == 1) {
             rejectedRecipeService.save(new RejectedRecipeDTO(recipeId, message));
         }

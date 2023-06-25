@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "http://localhost:8080")
 @Validated
 @RestController
-@RequestMapping("/user-recipe")
+@RequestMapping("/userRecipe")
 public class UserRecipeController {
     @Autowired
     private RecipeService RecipeService;
@@ -30,5 +30,12 @@ public class UserRecipeController {
                                                                       @RequestParam(defaultValue = "0") int page,
                                                                       @RequestParam(defaultValue = "9") int size) {
         return RecipeService.getAllArchiveRecipesForUser(id,page,size);
+    }
+
+    @GetMapping("/favorite/{id}")
+    public ResponseEntity<UserRecipeResponseDTO> getPaginationFavoriteRecipes(@Valid @NotNull @PathVariable("id") Integer id,
+                                                                             @RequestParam(defaultValue = "0") int page,
+                                                                             @RequestParam(defaultValue = "9") int size) {
+        return RecipeService.getAllFavoriteRecipesForUser(id,page,size);
     }
 }

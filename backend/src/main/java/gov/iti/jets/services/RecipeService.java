@@ -8,6 +8,7 @@ import gov.iti.jets.models.dtos.RecipeHasIngredientsDTO;
 import gov.iti.jets.models.dtos.profile.UserRecipeDTO;
 import gov.iti.jets.models.dtos.profile.UserRecipeResponseDTO;
 import gov.iti.jets.models.entities.Recipe;
+import gov.iti.jets.repositories.FavoriteRecipeRepository;
 import gov.iti.jets.repositories.RecipeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,9 @@ public class RecipeService {
     private RecipeRepository recipeRepository;
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+            private FavoriteRecipeRepository favoriteRecipeRepository;
 
     ModelMapper modelMapper = new ModelMapper();
 
@@ -184,6 +188,18 @@ public class RecipeService {
         return ResponseEntity.ok(recipeResponseDTO);
     }
 
+    public ResponseEntity<UserRecipeResponseDTO> getAllFavoriteRecipesForUser(int userId, int page, int pageSize) {
+        User user = userService.getReference(userId);
+        Pageable pageable = PageRequest.of(page, pageSize);
+        UserRecipeResponseDTO recipeResponseDTO = new UserRecipeResponseDTO();
+        recipeResponseDTO.setData(favoriteRecipeRepository.findRecipeIdByUserIdAndRecipeIdIsDeletedFalse(user, pageable).stream()
+                        .map((recipe)->recipe.getRecipeId())
+                .map(this::toUserRecipeDTO)
+                .collect(Collectors.toList()));
+        recipeResponseDTO.setTotalItems(getFavoriteRecipesCountForUser(userId));
+        return ResponseEntity.ok(recipeResponseDTO);
+    }
+
     private UserRecipeDTO toUserRecipeDTO(Recipe recipe) {
         return modelMapper.map(recipe,UserRecipeDTO.class);
     }
@@ -196,6 +212,11 @@ public class RecipeService {
     private long getArchiveRecipesCountForUser(int userId) {
         User user = userService.getReference(userId);
         return recipeRepository.findAllByUserIdAndIsDeletedTrue(user).size();
+    }
+
+    private long getFavoriteRecipesCountForUser(int userId) {
+        User user = userService.getReference(userId);
+        return favoriteRecipeRepository.findRecipeIdByUserIdAndRecipeIdIsDeletedFalse(user).size();
     }
 
     private int getRecipesCount(){

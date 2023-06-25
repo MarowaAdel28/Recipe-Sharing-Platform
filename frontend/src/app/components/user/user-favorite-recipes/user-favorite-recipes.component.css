@@ -1,0 +1,88 @@
+.status-yellow {
+  color: yellowgreen;
+}
+
+.status-green {
+  color: green;
+}
+
+.status-red {
+  color: red;
+}
+
+.danger-icon {
+  color: red;
+}
+.small-button {
+  width: 28px;
+  height: 26px;
+  padding: 1px;
+}
+
+.small-icon {
+  font-size: 22px;
+}
+
+.form-field .remove-button {
+  flex-shrink: 0;
+}
+.form-field:hover .remove-button {
+  /*display: flex; !* Show the remove button when hovering over the form field *!*/
+  align-items: center;
+  /*margin-bottom: 10px;*/
+}
+.small-icon {
+  font-size: 22px;
+}
+
+.material-icons {
+  /*vertical-align: middle;*/
+}
+
+
+button {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #4caf50;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #3c9039;
+}
+
+button:focus {
+  outline: none;
+}
+
+/*888888888888888888888888888*/
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.pagination button {
+  background-color: grey;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination button.active {
+  background-color: darkgrey;
+}

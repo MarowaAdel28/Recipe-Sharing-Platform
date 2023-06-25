@@ -6,21 +6,23 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Validated
 @RestController
 @RequestMapping("/image")
-@CrossOrigin(origins = "http://localhost:8060")
+@CrossOrigin(origins = "http://localhost:8080")
 public class ImageController {
 
     @Autowired
     private ImageService imageService;
 
     @PostMapping
-    public String save(@Valid @RequestBody ImageDTO imageDTO) {
-        return imageService.save(imageDTO).toString();
+    public ResponseEntity<String> save(@RequestParam("image") MultipartFile image, @Valid @RequestParam int recipeId) {
+        return imageService.uploadImage(image,recipeId);
     }
 
     @DeleteMapping("/{id}")

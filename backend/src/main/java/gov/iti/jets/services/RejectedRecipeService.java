@@ -2,6 +2,7 @@ package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RejectedRecipeDTO;
 import gov.iti.jets.models.entities.RejectedRecipe;
+import gov.iti.jets.repositories.RecipeRepository;
 import gov.iti.jets.repositories.RejectedRecipeRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +14,18 @@ public class RejectedRecipeService {
     private RejectedRecipeRepository rejectedRecipeRepository;
 
     @Autowired
+    private RecipeRepository recipeRepository;
+
+    @Autowired
     public RejectedRecipeService(RejectedRecipeRepository rejectedRecipeRepository){
         this.rejectedRecipeRepository = rejectedRecipeRepository;
     }
 
     public Integer save(RejectedRecipeDTO rejectedRecipeDto) {
         RejectedRecipe bean = new RejectedRecipe();
-        BeanUtils.copyProperties(rejectedRecipeDto, bean);
+        bean.setRecipeId(rejectedRecipeDto.getId());
+        bean.setMessage(rejectedRecipeDto.getMessage());
+        bean.setRecipe(recipeRepository.getReferenceById(rejectedRecipeDto.getId()));
         bean = rejectedRecipeRepository.save(bean);
         return bean.getRecipeId();
     }

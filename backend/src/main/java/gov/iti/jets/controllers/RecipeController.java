@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:8060")
+@CrossOrigin(origins = "http://localhost:8080")
 @Validated
 @RestController
 @RequestMapping("/recipe")
@@ -72,6 +72,10 @@ public class RecipeController {
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "size", defaultValue = "9") int size
     ) {
+        System.out.println("keyword = " + keyword);
+        System.out.println("categoryId = " + categoryId);
+        System.out.println("page = " + page);
+        System.out.println("size = " + size);
         PageRequest pageable = PageRequest.of(page, size);
         return recipeService.searchRecipesByName(keyword, categoryId, pageable);
     }

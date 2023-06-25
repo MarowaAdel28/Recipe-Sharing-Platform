@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ApiService } from 'src/app/service/api.service';
 import Swal from 'sweetalert2';
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -19,7 +20,7 @@ export class RecipesListComponent implements OnInit {
   tabIndex: any = 0;
 
 
-  constructor(private service: ApiService) { }
+  constructor(private service: ApiService, private http: HttpClient) { }
 
 
   ngOnInit(): void {
@@ -208,6 +209,28 @@ export class RecipesListComponent implements OnInit {
       color: 'rgb(191, 15, 86)',
     });
     this.onWaitingTab();
+  }
+
+  selectedFile: File | null = null;
+  onFileSelected(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
+  uploadImage(recipeId:number) {
+    if (this.selectedFile) {
+      const formData = new FormData();
+      formData.append('image', this.selectedFile);
+      formData.append('recipeId',recipeId.toString());
+
+      this.http.post('http://localhost:8080/image', formData).subscribe(
+        response => {
+          console.log('Image uploaded successfully:', response);
+        },
+        error => {
+          console.error('Failed to upload image:', error);
+        }
+      );
+    }
   }
 
 }

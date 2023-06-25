@@ -54,24 +54,40 @@ export class AllRecipesComponent implements OnInit {
     });
   }
 
-  goToPage(pageNumber: number) {
+  goToPage(pageNumber: number, recipeName: string, recipeCategoryId: string) {
     if (pageNumber >= 0 && pageNumber < this.totalPages) {
       this.currentPage = pageNumber;
-      this.getPaginatedData();
+      if(recipeCategoryId==='' && recipeName==='') {
+        console.log("next")
+        this.getPaginatedData();
+      } else {
+        console.log("search next")
+        this.findRecipesByNameAndCategory(recipeName,recipeCategoryId,this.currentPage.toString())
+      }
     }
   }
 
-  nextPage() {
+  nextPage(recipeName: string, recipeCategoryId: string) {
     if (this.currentPage < this.totalPages) {
       this.currentPage++;
-      this.getPaginatedData();
+      if(recipeCategoryId==='' && recipeName==='') {
+        console.log("next")
+        this.getPaginatedData();
+      } else {
+        console.log("search next")
+        this.findRecipesByNameAndCategory(recipeName,recipeCategoryId,this.currentPage.toString())
+      }
     }
   }
 
-  previousPage() {
+  previousPage(recipeName: string, recipeCategoryId: string) {
     if (this.currentPage > 0) {
       this.currentPage--;
-      this.getPaginatedData();
+      if(recipeCategoryId==='' && recipeName==='') {
+        this.getPaginatedData();
+      } else {
+        this.findRecipesByNameAndCategory(recipeName,recipeCategoryId,this.currentPage.toString())
+      }
     }
   }
 
@@ -87,13 +103,16 @@ export class AllRecipesComponent implements OnInit {
     );
   }
 
-  findRecipesByNameAndCategory(recipeName: string, recipeCategoryId: string) {
+  findRecipesByNameAndCategory(recipeName: string, recipeCategoryId: string,page:string) {
     const params = {
       name: recipeName,
       categoryId: recipeCategoryId,
-      page: this.currentPage.toString(),
+      // page: this.currentPage.toString(),
+      page:page,
       size: this.pageSize.toString()
     };
+
+    console.log(params)
 
     this.recipeService.findRecipesByNameAndCategory(params).subscribe((response: any) => {
       this.paginatedList = response.data;

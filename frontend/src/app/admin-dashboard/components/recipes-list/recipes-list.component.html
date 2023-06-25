@@ -16,13 +16,14 @@
             <div class="row gutterFix">
               <div class="colLeftSide">
                 <b>Ingredients:</b><br>
-                <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index"> {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
+                <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index">
+                  {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
                </div>
                <div class="colMain">
                 <b>Steps:</b><br>
                 <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i+1+". "+step}}<br> </mat-label>
                </div>
-               
+
                <div class="colRightSide">
                 <b>Notes:</b><br>
                 <mat-label> {{"persons: "+recipe.persons}}<br> </mat-label>
@@ -31,31 +32,33 @@
                </div>
             </div>
 
-                
+
         </mat-expansion-panel>
       </mat-accordion>
 
     </mat-tab>
-    <mat-tab label="Rejected"> 
+    <mat-tab label="Rejected">
       <mat-accordion *ngFor="let recipe of recipes">
         <mat-expansion-panel>
           <mat-expansion-panel-header>
-            <mat-panel-title>{{recipe.name}}</mat-panel-title>
-           <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
+            <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
+           <mat-panel-description>{{recipe.user.userName}}</mat-panel-description>
             <mat-panel-description> {{recipe.date}} </mat-panel-description>
+            <mat-panel-description hidden> {{recipe.id}} </mat-panel-description>
             </mat-expansion-panel-header>
 
 
             <div class="row gutterFix">
               <div class="colLeftSide">
                 <b>Ingredients:</b><br>
-                <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index"> {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
+                <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index">
+                  {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
                </div>
                <div class="colMain">
                 <b>Steps:</b><br>
                 <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i+1+". "+step}}<br> </mat-label>
                </div>
-               
+
                <div class="colRightSide">
                 <b>Notes:</b><br>
                 <mat-label *ngIf="tabIndex==1"> {{"rejection message: "+  recipe.rejectedRecipe.message}} <br> </mat-label>
@@ -71,18 +74,20 @@
     <mat-tab label="Waiting"> <mat-accordion *ngFor="let recipe of recipes">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
-          <mat-panel-title>{{recipe.name}}</mat-panel-title>
+          <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
          <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
           <mat-panel-description> {{recipe.date}} </mat-panel-description>
 
           <mat-panel-description>
             <button (click)="acceptRecipe(recipe.id)">accept</button>
             <button (click)="rejectRecipe(recipe.id)">reject</button>
+            <input type="file" (change)="onFileSelected($event)" accept="image/*">
+            <button (click)="uploadImage(recipe.id)">Upload Image</button>
           </mat-panel-description>
 
           </mat-expansion-panel-header>
 
-          
+
           <div class="row gutterFix">
             <div class="colLeftSide">
               <b>Ingredients:</b><br>
@@ -92,7 +97,7 @@
               <b>Steps:</b><br>
               <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i+1+". "+step}}<br> </mat-label>
              </div>
-             
+
              <div class="colRightSide">
               <b>Notes:</b><br>
               <mat-label> {{"persons: "+recipe.persons}}<br> </mat-label>
@@ -101,7 +106,7 @@
              </div>
           </div>
 
-          
+
       </mat-expansion-panel>
     </mat-accordion>
 </mat-tab>

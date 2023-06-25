@@ -24,6 +24,7 @@ export class ApiService {
 
 
   rejectRecipe(recipeId:number, message:string) {
+
     return this.http.patch(`${this.baseAdminRecipeUrl+"rejectRecipe?recipeId="+recipeId+"&message="+message}`, {});
 
   }
@@ -203,5 +204,14 @@ export class ApiService {
 
   deleteFromFavourite(url:string , body:any){
     return this.http.post<any>(this.baseUserUrl+url,body)
+  }
+
+  uploadImage(uri:string,params:{image:string,recipeId:number}) {
+    const httpParams = new HttpParams()
+      .set("image",params.image)
+      .set('recipeId', params.recipeId);
+
+    const options = { params: httpParams };
+    return this.http.post(this.baseUserUrl+uri,"",options)
   }
 }

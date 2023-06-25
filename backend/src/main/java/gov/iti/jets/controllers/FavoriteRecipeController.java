@@ -41,6 +41,12 @@ public class FavoriteRecipeController {
         return favoriteRecipeService.getById(favoriteRecipeDTO);
     }
 
+    @GetMapping("/user/{id}")
+    public FavouriteResponseDTO getByUserId(@Valid @PathVariable("id")  FavouriteResponseDTO favoriteRecipeDTO) {
+        System.out.println("favoriteRecipeDTO = " + favoriteRecipeDTO);
+        return favoriteRecipeService.getById(favoriteRecipeDTO);
+    }
+
     @PostMapping("/deletefav")
     public void deleteFavouriteByRecipeIdAndUserId(@Valid @RequestBody FavouriteResponseDTO favoriteRecipeDTO){
         favoriteRecipeService.delete(favoriteRecipeDTO);

@@ -23,7 +23,7 @@
       <form action="#" method="post">
         <div class="row align-items-center">
           <div class="col-12 col-lg-4">
-            <select class="form-control"  id="select1" [(ngModel)]="categoryId" name="category" (ngModelChange)="findRecipesByNameAndCategory(searchInput.value,categoryId)">
+            <select class="form-control"  id="select1" [(ngModel)]="categoryId" name="category" (ngModelChange)="findRecipesByNameAndCategory(searchInput.value,categoryId,'0')">
               <option value="">All Recipes Categories</option>
               <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
             </select>
@@ -35,7 +35,7 @@
           </div>
 
           <div class="col-12 col-lg-3 text-right">
-            <button type="submit" class="btn delicious-btn" (click)="findRecipesByNameAndCategory(searchInput.value,categoryId)">Search</button>
+            <button type="submit" class="btn delicious-btn" (click)="findRecipesByNameAndCategory(searchInput.value,categoryId,'0')">Search</button>
           </div>
 
         </div>
@@ -62,16 +62,18 @@
           <a routerLink="/view-recipe/details/{{recipe.id}}" class="line_btn">View Full Recipe</a>
         </div>
       </div>
-
+      <div class="text-center" *ngIf="paginatedList.length === 0">
+        <p>No recipes available</p>
+      </div>
     </div>
   </div>
 </div>
 <!-- /recepie_area_start  -->
 
 <div class="pagination" *ngIf="totalItems > 9">
-  <button (click)="previousPage()" [disabled]="currentPage == 0">Previous</button>
-  <button *ngFor="let page of totalPagesArray" (click)="goToPage(page)" [class.active]="currentPage === page">{{ page+1 }}</button>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages-1">Next</button>
+  <button (click)="previousPage(searchInput.value,categoryId)" [disabled]="currentPage == 0">Previous</button>
+  <button *ngFor="let page of totalPagesArray" (click)="goToPage(page,searchInput.value,categoryId)" [class.active]="currentPage === page">{{ page+1 }}</button>
+  <button (click)="nextPage(searchInput.value,categoryId)" [disabled]="currentPage === totalPages-1">Next</button>
 </div>
 
 <br><br>
