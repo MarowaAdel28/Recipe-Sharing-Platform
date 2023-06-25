@@ -71,7 +71,6 @@ import { ApiService } from './service/api.service';
 import {FavouriteRecipeComponent} from "./components/favourite-recipe/favourite-recipe.component";
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

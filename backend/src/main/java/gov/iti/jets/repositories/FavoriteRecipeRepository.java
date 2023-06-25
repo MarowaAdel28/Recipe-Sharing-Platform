@@ -9,11 +9,13 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public interface FavoriteRecipeRepository extends JpaRepository<FavoriteRecipe, Integer> {
     @Modifying
     @Transactional
     void deleteFavoriteRecipeByRecipeIdAndUserId(Recipe recipeId, User userId);
 
-    FavoriteRecipe findDistinctByRecipeIdAndUserId(Recipe recipeId, User userId);
+    Optional<FavoriteRecipe> findByRecipeIdAndUserId(Recipe recipeId, User userId);
 }

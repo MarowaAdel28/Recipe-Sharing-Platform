@@ -19,6 +19,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
 
   recipeModel:RecipeModel = new RecipeModel();
   favouritModel:FavouriteResponseModel
+  favouritRequestModel:FavouriteRequestModel
   steps:string[]
   recipeId:number | null
   isChecked:boolean
@@ -41,33 +42,21 @@ export class ViewRecipeDetailsComponent implements OnInit{
           {
             next: response => {
               this.recipeModel = response
+
               this.steps = this.recipeModel.steps.split("/");
               this.steps.splice(this.steps.length-1,1)
-              let user = new UserModel(9)
-              this.favouritModel = new FavouriteResponseModel(this.recipeModel,user)
               // alert(response)
               // console.log(response)
-              console.log(this.favouritModel)
 
             }
           }
         )
     })
+    let user = new UserModel(10)
+    this.favouritRequestModel = new FavouriteRequestModel(this.recipeId,10)
+              console.log(this.favouritRequestModel)
   }
 
-  loadFavStatus(){
-    this._favouriteService.findByRecipeAndUserIds(this.favouritModel).subscribe(
-      {
-        next:(response:any) => {
-          console.log(response)
-          this.isFav = response != null;
-          console.log(this.isFav)
-        }
-
-      },
-
-    )
-  }
 
   postComment(comment:any):void{
     let reviewModel = new ReviewModelRequest()
@@ -111,33 +100,6 @@ export class ViewRecipeDetailsComponent implements OnInit{
   }
 
 
-  loadStatus(){
-    let status = this.isFav
-    if(status)
-      this.addToFavourites(status)
-    else
-      this.removeFromFavourites()
-}
 
-  addToFavourites(status:boolean){
-
-    let favModel = new FavouriteRequestModel(this.recipeModel.id,10)
-    console.log(favModel);
-    this._favouriteService.post(favModel).subscribe(
-      (response:any) => {
-        console.log("Fav inserted <3")
-      }
-    )
-  }
-
-  removeFromFavourites(){
-    let user = new UserModel(10) //dumy user
-    let favModel = new FavouriteResponseModel(this.recipeModel,user)
-      this._favouriteService.delete(favModel).subscribe(
-        (response:any) => {
-          console.log("Fav Deleted")
-        }
-      )
-  }
 
 }

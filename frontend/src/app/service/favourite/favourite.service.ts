@@ -27,4 +27,8 @@ export class FavouriteService {
   delete(favouriteModel:FavouriteResponseModel){
     return this._apiService.deleteFromFavourite(`favoriteRecipe/deletefav`,favouriteModel)
   }
+
+  findFavouriteRecipeById(userId: number, recipeId: number | null){
+      return this._apiService.get(`favoriteRecipe?userId=${userId}&recipeId=${recipeId}`)
+  }
 }
