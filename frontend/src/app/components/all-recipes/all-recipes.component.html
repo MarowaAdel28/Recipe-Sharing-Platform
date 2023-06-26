@@ -23,7 +23,7 @@
       <form action="#" method="post">
         <div class="row align-items-center">
           <div class="col-12 col-lg-4">
-            <select class="form-control"  id="select1" [(ngModel)]="categoryId" name="category" (ngModelChange)="findRecipesByNameAndCategory(searchInput.value,categoryId,'0')">
+            <select style="height: 60px; color: #2f2f2f" class="form-control"  id="select1" [(ngModel)]="categoryId" name="category" (ngModelChange)="findRecipesByNameAndCategory(searchInput.value,categoryId,'0')">
               <option value="">All Recipes Categories</option>
               <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
             </select>
@@ -35,7 +35,9 @@
           </div>
 
           <div class="col-12 col-lg-3 text-right">
-            <button type="submit" class="btn delicious-btn" (click)="findRecipesByNameAndCategory(searchInput.value,categoryId,'0')">Search</button>
+            <button type="submit" class="btn delicious-btn"
+                    (click)="findRecipesByNameAndCategory(searchInput.value,categoryId,'0')">Search
+            </button>
           </div>
 
         </div>
@@ -64,7 +66,7 @@
         </div>
       </div>
       <div class="text-center" *ngIf="paginatedList.length === 0">
-        <p>No recipes available</p>
+        <app-status-recipe/>
       </div>
     </div>
   </div>
@@ -73,7 +75,8 @@
 
 <div class="pagination" *ngIf="totalItems > 9">
   <button (click)="previousPage(searchInput.value,categoryId)" [disabled]="currentPage == 0">Previous</button>
-  <button *ngFor="let page of totalPagesArray" (click)="goToPage(page,searchInput.value,categoryId)" [class.active]="currentPage === page">{{ page+1 }}</button>
+  <button *ngFor="let page of totalPagesArray" (click)="goToPage(page,searchInput.value,categoryId)"
+          [class.active]="currentPage === page">{{ page + 1 }}</button>
   <button (click)="nextPage(searchInput.value,categoryId)" [disabled]="currentPage === totalPages-1">Next</button>
 </div>
 
@@ -92,7 +95,7 @@
 <script src="js/scrollIt.js"></script>
 <script src="js/jquery.scrollUp.min.js"></script>
 <script src="js/wow.min.js"></script>
-<script src="js/nice-select.min.js"></script>
+<script src="assets/js/nice-select.min.js"></script>
 <script src="js/jquery.slicknav.min.js"></script>
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/plugins.js"></script>

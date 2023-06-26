@@ -69,6 +69,7 @@ import { EditingRecipeComponent } from './components/user/editing-user-recipe/ed
 import { AppRateComponent } from './components/app-rate/app-rate.component';
 import { ApiService } from './service/api.service';
 import {FavouriteRecipeComponent} from "./components/favourite-recipe/favourite-recipe.component";
+import { StatusRecipeComponent } from './components/status-recipe/status-recipe.component';
 
 
 @NgModule({
@@ -109,7 +110,8 @@ import {FavouriteRecipeComponent} from "./components/favourite-recipe/favourite-
     EditingRecipeComponent,
     AppRateComponent,
     RatingComponent,
-    FavouriteRecipeComponent
+    FavouriteRecipeComponent,
+    StatusRecipeComponent
   ],
   imports: [
     MatExpansionModule,

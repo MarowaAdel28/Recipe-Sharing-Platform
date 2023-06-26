@@ -5,7 +5,6 @@ import {UserModel} from "../../models/user-model";
 import {FavouriteResponseModel} from "../../models/favourite-response-model";
 import {ActivatedRoute} from "@angular/router";
 import {RecipeModel} from "../../models/recipe-model";
-import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-favourite-recipe',
@@ -20,7 +19,9 @@ export class FavouriteRecipeComponent implements OnInit{
   @Output() change = new EventEmitter<boolean>()
    recipeId: number;
 
-  constructor(private _favService:FavouriteService,private _activatedRoute:ActivatedRoute, private authService:AuthService) {
+  constructor(private _favService:FavouriteService
+              ,private _activatedRoute:ActivatedRoute
+              ,private authService:AuthService) {
   }
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(parms => {
@@ -56,8 +57,9 @@ export class FavouriteRecipeComponent implements OnInit{
   }
 
   addToFavourites(status:boolean){
+    let user = new UserModel(this.authService.GetIDByToken(this.authService.getToken()))
 
-    let favModel = new FavouriteRequestModel(this.recipeId, this.authService.GetIDByToken(this.authService.getToken()))
+    let favModel = new FavouriteRequestModel(this.recipeId, user.id)
     console.log(favModel);
     this._favService.post(favModel).subscribe(
       (response:any) => {
@@ -67,7 +69,7 @@ export class FavouriteRecipeComponent implements OnInit{
   }
 
   removeFromFavourites(){
-    let user = new UserModel(10) //dumy user
+    let user = new UserModel(this.authService.GetIDByToken(this.authService.getToken()))
     let favModel = new FavouriteResponseModel(this.recipeModel,user)
     this._favService.delete(favModel).subscribe(
       (response:any) => {

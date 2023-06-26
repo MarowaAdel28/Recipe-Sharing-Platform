@@ -1,28 +1,30 @@
-<body>
-<div class="grid-container">
-    <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}" rowHeight="200px">
+<div class="login-page">
 
-      <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
-      [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="User Age and Gender">
-        <app-bar-chart></app-bar-chart>
-      </app-card>
-    </mat-grid-tile>
 
-      <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
-      [rowspan]="( cardLayout | async )?.chart?.rows">
-      <app-card title="Registration Rate">
-        <app-line-chart></app-line-chart>
-      </app-card>
-    </mat-grid-tile>
+  <div class="grid-container" >
+    <mat-grid-list cols="{{ ( cardLayout | async )?.columns }}">
 
-    <mat-grid-tile  [colspan]="( cardLayout | async )?.chart?.cols"
-    [rowspan]="( cardLayout | async )?.chart?.rows">
-    <app-card title="Recipe Status">
-      <app-pie-chart></app-pie-chart>
-    </app-card>
-  </mat-grid-tile>
-    
-     </mat-grid-list>
-   </div>
-  </body>
+      <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols"
+                     [rowspan]="( cardLayout | async )?.chart?.rows">
+        <app-card title="User Age and Gender">
+          <app-bar-chart></app-bar-chart>
+        </app-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols"
+                     [rowspan]="( cardLayout | async )?.chart?.rows">
+        <app-card title="Registration Rate">
+          <app-line-chart></app-line-chart>
+        </app-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile [colspan]="( cardLayout | async )?.chart?.cols">
+<!--                     [rowspan]="( cardLayout | async )?.chart?.rows">-->
+        <app-card title="Recipe Status">
+          <app-pie-chart></app-pie-chart>
+        </app-card>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+  </div>
+</div>
