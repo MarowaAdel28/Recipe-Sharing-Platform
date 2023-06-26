@@ -1,0 +1,14 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200vh;
+}
+
+.container {
+  display: flex;
+}
+
+.container input {
+  margin-right: 10px;
+}

@@ -1,148 +1,64 @@
-<body style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/img/profile-icons/background.jpg) no-repeat center center/cover; padding-top: 0px">
-<div class="container-xl px-4 mt-4 card-container">
-  <div class="row">
-    <div class="col-xl-4 mx-auto">
-      <!-- Profile picture card-->
-      <div class="card mb-4 mb-xl-0">
-<!--        <div class="card-header">Profile Picture</div>-->
-        <div class="card-body text-center">
-          <!-- Profile picture image-->
-<!--          <img class="img-account-profile rounded-circle mb-2" src="assets/img/profile-icons/girl.jpeg" alt="">-->
-          <img class="img-account-profile rounded-circle mb-2"
-               [src]="user.gender === 'm' ? 'assets/img/profile-icons/boy.jpeg' : 'assets/img/profile-icons/girl.jpeg'" alt="">
+<body
+  style="background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(assets/img/profile-icons/background.jpg) no-repeat center center/cover; padding-top: 0px">
+<div class="login-page">
+  <div class="container-xl px-4 mt-4 card-container" style="width: 80%">
+    <div class="row">
+      <div class="col-xl-4 mx-auto">
+        <!-- Profile picture card-->
+        <div class="card mb-4 mb-xl-0">
+          <!--        <div class="card-header">Profile Picture</div>-->
+          <div class="card-body text-center">
+            <!-- Profile picture image-->
+            <!--          <img class="img-account-profile rounded-circle mb-2" src="assets/img/profile-icons/girl.jpeg" alt="">-->
+            <img class="img-account-profile rounded-circle mb-2"
+                 [src]="user.gender === 'm' ? 'assets/img/profile-icons/boy.jpeg' : 'assets/img/profile-icons/girl.jpeg'"
+                 alt="">
 
-<!--          <div class="small font-italic text-muted mb-4">-->
-<!--            <ng-container *ngIf="!isEditingUserName; else editUserNameTemplate">-->
-<!--              {{ user.userName }}-->
-<!--              <button (click)="toggleEditUserName()">-->
-<!--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">-->
-<!--                  <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>-->
-<!--                </svg>-->
-<!--              </button>-->
-<!--            </ng-container>-->
 
-<!--            <ng-template #editUserNameTemplate>-->
-<!--              <input type="text" class="form-control" [(ngModel)]="user.userName" (keydown.enter)="saveUserName()" (blur)="saveUserName()">-->
-<!--              <button (click)="toggleEditUserName()">-->
-<!--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">-->
-<!--                  <path d="M6.5 10.5l3.5-3.5a1 1 0 1 1 1.5 1.5l-4 4a1 1 0 0 1-1.5 0l-2-2a1 1 0 1 1 1.5-1.5L6.5 10.5zm-1-7a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/>-->
-<!--                </svg>-->
-<!--              </button>-->
-<!--            </ng-template>-->
-<!--          </div>-->
 
-          <div class="small font-italic text-muted mb-4">{{user.userName}}</div>
-          <div class="small font-italic text-muted mb-4">{{user.email}}</div>
-          <!-- Profile picture upload button-->
-<!--          <button class="btn btn-primary" type="button">Upload new image</button>-->
+            <div class="small font-italic text-muted mb-4">{{user.userName}}</div>
+            <div class="small font-italic text-muted mb-4">{{user.email}}</div>
+            <!-- Profile picture upload button-->
+            <!--          <button class="btn btn-primary" type="button">Upload new image</button>-->
+          </div>
+          <div class="recipe-container">
+            <a routerLink="/profile/user-recipes" class="card-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                   class="bi bi-book-half recipe-icon" viewBox="0 0 16 16">
+                <path
+                  d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+              </svg>
+            </a>
+            <small>Your Recipe</small>
+          </div>
+          <div class="recipe-container">
+            <a routerLink="/profile/user-favorite-recipes" class="card-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="55" height="35" fill="currentColor"
+                   class="bi bi-bookmark-star" viewBox="0 0 16 16">
+                <path
+                  d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
+                <path
+                  d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+              </svg>
+            </a>
+            <small>Favorite Recipes</small>
+          </div>
+
+          <div class="recipe-container">
+            <a routerLink="/profile/user-archive-recipes" class="card-link">
+              <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor"
+                   class="bi bi-archive-fill" viewBox="0 0 16 16">
+                <path
+                  d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
+              </svg>
+            </a>
+            <small>Archive</small>
+          </div>
         </div>
-        <div class="recipe-container">
-          <a routerLink="/profile/user-recipes" class="card-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-book-half recipe-icon" viewBox="0 0 16 16">
-              <path d="M8.5 2.687c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-            </svg>
-          </a>
-          <small>Your Recipe</small>
-        </div>
-        <div class="recipe-container">
-          <a routerLink="/profile/user-favorite-recipes" class="card-link">
-        <svg xmlns="http://www.w3.org/2000/svg" width="55" height="35" fill="currentColor" class="bi bi-bookmark-star" viewBox="0 0 16 16">
-          <path d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.178.178 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.178.178 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.178.178 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.178.178 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.178.178 0 0 0 .134-.098L7.84 4.1z"/>
-          <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
-        </svg>
-          </a>
-          <small>Favorite Recipes</small>
-        </div>
-
-        <div class="recipe-container">
-          <a routerLink="/profile/user-archive-recipes" class="card-link">
-            <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-archive-fill" viewBox="0 0 16 16">
-              <path d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM5.5 7h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1 0-1zM.8 1a.8.8 0 0 0-.8.8V3a.8.8 0 0 0 .8.8h14.4A.8.8 0 0 0 16 3V1.8a.8.8 0 0 0-.8-.8H.8z"/>
-            </svg>
-          </a>
-          <small>Archive</small>
-        </div>
-
       </div>
     </div>
 
-
-<!--    <div class="col-xl-8">-->
-<!--      &lt;!&ndash; Account details card&ndash;&gt;-->
-<!--      <div class="card mb-4">-->
-<!--&lt;!&ndash;        <div class="card-header">Account Details</div>&ndash;&gt;-->
-<!--        <div class="card-body">-->
-<!--          <form [formGroup]="userForm">-->
-<!--            &lt;!&ndash; Form Group (username)&ndash;&gt;-->
-<!--            <div class="mb-3 form-group">-->
-<!--              <label class="small mb-1" for="inputUsername">Username</label>-->
-<!--              <input id="inputUsername" type="text" class="form-control" formControlName="userName"-->
-<!--                     placeholder="Enter your username"-->
-<!--                     [class.is-valid]="!userForm.controls['userName'].errors">-->
-<!--              <div *ngIf="userForm.controls['userName'].errors && (userForm.controls['userName'].touched || userForm.controls['userName'].dirty)">-->
-<!--                <small *ngIf="userForm.controls['userName'].errors?.['required']"  class="form-text text-danger">required name</small>-->
-<!--                <small *ngIf="userForm.controls['userName'].errors?.['minlength']"  class="form-text text-danger">min length</small>-->
-<!--                <small *ngIf="userForm.controls['userName'].errors?.['maxlength']"  class="form-text text-danger">max length</small>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="mb-3 form-group">-->
-<!--              <label class="small mb-1" for="inputOldPassword">Old password</label>-->
-<!--              <input id="inputOldPassword" type="password" formControlName="oldPassword" class="form-control"-->
-<!--                     placeholder="Enter your old password"-->
-<!--                     [class.is-valid]="!userForm.controls['oldPassword'].errors">-->
-<!--              <div *ngIf="userForm.controls['oldPassword'].errors && (userForm.controls['oldPassword'].touched || userForm.controls['oldPassword'].dirty)">-->
-<!--                <small *ngIf="userForm.controls['oldPassword'].errors?.['required']"  class="form-text text-danger">required name</small>-->
-<!--                <small *ngIf="userForm.controls['oldPassword'].errors?.['minlength']"  class="form-text text-danger">min length</small>-->
-<!--                <small *ngIf="userForm.controls['oldPassword'].errors?.['maxlength']"  class="form-text text-danger">max length</small>-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="row gx-3 mb-3">-->
-<!--              &lt;!&ndash; Form Group (organization name)&ndash;&gt;-->
-<!--              <div class="col-md-6 form-group">-->
-<!--                &lt;!&ndash;                <label class="small mb-1" for="inputOrgName">Organization name</label>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your organization name" value="Start Bootstrap">&ndash;&gt;-->
-<!--                <label class="small mb-1" for="inputNewPassword">New password</label>-->
-<!--                <input id="inputNewPassword" type="password" formControlName="newPassword" class="form-control"-->
-<!--                        placeholder="Enter your new password"-->
-<!--                       [class.is-valid]="!userForm.controls['newPassword'].errors">-->
-<!--                <div *ngIf="userForm.controls['newPassword'].errors && (userForm.controls['newPassword'].touched || userForm.controls['newPassword'].dirty)">-->
-<!--                  <small *ngIf="userForm.controls['newPassword'].errors?.['required']"  class="form-text text-danger">required name</small>-->
-<!--                  <small *ngIf="userForm.controls['newPassword'].errors?.['minlength']"  class="form-text text-danger">min length</small>-->
-<!--                  <small *ngIf="userForm.controls['newPassword'].errors?.['maxlength']"  class="form-text text-danger">max length</small>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              &lt;!&ndash; Form Group (location)&ndash;&gt;-->
-<!--              <div class="col-md-6 form-group">-->
-<!--                &lt;!&ndash;                <label class="small mb-1" for="inputLocation">Location</label>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value="San Francisco, CA">&ndash;&gt;-->
-<!--                <label class="small mb-1" for="inputConfirmedPassword">Confirm password</label>-->
-<!--                <input  id="inputConfirmedPassword" type="password" formControlName="repeatedPassword" class="form-control"-->
-<!--                         placeholder="Confirm your password"-->
-<!--                        [class.is-valid]="!userForm.controls['repeatedPassword'].errors">-->
-<!--                <div *ngIf="userForm.controls['repeatedPassword'].errors && (userForm.controls['repeatedPassword'].touched || userForm.controls['repeatedPassword'].dirty)">-->
-<!--                  <small *ngIf="userForm.controls['repeatedPassword'].errors?.['required']"  class="form-text text-danger">required name</small>-->
-<!--                  <small *ngIf="userForm.controls['repeatedPassword'].errors?.['minlength']"  class="form-text text-danger">min length</small>-->
-<!--                  <small *ngIf="userForm.controls['repeatedPassword'].errors?.['maxlength']"  class="form-text text-danger">max length</small>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--            </div>-->
-
-<!--            <div class="mb-3 form-group">-->
-<!--              <label class="small mb-1" for="inputAge">Age</label>-->
-<!--              <input id="inputAge" type="number" formControlName="age" class="form-control"-->
-<!--                     placeholder="Enter Your Age"-->
-
-<!--                     [class.is-valid]="!userForm.controls['age'].errors">-->
-<!--              <div *ngIf="userForm.controls['age'].errors && (userForm.controls['age'].touched || userForm.controls['age'].dirty)">-->
-<!--              <small *ngIf="userForm.controls['age'].errors?.['required']"  class="form-text text-danger">required age</small>-->
-<!--              <small *ngIf="userForm.controls['age'].errors?.['min']"  class="form-text text-danger">min age is 12</small>-->
-<!--            </div>-->
-<!--            &lt;!&ndash; Save changes button&ndash;&gt;-->
-<!--            <button [disabled]="userForm.invalid" (click)="updateUser()" class="btn btn-primary" type="button">Save changes</button>-->
-<!--          </div>-->
-<!--        </form>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 </div>
 
+</body>

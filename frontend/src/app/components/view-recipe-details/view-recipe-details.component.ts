@@ -55,7 +55,7 @@ export class ViewRecipeDetailsComponent implements OnInit{
         )
     })
     let user = new UserModel(this.authService.GetIDByToken(this.authService.getToken()))
-    this.favouritRequestModel = new FavouriteRequestModel(this.recipeId,10)
+    this.favouritRequestModel = new FavouriteRequestModel(this.recipeId,user.id)
               console.log(this.favouritRequestModel)
   }
 
