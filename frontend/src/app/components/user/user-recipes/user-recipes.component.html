@@ -26,23 +26,32 @@
       <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let recipe of paginatedList">
         <div class="single_recepie text-center">
           <div class="recepie_thumb">
-            <img src="assets/img/recepie/recpie_1.png" alt="">
+            <img src="assets/img/recepie/recpie_{{recipe.id}}.png" alt="">
           </div>
           <h3>{{recipe.name}}</h3>
-          <span style="font-size: medium">{{recipe.category.name}}</span>
+          <span style="font-size: medium">{{recipe.category.name}}
+            <a routerLink="/view-recipe/details/{{recipe.id}}" >
+<!--          View Recipe!-->
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+
+          </a></span>
           <app-app-rate [rate]="getRate(recipe.rateList)"></app-app-rate>
-          <span>
-          <p style="font-size: large;display: inline-block;" [ngStyle]="getStatusColorStyle(recipe.status)">
+          <div>
+          <span style="
+          font-size: large;display: inline-block;" [ngStyle]="getStatusColorStyle(recipe.status)" >
             {{ recipe.status }}
-            <span *ngIf="recipe.status === 'rejected'">
+            <span *ngIf="recipe.status === 'rejected'" style="display: inline-block">
               <button (click)="getRejectionMessage(recipe.id)">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-paper" viewBox="0 0 16 16">
                   <path d="M4 0a2 2 0 0 0-2 2v1.133l-.941.502A2 2 0 0 0 0 5.4V14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5.4a2 2 0 0 0-1.059-1.765L14 3.133V2a2 2 0 0 0-2-2H4Zm10 4.267.47.25A1 1 0 0 1 15 5.4v.817l-1 .6v-2.55Zm-1 3.15-3.75 2.25L8 8.917l-1.25.75L3 7.417V2a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v5.417Zm-11-.6-1-.6V5.4a1 1 0 0 1 .53-.882L2 4.267v2.55Zm13 .566v5.734l-4.778-2.867L15 7.383Zm-.035 6.88A1 1 0 0 1 14 15H2a1 1 0 0 1-.965-.738L8 10.083l6.965 4.18ZM1 13.116V7.383l4.778 2.867L1 13.117Z"/>
                 </svg>
               </button>
             </span>
-          </p>
             </span>
+          </div>
 <!--          <p style="font-size: large; display: inline-block;">-->
 <!--  <span [ngStyle]="getStatusColorStyle(recipe.status)">-->
 <!--    {{ recipe.status }}-->
@@ -61,23 +70,26 @@
 <!--            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5a1 1 0 0 0-.8.4l-1.9 2.533a1 1 0 0 1-1.6 0L5.3 12.4a1 1 0 0 0-.8-.4H2a2 2 0 0 1-2-2V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>-->
 <!--          </svg>-->
 <span>
-          <a routerLink="/view-recipe/details/{{recipe.id}}" >
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" fill="currentColor" class="bi bi-arrow-up-right-square-fill icon" viewBox="0 0 16 16">
-              <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>
-            </svg>
-          </a>
 
+  <!--            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="26" fill="currentColor" class="bi bi-arrow-up-right-square-fill icon" viewBox="0 0 16 16">-->
+  <!--              <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12zM5.904 10.803 10 6.707v2.768a.5.5 0 0 0 1 0V5.5a.5.5 0 0 0-.5-.5H6.525a.5.5 0 1 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 .707.707z"/>-->
+  <!--            </svg>-->
 <!--          <a routerLink="/profile/user-recipes/{{recipe.id}}/edit" >-->
 <!--            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="28" fill="currentColor" class="bi bi-pencil-square icon " viewBox="0 0 16 16">-->
 <!--              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>-->
 <!--              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>-->
 <!--            </svg>-->
 <!--          </a>-->
-
-          <button mat-fab  (click)="deleteRecipe(recipe.id)" class="remove-button small-button bg-danger">
-            <mat-icon class="small-icon">clear</mat-icon>
-          </button>
+<button (click)="deleteRecipe(recipe.id)">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+  <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+  <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+</svg>
+</button>
+<!--          <button mat-fab  (click)="deleteRecipe(recipe.id)" class="remove-button small-button bg-danger">-->
+<!--            <mat-icon class="small-icon">clear</mat-icon>-->
+<!--          </button>-->
   </span>
         </div>
       </div>

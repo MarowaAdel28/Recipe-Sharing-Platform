@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ApiService } from 'src/app/service/api.service';
 import Swal from 'sweetalert2';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 
 @Component({
@@ -218,10 +218,14 @@ export class RecipesListComponent implements OnInit {
 
   uploadImage(recipeId:number) {
     if (this.selectedFile) {
+      const headers = new HttpHeaders();
+      console.log("done")
+      headers.append('enctype', 'multipart/form-data');
       const formData = new FormData();
       formData.append('file', this.selectedFile);
+      formData.append('id',JSON.stringify(recipeId));
 
-      this.http.post<FormData>('http://localhost:8080/image/upload/'+recipeId, formData).subscribe(
+      this.http.post<any>('http://localhost:8080/image/upload', formData, { headers: headers }).subscribe(
         response => {
           console.log('Image uploaded successfully:', response);
         },
@@ -230,6 +234,23 @@ export class RecipesListComponent implements OnInit {
         }
       );
     }
+  }
+
+  uploadFile(file: File) {
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+
+    const headers = new HttpHeaders();
+    headers.append('enctype', 'multipart/form-data');
+
+    this.http.post('/image/upload', formData, { headers }).subscribe(
+      response => {
+        console.log('File uploaded successfully:', response);
+      },
+      error => {
+        console.error('Error uploading file:', error);
+      }
+    );
   }
 
 }

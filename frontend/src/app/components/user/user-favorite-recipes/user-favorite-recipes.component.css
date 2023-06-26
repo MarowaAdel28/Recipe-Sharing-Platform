@@ -86,3 +86,7 @@ button:focus {
 .pagination button.active {
   background-color: darkgrey;
 }
+img{
+  width: 500px;
+  height: 400px;
+}

@@ -1,3 +1,7 @@
+img{
+  width: 500px;
+  height: 400px;
+}
 .danger-icon {
   color: red;
 }

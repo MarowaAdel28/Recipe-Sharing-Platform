@@ -83,6 +83,15 @@
             <button (click)="rejectRecipe(recipe.id)">reject</button>
             <input type="file" (change)="onFileSelected($event)" accept="image/*">
             <button (click)="uploadImage(recipe.id)">Upload Image</button>
+
+<!--            <form action="http://localhost:8080/image/upload" method="post" enctype="multipart/form-data">-->
+<!--              &lt;!&ndash; Your form fields &ndash;&gt;-->
+<!--              <input type="file" name="file">-->
+<!--              &lt;!&ndash; Other form fields &ndash;&gt;-->
+<!--              <input hidden="hidden" type="text" value="{{recipe.id}}" name="id">-->
+<!--              <button type="submit" >Submit</button>-->
+<!--            </form>-->
+
           </mat-panel-description>
 
           </mat-expansion-panel-header>

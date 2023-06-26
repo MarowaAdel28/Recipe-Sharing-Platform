@@ -46,20 +46,20 @@ public class RejectedRecipeService {
 //        rejectedRecipeRepository.save(rejectedRecipe);
 //    }
 //
-//    public RejectedRecipeDTO getById(Integer id) {
-//        RejectedRecipe original = requireOne(id);
-//        return toDTO(original);
-//    }
+    public RejectedRecipeDTO getById(Integer id) {
+        RejectedRecipe original = rejectedRecipeRepository.findByRecipe(recipeRepository.getReferenceById(id));
+        return toDTO(original);
+    }
 //
 ////    public Page<RejectedRecipeDTO> query(RejectedRecipeQueryVO rejectedRecipeDto) {
 ////        throw new UnsupportedOperationException();
 ////    }
 //
-//    private RejectedRecipeDTO toDTO(RejectedRecipe rejectedRecipe) {
-//        RejectedRecipeDTO rejectedRecipeDto = new RejectedRecipeDTO();
-//        BeanUtils.copyProperties(rejectedRecipe, rejectedRecipeDto);
-//        return rejectedRecipeDto;
-//    }
+    private RejectedRecipeDTO toDTO(RejectedRecipe rejectedRecipe) {
+        RejectedRecipeDTO rejectedRecipeDto = new RejectedRecipeDTO();
+        BeanUtils.copyProperties(rejectedRecipe, rejectedRecipeDto);
+        return rejectedRecipeDto;
+    }
 //
 //    private RejectedRecipe requireOne(Integer id) {
 //        return rejectedRecipeRepository.findById(id)

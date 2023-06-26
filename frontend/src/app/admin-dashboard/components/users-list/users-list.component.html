@@ -38,7 +38,8 @@
                                         <div style="max-height:100px; overflow-y:scroll;">
                                             <tbody>
                                                 <tr *ngFor="let recipe of user.recipeList">
-                                                    <a mat-button>{{recipe.recipeName}}</a>
+                                                  <a mat-button routerLink="/view-recipe/details/{{recipe.id}}" >{{recipe.recipeName}}</a>
+<!--                                                    <a mat-button>{{recipe.recipeName}}</a>-->
                                                     <!-- <td hidden>{{recipe.id}}</td> -->
                                                 </tr>
                                             </tbody>

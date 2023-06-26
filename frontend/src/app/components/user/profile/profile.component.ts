@@ -19,6 +19,7 @@ export class ProfileComponent implements OnInit{
   constructor(private _formBuilder:FormBuilder, private userService:UserService,
               private notificationService:NotificationService, private authService:AuthService){}
   ngOnInit(): void {
+    console.log(this.authService.getToken())
 
     this.fetchData();
 

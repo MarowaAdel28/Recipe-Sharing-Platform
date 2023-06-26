@@ -28,10 +28,10 @@ public class RejectedRecipeController {
 //    }
     
 
-//    @GetMapping("/{id}")
-//    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
-//        return rejectedRecipeService.getById(id);
-//    }
+    @GetMapping("/{id}")
+    public RejectedRecipeDTO getById(@Valid @NotNull @PathVariable("id") Integer id) {
+        return rejectedRecipeService.getById(id);
+    }
 //    @DeleteMapping("/{id}")
 //    public void delete(@Valid @NotNull @PathVariable("id") Integer id) {
 //        rejectedRecipeService.delete(id);
