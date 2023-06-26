@@ -219,10 +219,9 @@ export class RecipesListComponent implements OnInit {
   uploadImage(recipeId:number) {
     if (this.selectedFile) {
       const formData = new FormData();
-      formData.append('image', this.selectedFile);
-      formData.append('recipeId',recipeId.toString());
+      formData.append('file', this.selectedFile);
 
-      this.http.post('http://localhost:8080/image', formData).subscribe(
+      this.http.post<FormData>('http://localhost:8080/image/upload/'+recipeId, formData).subscribe(
         response => {
           console.log('Image uploaded successfully:', response);
         },

@@ -24,13 +24,20 @@ export class ApiService {
 
 
   rejectRecipe(recipeId:number, message:string) {
+    const headers = {
+      "Content-Type": "application/json",
+    }
+    const body={
+      "recipeId":recipeId,
+        "message":message
+    }
 
-    return this.http.patch(`${this.baseAdminRecipeUrl+"rejectRecipe?recipeId="+recipeId+"&message="+message}`, {});
+    return this.http.post(`${this.baseAdminRecipeUrl+"rejectRecipe"}`, body, {headers});
 
   }
 
   acceptRecipe(recipeId:number) {
-    return this.http.patch(`${this.baseAdminRecipeUrl+ "acceptRecipe/"+ recipeId}`,{});
+    return this.http.post(`${this.baseAdminRecipeUrl+ "acceptRecipe/"+ recipeId}`,{});
   }
 
   getِAcceptedRecipesData(page: number){
@@ -145,7 +152,8 @@ export class ApiService {
   }
 
   put_header(url:string,body:any,headers:any){
-    return this.http.put<any>(this.baseUserUrl+url,body,{headers})
+    console.log("put")
+    return this.http.post<any>(this.baseUserUrl+url,body, {headers})
   }
   delete(url:string,id:number){
     return this.http.delete<any>(this.baseUserUrl+url+`/`+id)

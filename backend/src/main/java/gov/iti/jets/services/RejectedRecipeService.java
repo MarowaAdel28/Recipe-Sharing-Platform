@@ -1,6 +1,7 @@
 package gov.iti.jets.services;
 
 import gov.iti.jets.models.dtos.RejectedRecipeDTO;
+import gov.iti.jets.models.entities.Recipe;
 import gov.iti.jets.models.entities.RejectedRecipe;
 import gov.iti.jets.repositories.RecipeRepository;
 import gov.iti.jets.repositories.RejectedRecipeRepository;
@@ -22,12 +23,17 @@ public class RejectedRecipeService {
     }
 
     public Integer save(RejectedRecipeDTO rejectedRecipeDto) {
+        System.out.println("rejectedRecipeDto = " + rejectedRecipeDto);
         RejectedRecipe bean = new RejectedRecipe();
-        bean.setRecipeId(rejectedRecipeDto.getId());
         bean.setMessage(rejectedRecipeDto.getMessage());
-        bean.setRecipe(recipeRepository.getReferenceById(rejectedRecipeDto.getId()));
+        Recipe recipe = recipeRepository.getReferenceById(rejectedRecipeDto.getId());
+        bean.setRecipe(recipe);
+        System.out.println("recipe.getId() = " + recipe.getId());
+        System.out.println(bean.getRecipe().getId());
         bean = rejectedRecipeRepository.save(bean);
-        return bean.getRecipeId();
+        System.out.println(bean);
+        System.out.println("recipe.getId() = " + bean.getRecipe().getId());
+        return bean.getId();
     }
 
 //    public void delete(Integer id) {

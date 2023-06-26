@@ -28,10 +28,11 @@ export class UserService {
 
 
   put(userData:any){
+    console.log("put method user service")
     const headers = {
       "Content-Type": "application/json",
     }
-    return this._apiService.put_header("user",JSON.stringify(userData),headers)
+    return this._apiService.put_header("user/edit",JSON.stringify(userData), headers)
   }
 
   getUserById(id:number) {
@@ -49,12 +50,12 @@ export class UserService {
 
 
 
-    
+
   private isLogedIn = new Subject<boolean>();
   isLogedIn$ = this.isLogedIn.asObservable();
 
   setLogged(isLogedIn: boolean) {
-    this.isLogedIn.next(isLogedIn); 
+    this.isLogedIn.next(isLogedIn);
    }
 
 

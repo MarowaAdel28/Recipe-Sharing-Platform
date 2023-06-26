@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit{
   }
 
     editUserName() {
+      console.log("edit method")
       let body = {
         user: this.authService.GetIDByToken(this.authService.getToken()),
         userName: this.user.userName,

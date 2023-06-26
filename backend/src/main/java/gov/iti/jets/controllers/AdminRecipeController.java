@@ -1,7 +1,9 @@
 package gov.iti.jets.controllers;
 
 import gov.iti.jets.models.dtos.adminrecipes.AdminRecipeDTO;
+import gov.iti.jets.models.dtos.adminrecipes.RejectedRecipeDTO;
 import gov.iti.jets.services.AdminRecipesService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.*;
 
@@ -52,15 +54,15 @@ public class AdminRecipeController {
         return adminRecipesService.getWaitingCount();
     }
 
-    @PatchMapping("/acceptRecipe/{recipeId}")
+    @PostMapping("/acceptRecipe/{recipeId}")
     public Integer acceptRecipe(@PathVariable Integer recipeId) {
         return adminRecipesService.acceptRecipe(recipeId);
     }
 
     @PostMapping("/rejectRecipe")
-    public Integer rejectRecipe(@RequestParam("recipeId")Integer recipeId, @RequestParam("message")String message) {
-        System.out.println("recipeId = " + recipeId);
-        return adminRecipesService.rejectRecipe(recipeId, message);
+    public Integer rejectRecipe(@Valid @RequestBody RejectedRecipeDTO rejectedRecipeDTO) {
+        System.out.println("recipeId = " + rejectedRecipeDTO.getRecipeId());
+        return adminRecipesService.rejectRecipe(rejectedRecipeDTO.getRecipeId(), rejectedRecipeDTO.getMessage());
     }
     
 }
