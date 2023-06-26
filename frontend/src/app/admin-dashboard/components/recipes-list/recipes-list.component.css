@@ -19,3 +19,12 @@ body {
     flex: 0 0 auto;
     width: 25%;
 }
+
+.buttonHoverNew {
+  transition: transform 0.3s;
+}
+
+
+.buttonHoverNew:hover {
+  transform: scale(1.2);
+}

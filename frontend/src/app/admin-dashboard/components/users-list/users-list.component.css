@@ -127,7 +127,7 @@ input[type="checkbox"]:hover ~ span {
     line-height: 23px;
     display: inline-block;
     background: rgb(191, 15, 86);
-    color: white;
+    /*color: white;*/
     transition: all .3s ease;
     padding: 0 10px;
     width: 100%;
@@ -155,7 +155,7 @@ input[type="checkbox"]:hover ~ span {
     font-family: 'Arial', sans-serif;
     /* add your custom styles here */
   }
-  
+
   .mat-paginator-range-label {
     font-weight: bold;
   }

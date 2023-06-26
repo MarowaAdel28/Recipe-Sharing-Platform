@@ -25,9 +25,13 @@
 
       <div class="col-xl-4 col-lg-4 col-md-6" *ngFor="let recipe of paginatedList">
         <div class="single_recepie text-center">
+<!--          <div class="recepie_thumb">-->
+<!--            <img src="assets/img/recepie/recpie_{{recipe.id}}.png" alt="">-->
+<!--          </div>-->
           <div class="recepie_thumb">
-            <img src="assets/img/recepie/recpie_{{recipe.id}}.png" alt="">
+            <img src="assets/img/recepie/recpie_{{recipe.id}}.png" alt="" (error)="setDefaultImage()">
           </div>
+
           <h3>{{recipe.name}}</h3>
           <span style="font-size: medium">{{recipe.category.name}}
             <a routerLink="/view-recipe/details/{{recipe.id}}" >

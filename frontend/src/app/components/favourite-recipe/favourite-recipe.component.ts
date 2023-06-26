@@ -5,6 +5,7 @@ import {UserModel} from "../../models/user-model";
 import {FavouriteResponseModel} from "../../models/favourite-response-model";
 import {ActivatedRoute} from "@angular/router";
 import {RecipeModel} from "../../models/recipe-model";
+import {AuthService} from "../../service/auth.service";
 
 @Component({
   selector: 'app-favourite-recipe',

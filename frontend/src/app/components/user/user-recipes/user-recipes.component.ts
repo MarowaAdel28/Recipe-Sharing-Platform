@@ -118,6 +118,9 @@ export class UserRecipesComponent implements OnInit{
     return this.reviewService.getRate(rateList)
   }
 
-
+  setDefaultImage() {
+    const imgElement = document.querySelector('.recepie_thumb img') as HTMLImageElement;
+    imgElement.src = 'assets/img/recepie/recpie.png'; // Replace with your default image URL
+  }
 
 }

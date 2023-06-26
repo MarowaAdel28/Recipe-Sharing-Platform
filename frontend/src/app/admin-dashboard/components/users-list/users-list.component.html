@@ -53,8 +53,8 @@
                 </table>
             </div>
         </div>
-        <mat-paginator [length]="usersCount" [pageIndex]="pageIndex" [pageSize]="pageSize" showFirstLastButtons
-            (page)="onPageChange($event)">
+        <mat-paginator style="background-color: #2c3136" [length]="usersCount" [pageIndex]="pageIndex" [pageSize]="pageSize" showFirstLastButtons
+                       (page)="onPageChange($event)">
         </mat-paginator>
     </main>
 </body>

@@ -1,129 +1,122 @@
 <body>
-  <br>
-  <mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="setTabIndex($event)">
+<br>
+<mat-tab-group [selectedIndex]="tabIndex" (selectedIndexChange)="setTabIndex($event)">
 
-    <mat-tab label="Accepted">
-      <mat-accordion *ngFor="let recipe of recipes;">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
-           <mat-panel-description>{{recipe.user.userName}}</mat-panel-description>
-            <mat-panel-description> {{recipe.date}} </mat-panel-description>
-            <mat-panel-description hidden> {{recipe.id}} </mat-panel-description>
-            </mat-expansion-panel-header>
-
-
-            <div class="row gutterFix">
-              <div class="colLeftSide">
-                <b>Ingredients:</b><br>
-                <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index">
-                  {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
-               </div>
-               <div class="colMain">
-                <b>Steps:</b><br>
-                <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i+1+". "+step}}<br> </mat-label>
-               </div>
-
-               <div class="colRightSide">
-                <b>Notes:</b><br>
-                <mat-label> {{"persons: "+recipe.persons}}<br> </mat-label>
-                <mat-label> {{"cooks count: "+recipe.cooksCount}}<br> </mat-label>
-                <mat-label> {{"preparing time: "+recipe.preparingTime}}<br> </mat-label>
-               </div>
-            </div>
-
-
-        </mat-expansion-panel>
-      </mat-accordion>
-
-    </mat-tab>
-    <mat-tab label="Rejected">
-      <mat-accordion *ngFor="let recipe of recipes">
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
-           <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
-            <mat-panel-description> {{recipe.date}} </mat-panel-description>
-            <mat-panel-description hidden> {{recipe.id}} </mat-panel-description>
-            </mat-expansion-panel-header>
-
-
-            <div class="row gutterFix">
-              <div class="colLeftSide">
-                <b>Ingredients:</b><br>
-                <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index">
-                  {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
-               </div>
-               <div class="colMain">
-                <b>Steps:</b><br>
-                <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i+1+". "+step}}<br> </mat-label>
-               </div>
-
-               <div class="colRightSide">
-                <b>Notes:</b><br>
-                <mat-label *ngIf="tabIndex==1"> {{"rejection message: "+  recipe.rejectedRecipe.message}} <br> </mat-label>
-                <mat-label> {{"persons: "+recipe.persons}}<br> </mat-label>
-                <mat-label> {{"cooks count: "+recipe.cooksCount}}<br> </mat-label>
-                <mat-label> {{"preparing time: "+recipe.preparingTime}}<br> </mat-label>
-               </div>
-            </div>
-        </mat-expansion-panel>
-      </mat-accordion>
-
-</mat-tab>
-    <mat-tab label="Waiting"> <mat-accordion *ngFor="let recipe of recipes">
+  <mat-tab label="Accepted">
+    <mat-accordion *ngFor="let recipe of recipes;">
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
-         <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
+          <mat-panel-description>{{recipe.user.userName}}</mat-panel-description>
           <mat-panel-description> {{recipe.date}} </mat-panel-description>
-
-          <mat-panel-description>
-            <button (click)="acceptRecipe(recipe.id)">accept</button>
-            <button (click)="rejectRecipe(recipe.id)">reject</button>
-            <input type="file" (change)="onFileSelected($event)" accept="image/*">
-            <button (click)="uploadImage(recipe.id)">Upload Image</button>
-
-<!--            <form action="http://localhost:8080/image/upload" method="post" enctype="multipart/form-data">-->
-<!--              &lt;!&ndash; Your form fields &ndash;&gt;-->
-<!--              <input type="file" name="file">-->
-<!--              &lt;!&ndash; Other form fields &ndash;&gt;-->
-<!--              <input hidden="hidden" type="text" value="{{recipe.id}}" name="id">-->
-<!--              <button type="submit" >Submit</button>-->
-<!--            </form>-->
-
-          </mat-panel-description>
-
-          </mat-expansion-panel-header>
+          <mat-panel-description hidden> {{recipe.id}} </mat-panel-description>
+        </mat-expansion-panel-header>
 
 
-          <div class="row gutterFix">
-            <div class="colLeftSide">
-              <b>Ingredients:</b><br>
-              <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index"> {{i+1+". "+ingredient.ingredients.name+ "( "+ ingredient.quantity+" )"}}<br> </mat-label>
-             </div>
-             <div class="colMain">
-              <b>Steps:</b><br>
-              <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i+1+". "+step}}<br> </mat-label>
-             </div>
-
-             <div class="colRightSide">
-              <b>Notes:</b><br>
-              <mat-label> {{"persons: "+recipe.persons}}<br> </mat-label>
-              <mat-label> {{"cooks count: "+recipe.cooksCount}}<br> </mat-label>
-              <mat-label> {{"preparing time: "+recipe.preparingTime}}<br> </mat-label>
-             </div>
+        <div class="row gutterFix">
+          <div class="colLeftSide">
+            <b>Ingredients:</b><br>
+            <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index">
+              {{i + 1 + ". " + ingredient.ingredients.name + "( " + ingredient.quantity + " )"}}<br></mat-label>
           </div>
+          <div class="colMain">
+            <b>Steps:</b><br>
+            <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i + 1 + ". " + step}}<br>
+            </mat-label>
+          </div>
+
+          <div class="colRightSide">
+            <b>Notes:</b><br>
+            <mat-label> {{"persons: " + recipe.persons}}<br></mat-label>
+            <mat-label> {{"cooks count: " + recipe.cooksCount}}<br></mat-label>
+            <mat-label> {{"preparing time: " + recipe.preparingTime}}<br></mat-label>
+          </div>
+        </div>
 
 
       </mat-expansion-panel>
     </mat-accordion>
-</mat-tab>
-  </mat-tab-group>
 
-  <footer>
-    <mat-paginator [length]="recipesCount" [pageIndex]="pageIndex" [pageSize]="pageSize" showFirstLastButtons
-      (page)="onPageChange($event)">
-    </mat-paginator>
-  </footer>
+  </mat-tab>
+  <mat-tab label="Rejected">
+    <mat-accordion *ngFor="let recipe of recipes">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>{{recipe.recipeName}}</mat-panel-title>
+          <mat-panel-description>{{recipe.user.username}}</mat-panel-description>
+          <mat-panel-description> {{recipe.date}} </mat-panel-description>
+          <mat-panel-description hidden> {{recipe.id}} </mat-panel-description>
+        </mat-expansion-panel-header>
+
+
+        <div class="row gutterFix">
+          <div class="colLeftSide">
+            <b>Ingredients:</b><br>
+            <mat-label *ngFor="let ingredient of recipe.ingredientsList; let i = index">
+              {{i + 1 + ". " + ingredient.ingredients.name + "( " + ingredient.quantity + " )"}}<br></mat-label>
+          </div>
+          <div class="colMain">
+            <b>Steps:</b><br>
+            <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i + 1 + ". " + step}}<br>
+            </mat-label>
+          </div>
+
+          <div class="colRightSide">
+            <b>Notes:</b><br>
+            <mat-label *ngIf="tabIndex==1"> {{"rejection message: " + recipe.rejectedRecipe.message}} <br></mat-label>
+            <mat-label> {{"persons: " + recipe.persons}}<br></mat-label>
+            <mat-label> {{"cooks count: " + recipe.cooksCount}}<br></mat-label>
+            <mat-label> {{"preparing time: " + recipe.preparingTime}}<br></mat-label>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </mat-tab>
+  <mat-tab label="Waiting">
+    <mat-accordion *ngFor="let recipe of recipes">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title >{{recipe.recipeName}}</mat-panel-title>
+          <mat-panel-description style="margin-left: 60px;">{{recipe.user.username}}</mat-panel-description>
+          <mat-panel-description style="margin-left: 40px;"> {{recipe.date}} </mat-panel-description>
+          <mat-panel-description style="margin-left: 100px;">
+            <mat-icon class="buttonHoverNew" style="color: #1c7430" (click)="acceptRecipe(recipe.id)">check</mat-icon>
+            <mat-icon class="buttonHoverNew" style="color: red" (click)="rejectRecipe(recipe.id)">cancel</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+
+        <div class="row gutterFix">
+          <div class="colLeftSide">
+            <b>Ingredients:</b><br>
+            <mat-label
+              *ngFor="let ingredient of recipe.ingredientsList; let i = index"> {{i + 1 + ". " + ingredient.ingredients.name + "( " + ingredient.quantity + " )"}}
+              <br></mat-label>
+          </div>
+          <div class="colMain">
+            <b>Steps:</b><br>
+            <mat-label *ngFor="let step of recipe.steps | steps_pipe; let i = index"> {{i + 1 + ". " + step}}<br>
+            </mat-label>
+          </div>
+
+          <div class="colRightSide">
+            <b>Notes:</b><br>
+            <mat-label> {{"persons: " + recipe.persons}}<br></mat-label>
+            <mat-label> {{"cooks count: " + recipe.cooksCount}}<br></mat-label>
+            <mat-label> {{"preparing time: " + recipe.preparingTime}}<br></mat-label>
+          </div>
+        </div>
+
+
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-tab>
+</mat-tab-group>
+
+<footer>
+  <mat-paginator style="background-color: #2c3136" [length]="recipesCount" [pageIndex]="pageIndex" [pageSize]="pageSize" showFirstLastButtons
+                 (page)="onPageChange($event)">
+  </mat-paginator>
+</footer>
 </body>
