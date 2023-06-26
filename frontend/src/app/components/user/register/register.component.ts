@@ -5,6 +5,7 @@ import {UserService} from "../../../service/user/user.service";
 import Swal from 'sweetalert2';
 import {NotificationService} from "../../../service/notifications/notification.service";
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/service/auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -14,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   registrationForm: FormGroup
 
-  constructor(private formBuilder: FormBuilder,private router: Router,private userService: UserService, private notificationService:NotificationService) {
+  constructor(private formBuilder: FormBuilder,private router: Router,private userservice: UserService, private authservice:AuthService,private notificationService:NotificationService) {
 
   }
 
@@ -46,14 +47,13 @@ export class RegisterComponent implements OnInit {
   }
 
     postData(user:any): void {
-      this.userService.register(user)
+      this.userservice.register(user)
         .subscribe(
           (response: any) => {
-            console.log(response); // Do whatever you want with the data
-            // this.notificationService.showNotification("Register Successfully!")
             localStorage.setItem('token', response.access_token);
             this.router.navigateByUrl('home');
-
+            this.userservice.setValue(this.authservice.GetNameByToken(this.authservice.getToken()));
+            this.userservice.setLogged(true);
           },
           (error: any) => {
             console.error(error);

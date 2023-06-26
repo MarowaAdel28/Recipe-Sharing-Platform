@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder,private router: Router,private authservice:AuthService,private userService: UserService,private notificationService:NotificationService, private userservice:UserService) {
+  constructor(private formBuilder: FormBuilder,private router: Router,private authservice:AuthService,private notificationService:NotificationService, private userservice:UserService) {
   }
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
 
   
   postData(user:any): void {
-    this.userService.login(user)
+    this.userservice.login(user)
       .subscribe(
         (response: any) => {
           console.log(response);
